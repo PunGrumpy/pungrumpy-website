@@ -26,9 +26,7 @@ export function Footer({ className }: FooterProps) {
             >
               <Icons.logo />
             </Link>
-            <span className="hidden font-bold md:flex">
-              Noppakorn Kaewsalabnil
-            </span>
+            <span className="font-bold">Noppakorn Kaewsalabnil</span>
           </div>
           <p className="text-sm text-muted-foreground">
             Undergraduate Student at King Mongkut&apos;s Institute of Technology
@@ -52,9 +50,11 @@ export function Footer({ className }: FooterProps) {
       </div>
       <div className="z-10 flex flex-wrap gap-5">
         <FooterMenu
+          category="About"
           items={['Work', 'Takes', 'Curriculum Vitae', 'Source Code']}
         />
         <FooterMenu
+          category="Tools we use"
           items={['Figma', 'Next.js', 'shadcn/ui', 'Framer Motion']}
         />
       </div>
@@ -71,8 +71,17 @@ const SocialButton = ({ icon, href }: { icon: any; href: string }) => (
   </Link>
 )
 
-const FooterMenu = ({ items }: { items: string[] }) => (
+const FooterMenu = ({
+  category,
+  items
+}: {
+  category: string
+  items: string[]
+}) => (
   <div className="flex min-w-52 max-w-80 flex-col gap-1">
+    <span className="text-xs uppercase text-muted-foreground md:hidden">
+      {category}
+    </span>
     {items.map((item, index) => (
       <div
         key={index}
@@ -81,7 +90,7 @@ const FooterMenu = ({ items }: { items: string[] }) => (
         <div className="absolute left-0 top-0 h-full w-1 bg-primary opacity-0 blur-md transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
         <div className="absolute left-0 top-0 h-full w-0.5 bg-primary opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
         <div className="flex h-full items-center px-4 py-1.5">
-          <span className="text-sm font-medium leading-tight text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-primary">
+          <span className="text-sm leading-tight transition-transform duration-300 ease-in-out group-hover:font-medium">
             {item}
           </span>
         </div>
