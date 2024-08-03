@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { cn } from '@/lib/utils'
 
 export interface HeaderProps {
   className?: string
@@ -18,7 +19,10 @@ export function Header({ className, selectedButton }: HeaderProps) {
 
   return (
     <div
-      className={`relative flex w-full max-w-7xl flex-row flex-wrap items-center justify-between text-left text-2xl text-foreground ${className}`}
+      className={cn(
+        'relative flex w-full max-w-7xl flex-row flex-wrap items-center justify-between text-left text-2xl text-foreground',
+        className
+      )}
     >
       <Link
         href="/"
