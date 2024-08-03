@@ -4,6 +4,9 @@ import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
 
+import { Footer } from '@/components/layout/footer'
+import { Grid } from '@/components/layout/grid'
+import { Header } from '@/components/layout/header'
 import { ThemeProvider } from '@/components/theme-provider'
 import { cn } from '@/lib/utils'
 
@@ -32,7 +35,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="bg-background">{children}</div>
+          <div className="bg-background">
+            <div className="xs:p-5 mx-auto flex flex-row flex-wrap items-center justify-center gap-14 rounded-3xl p-14 text-start sm:p-8">
+              <Grid />
+              <Header />
+              {children}
+              <Footer />
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
