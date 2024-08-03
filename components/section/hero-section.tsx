@@ -70,7 +70,7 @@ export function HeroSection({ className }: HeroSectionProps) {
         <Image
           src="/hero-image.png"
           alt="Hero Image"
-          width={550}
+          width={520}
           height={500}
           className="min-w-80 flex-1 rounded-3xl border border-border object-cover"
           priority
