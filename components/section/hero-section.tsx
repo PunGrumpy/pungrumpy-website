@@ -52,7 +52,7 @@ export function HeroSection({ className }: HeroSectionProps) {
           <Button
             variant="outline"
             size="default"
-            className="rounded-3xl p-6"
+            className="rounded-3xl p-6 hover:border-primary/25"
             asChild
           >
             <Link href="/works">
