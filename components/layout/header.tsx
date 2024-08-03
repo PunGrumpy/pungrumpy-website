@@ -25,15 +25,16 @@ export function Header({ className, selectedButton }: HeaderProps) {
     >
       <Link
         href="/"
-        className="flex flex-row items-center gap-2 p-5 text-2xl font-bold leading-9 tracking-tighter text-foreground no-underline transition-colors hover:text-muted-foreground"
+        className="flex flex-row items-center text-2xl font-bold leading-9 tracking-tighter text-foreground no-underline transition-colors hover:text-muted-foreground"
       >
-        <Icons.logo className="size-8" />
+        <Icons.logo className="mr-2 size-8" />
         <span className="hidden sm:block">Noppakorn Kaewsalabnil</span>
+        <span className="block sm:hidden">PunGrumpy</span>
       </Link>
 
       <Sheet open={isDrawerOpen} onOpenChange={setDrawerOpen}>
         <SheetTrigger asChild>
-          <div className="flex items-center justify-center p-5 sm:hidden">
+          <div className="flex items-center justify-center sm:hidden">
             <Button variant="outline" size="icon" className="sm:hidden">
               <Icons.menu />
             </Button>
