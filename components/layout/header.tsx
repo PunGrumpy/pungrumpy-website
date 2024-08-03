@@ -35,7 +35,11 @@ export function Header({ className, selectedButton }: HeaderProps) {
       <Sheet open={isDrawerOpen} onOpenChange={setDrawerOpen}>
         <SheetTrigger asChild>
           <div className="flex items-center justify-center sm:hidden">
-            <Button variant="outline" size="icon" className="sm:hidden">
+            <Button
+              variant="outline"
+              size="icon"
+              className="size-10 rounded-full border border-border bg-muted/50 sm:hidden"
+            >
               <Icons.menu />
             </Button>
           </div>
@@ -43,7 +47,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
         <SheetContent>{/* Add content here */}</SheetContent>
       </Sheet>
 
-      <div className="hidden min-w-[230px] max-w-[680px] flex-1 items-center justify-start gap-5 rounded-3xl border border-border bg-background p-3 shadow-lg backdrop-blur-md sm:flex">
+      <div className="hidden min-w-56 max-w-2xl flex-1 items-center justify-start gap-5 rounded-[32px] border border-border bg-background p-3 shadow-lg backdrop-blur-md sm:flex">
         <HeaderButton
           href="/works"
           label="Works"
@@ -57,6 +61,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
           total="2022"
           value="Oct"
           isSelected={selectedButton === 'Takes'}
+          isExternal
         />
         <HeaderButton
           href="https://cv.pungrumpy.com"
@@ -96,9 +101,9 @@ const HeaderButton = ({
   return (
     <ButtonComponent
       {...buttonProps}
-      className={`flex min-w-[200px] flex-1 items-center justify-start gap-2 rounded-2xl border border-border bg-background p-2 transition duration-300 ease-in-out hover:border-muted hover:bg-muted ${isSelected ? 'bg-muted' : ''}`}
+      className={`flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-border bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted ${isSelected ? 'bg-muted' : ''}`}
     >
-      <div className="flex-1 text-xl font-medium leading-7 text-foreground">
+      <div className="flex-1 p-2 text-xl font-medium leading-7 text-foreground">
         {label}
       </div>
       <div className="flex w-16 flex-col items-center justify-end text-center text-xs text-muted-foreground">
