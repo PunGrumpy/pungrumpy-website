@@ -1,6 +1,5 @@
 'use client'
 
-import { MenuIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -26,7 +25,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
     >
       <Link
         href="/"
-        className="flex flex-row items-center gap-2 p-5 text-2xl font-bold leading-9 tracking-tighter text-foreground no-underline hover:text-muted-foreground"
+        className="flex flex-row items-center gap-2 p-5 text-2xl font-bold leading-9 tracking-tighter text-foreground no-underline transition-colors hover:text-muted-foreground"
       >
         <Icons.logo className="size-8" />
         <span className="hidden sm:block">Noppakorn Kaewsalabnil</span>
