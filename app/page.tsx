@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import { GallerySection } from '@/components/section/gallery-section'
 import { HeroSection } from '@/components/section/hero-section'
 
