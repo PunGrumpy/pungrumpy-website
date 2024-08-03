@@ -14,7 +14,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ className }: HeroSectionProps) {
   return (
-    <>
+    <div className="flex w-full max-w-7xl flex-wrap items-center gap-14 rounded-3xl">
       <div className={cn('flex min-w-80 flex-1 flex-col gap-8', className)}>
         <motion.h1
           initial={{ opacity: 0, transform: 'translateY(-20px)' }}
@@ -70,12 +70,12 @@ export function HeroSection({ className }: HeroSectionProps) {
         <Image
           src="/hero-image.png"
           alt="Hero Image"
-          width={500}
+          width={550}
           height={500}
           className="min-w-80 flex-1 rounded-3xl border border-border object-cover"
           priority
         />
       </motion.div>
-    </>
+    </div>
   )
 }
