@@ -6,9 +6,10 @@ export default function WorksPage() {
     <>
       <div className="gap-15 z-10 mx-auto flex max-w-6xl flex-col items-center">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {Works.map(work => (
+          {Works.map((work, index) => (
             <ProjectCard
               key={work.title}
+              index={index}
               slug={work.slug}
               imageUrl={work.imageUrl}
               iconType={work.iconType}
