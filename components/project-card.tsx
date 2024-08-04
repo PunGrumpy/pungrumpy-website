@@ -43,7 +43,7 @@ export function ProjectCard({
               src={imageUrl}
               alt={title}
               fill
-              className="rounded-md object-cover transition duration-200 group-hover:scale-95 group-hover:rounded-xl"
+              className="rounded-md transition duration-200 group-hover:scale-95 group-hover:rounded-xl md:object-cover"
             />
           </div>
         </CardHeader>
