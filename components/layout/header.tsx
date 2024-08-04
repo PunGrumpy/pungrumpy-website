@@ -123,7 +123,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
         <Button
           variant="outline"
           size="icon"
-          className="size-[62px] rounded-[20px] hover:border-muted-foreground/50 hover:bg-muted"
+          className="size-[62px] rounded-[20px] border-border hover:border-muted-foreground/50 hover:bg-muted"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         >
           {theme === 'dark' ? (
@@ -166,7 +166,7 @@ const HeaderButton = ({
       {...buttonProps}
       onClick={onClick}
       className={cn(
-        'flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-secondary bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted',
+        'flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-border bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted',
         isSelected ? 'border-muted-foreground/25 bg-muted' : ''
       )}
     >
