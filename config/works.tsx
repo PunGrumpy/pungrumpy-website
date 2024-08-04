@@ -109,7 +109,7 @@ export const Works: Work[] = [
     roles: ['Creator', 'Fullstack Developer', 'Maintainer'],
     links: {
       github: 'https://github.com/PunGrumpy/og-tester/',
-      website: 'https://og-tester.pungrumpy.com/'
+      website: 'https://og.pungrumpy.com/'
     }
   },
   {
