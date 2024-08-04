@@ -13,8 +13,8 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: process.env.NEXT_PUBLIC_VERCEL_URL
-    ? new URL(`${process.env.NEXT_PUBLIC_VERCEL_URL}`)
+  metadataBase: process.env.NEXT_PUBLIC_METADATA_BASE
+    ? new URL(`${process.env.NEXT_PUBLIC_METADATA_BASE}`)
     : new URL('http://localhost:3000'),
   title: {
     default: `Home | ${Sitemap.name}`,
