@@ -10,6 +10,8 @@ import { useState } from 'react'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Updates } from '@/config/updates'
+import { Works } from '@/config/works'
 import { cn } from '@/lib/utils'
 
 export interface HeaderProps {
@@ -102,14 +104,14 @@ export function Header({ className, selectedButton }: HeaderProps) {
           href="/works"
           label="Works"
           total="Total"
-          value="2"
+          value={Works.length.toString()}
           isSelected={pathname === '/works'}
         />
         <HeaderButton
           href="/updates"
           label="Updates"
-          total="2024"
-          value="Aug"
+          value={Updates.at(-1)?.date.split(' ')[0] || '-'}
+          total={Updates.at(-1)?.date.split(' ')[2] || '-'}
           isSelected={pathname === '/updates'}
         />
         <HeaderButton
