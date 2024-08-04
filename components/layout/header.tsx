@@ -34,11 +34,11 @@ export function Header({ className, selectedButton }: HeaderProps) {
 
       <Sheet open={isDrawerOpen} onOpenChange={setDrawerOpen}>
         <SheetTrigger asChild>
-          <div className="flex items-center justify-center sm:hidden">
+          <div className="flex items-center justify-center md:hidden">
             <Button
               variant="outline"
               size="icon"
-              className="size-10 rounded-full border border-border bg-muted/50 sm:hidden"
+              className="size-10 rounded-full border border-border bg-muted/50 md:hidden"
             >
               <Icons.menu />
             </Button>
@@ -47,7 +47,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
         <SheetContent>{/* Add content here */}</SheetContent>
       </Sheet>
 
-      <div className="hidden min-w-56 max-w-2xl flex-1 items-center justify-start gap-5 rounded-[32px] border border-border bg-background p-3 shadow-lg backdrop-blur-md sm:flex">
+      <div className="hidden min-w-56 max-w-2xl flex-1 items-center justify-start gap-5 rounded-[32px] border border-border bg-background p-3 shadow-lg backdrop-blur-md md:flex">
         <HeaderButton
           href="/works"
           label="Works"
