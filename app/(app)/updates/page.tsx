@@ -13,16 +13,18 @@ const updates = [
 export default function UpdatesPage() {
   return (
     <>
-      {updates.map((update, index) => (
-        <UpdateItem
-          key={index}
-          date={update.date}
-          title={update.title}
-          description={update.description}
-          href={update.href}
-          imageSrc={update.image}
-        />
-      ))}
+      {updates
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .map((update, index) => (
+          <UpdateItem
+            key={index}
+            date={update.date}
+            title={update.title}
+            description={update.description}
+            href={update.href}
+            imageSrc={update.image}
+          />
+        ))}
     </>
   )
 }
