@@ -1,9 +1,67 @@
+import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import WorkContent from '@/components/works/work-content'
 import WorkHeader from '@/components/works/work-header'
 import WorkImage from '@/components/works/work-image'
 import { Work, Works } from '@/config/works'
+
+interface generateMetadataProps {
+  params: { slug: string }
+}
+
+export async function generateMetadata(
+  { params }: generateMetadataProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = params.slug
+  const work = getWorkBySlug(slug)
+
+  const previousOGImages = (await parent).openGraph?.images || []
+  const previousTwitterImages = (await parent).twitter?.images || []
+
+  return {
+    title: work ? work.title : 'Work not found',
+    description: work
+      ? work.description
+      : 'Sorry, the work you are looking for does not exist.',
+    openGraph: {
+      title: work ? work.title : 'Work not found',
+      description: work
+        ? work.description
+        : 'Sorry, the work you are looking for does not exist.',
+      images: [
+        {
+          url: work?.imageUrl || '',
+          width: 1920,
+          height: 1080,
+          alt: work?.title || ''
+        },
+        ...previousOGImages
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: work ? work.title : 'Work not found',
+      description: work
+        ? work.description
+        : 'Sorry, the work you are looking for does not exist.',
+      creator: '@pungrumpy',
+      site: '@pungrumpy',
+      creatorId: 'pungrumpy',
+      siteId: 'pungrumpy',
+      images: [
+        {
+          url: work?.imageUrl || '',
+          width: 1920,
+          height: 1080,
+          alt: work?.title || ''
+        },
+        ...previousTwitterImages
+      ]
+    }
+  }
+}
 
 function getWorkBySlug(slug: string): Work | undefined {
   return Works.find(work => work.slug === slug)

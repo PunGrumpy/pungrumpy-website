@@ -1,5 +1,12 @@
+import { Metadata } from 'next'
+
 import { ProjectCard } from '@/components/project-card'
 import { Works } from '@/config/works'
+
+export const metadata: Metadata = {
+  title: 'Works',
+  description: 'A collection of my works and projects.'
+}
 
 export default function WorksPage() {
   return (
