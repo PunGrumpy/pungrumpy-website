@@ -1,5 +1,7 @@
 'use client'
 
+import { AnimatePresence, motion } from 'framer-motion'
+import { BellIcon, BriefcaseBusinessIcon, FileTextIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -46,7 +48,45 @@ export function Header({ className, selectedButton }: HeaderProps) {
             </Button>
           </div>
         </SheetTrigger>
-        <SheetContent>{/* Add content here */}</SheetContent>
+        <SheetContent className="flex flex-col bg-background/95 backdrop-blur-lg">
+          <AnimatePresence>
+            {isDrawerOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className="flex flex-col gap-2 rounded-[32px] border border-border/75 p-4"
+              >
+                <HeaderButton
+                  href="/works"
+                  label="Works"
+                  total="Total"
+                  value="2"
+                  isSelected={pathname === '/works'}
+                  onClick={() => setDrawerOpen(false)}
+                />
+                <HeaderButton
+                  href="/updates"
+                  label="Updates"
+                  total="2024"
+                  value="Aug"
+                  isSelected={pathname === '/updates'}
+                  onClick={() => setDrawerOpen(false)}
+                />
+                <HeaderButton
+                  href="https://cv.pungrumpy.com"
+                  label="CV"
+                  total="Info"
+                  value="More"
+                  isSelected={selectedButton === 'CV'}
+                  isExternal
+                  onClick={() => setDrawerOpen(false)}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </SheetContent>
       </Sheet>
 
       <div className="hidden min-w-56 max-w-2xl flex-1 items-center justify-start gap-5 rounded-[32px] border border-border bg-background p-3 shadow-lg backdrop-blur-md md:flex">
@@ -84,6 +124,7 @@ interface HeaderButtonProps {
   value: string
   isSelected?: boolean
   isExternal?: boolean
+  onClick?: () => void
 }
 
 const HeaderButton = ({
@@ -92,7 +133,8 @@ const HeaderButton = ({
   total,
   value,
   isSelected,
-  isExternal
+  isExternal,
+  onClick
 }: HeaderButtonProps) => {
   const ButtonComponent = isExternal ? 'a' : Link
   const buttonProps = isExternal
@@ -102,7 +144,8 @@ const HeaderButton = ({
   return (
     <ButtonComponent
       {...buttonProps}
-      className={`flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-border bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted ${isSelected ? 'border-muted-foreground/25 bg-muted' : ''}`}
+      onClick={onClick}
+      className={`flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-secondary bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted ${isSelected ? 'border-muted-foreground/25 bg-muted' : ''}`}
     >
       <div className="flex-1 p-2 text-xl font-medium leading-7">{label}</div>
       <div className="flex w-16 flex-col items-center justify-end text-center text-xs text-muted-foreground">
