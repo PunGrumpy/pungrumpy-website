@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 import { Icons } from '@/components/icons'
@@ -14,6 +15,7 @@ export interface HeaderProps {
 }
 
 export function Header({ className, selectedButton }: HeaderProps) {
+  const pathname = usePathname()
   const [isDrawerOpen, setDrawerOpen] = useState(false)
 
   return (
@@ -53,7 +55,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
           label="Works"
           total="Total"
           value="2"
-          isSelected={selectedButton === 'Works'}
+          isSelected={pathname === '/works'}
         />
         <HeaderButton
           href="https://takes.pungrumpy.com"
