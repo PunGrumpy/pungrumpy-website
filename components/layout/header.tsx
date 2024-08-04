@@ -48,7 +48,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
             </Button>
           </div>
         </SheetTrigger>
-        <SheetContent className="flex flex-col bg-background/95 backdrop-blur-lg">
+        <SheetContent className="flex flex-col bg-background/95 p-10 backdrop-blur-lg">
           <AnimatePresence>
             {isDrawerOpen && (
               <motion.div
