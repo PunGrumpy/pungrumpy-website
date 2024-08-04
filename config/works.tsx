@@ -1,4 +1,8 @@
-import { BriefcaseBusinessIcon, GraduationCapIcon } from 'lucide-react'
+import {
+  BriefcaseBusinessIcon,
+  GraduationCapIcon,
+  UsersIcon
+} from 'lucide-react'
 
 export type Work = {
   slug: string
@@ -23,9 +27,18 @@ export const Works: Work[] = [
     slug: 'pongsathorn-portfolio',
     imageUrl: '/works/pongsathorn-portfolio.png',
     iconType: <BriefcaseBusinessIcon className="size-4" />,
-    projectType: 'Personal Work',
+    projectType: 'Client Project',
     title: "Pongsathorn's Portfolio",
     description:
       'A personal portfolio website that showcases works, skills, and experiences. It is built with Next.js, Tailwind CSS, and TypeScript.'
+  },
+  {
+    slug: 'logixlysia',
+    imageUrl: '/works/logixlysia.png',
+    iconType: <UsersIcon className="size-4" />,
+    projectType: 'Community Project',
+    title: 'Logixlysia',
+    description:
+      'A plugin for Elysia.js that provides a beautiful and simple logging middleware with a customizable design and features.'
   }
 ]
