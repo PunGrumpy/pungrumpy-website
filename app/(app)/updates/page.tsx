@@ -1,3 +1,7 @@
+'use client'
+
+import { motion } from 'framer-motion'
+
 import { UpdateSection } from '@/components/section/update-section'
 
 const updates = [
@@ -36,14 +40,21 @@ export default function UpdatesPage() {
       {updates
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .map((update, index) => (
-          <UpdateSection
+          <motion.div
             key={index}
-            date={update.date}
-            title={update.title}
-            description={update.description}
-            content={update.content}
-            imageSrc={update.image}
-          />
+            initial={{ opacity: 0, transform: 'translateY(-20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0)' }}
+            transition={{ duration: 0.5, delay: index * 0.25 }}
+          >
+            <UpdateSection
+              key={index}
+              date={update.date}
+              title={update.title}
+              description={update.description}
+              content={update.content}
+              imageSrc={update.image}
+            />
+          </motion.div>
         ))}
     </div>
   )
