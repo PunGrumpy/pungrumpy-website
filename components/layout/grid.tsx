@@ -8,15 +8,15 @@ export function Grid({ className }: GridProps) {
   return (
     <div
       className={cn(
-        'absolute left-0 top-0 flex size-full flex-row items-start justify-between',
+        'fixed inset-0 z-0 flex flex-row items-stretch justify-between',
         className
       )}
     >
-      <div className="relative h-max w-px bg-transparent" />
-      <div className="relative w-px self-stretch bg-border/50" />
-      <div className="relative w-px self-stretch bg-border/50" />
-      <div className="relative w-px self-stretch bg-border/50" />
-      <div className="relative h-fit w-px bg-transparent" />
+      <div className="w-px bg-transparent" />
+      <div className="w-px bg-border/50" />
+      <div className="w-px bg-border/50" />
+      <div className="w-px bg-border/50" />
+      <div className="w-px bg-transparent" />
     </div>
   )
 }
