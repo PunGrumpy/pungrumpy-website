@@ -19,7 +19,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
   return (
     <div
       className={cn(
-        'flex w-full max-w-7xl flex-row flex-wrap items-center justify-between text-left text-2xl',
+        'relative flex w-full max-w-7xl flex-row flex-wrap items-center justify-between text-left text-2xl',
         className
       )}
     >
