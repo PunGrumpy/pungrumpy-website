@@ -12,6 +12,7 @@ import { FollowerPointerCard } from './ui/following-pointer'
 interface ProjectCardProps {
   slug: string
   imageUrl: string
+  iconType: React.ReactNode
   projectType: string
   title: string
   description: string
@@ -20,6 +21,7 @@ interface ProjectCardProps {
 export function ProjectCard({
   slug,
   imageUrl,
+  iconType,
   projectType,
   title,
   description
@@ -46,7 +48,7 @@ export function ProjectCard({
         </CardHeader>
         <CardContent className="space-y-4 p-4">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <GraduationCapIcon className="size-4" />
+            {iconType}
             <span>{projectType}</span>
           </div>
           <Separator className="bg-primary/10" />
