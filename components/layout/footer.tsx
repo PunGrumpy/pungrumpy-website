@@ -4,8 +4,13 @@ import { cn } from '@/lib/utils'
 
 import { Icons } from '../icons'
 
-export interface FooterProps {
+interface FooterProps {
   className?: string
+}
+
+interface FooterMenuProps {
+  category: string
+  items: { label: string; href: string; isExternal?: boolean }[]
 }
 
 export function Footer({ className }: FooterProps) {
@@ -51,11 +56,45 @@ export function Footer({ className }: FooterProps) {
       <div className="z-10 flex flex-wrap gap-5">
         <FooterMenu
           category="About"
-          items={['Work', 'Takes', 'Curriculum Vitae', 'Source Code']}
+          items={[
+            { label: 'Work', href: '/works' },
+            {
+              label: 'Takes',
+              href: 'https://takes.pungrumpy.com/',
+              isExternal: true
+            },
+            {
+              label: 'Curriculum Vitae',
+              href: 'https://cv.pungrumpy.com/',
+              isExternal: true
+            },
+            {
+              label: 'Source Code',
+              href: 'https://github.com/PunGrumpy/pungrumpy-website',
+              isExternal: true
+            }
+          ]}
         />
         <FooterMenu
           category="Tools we use"
-          items={['Figma', 'Next.js', 'shadcn/ui', 'Framer Motion']}
+          items={[
+            {
+              label: 'Figma',
+              href: 'https://www.figma.com/',
+              isExternal: true
+            },
+            { label: 'Next.js', href: 'https://nextjs.org/', isExternal: true },
+            {
+              label: 'shadcn/ui',
+              href: 'https://ui.shadcn.com/',
+              isExternal: true
+            },
+            {
+              label: 'Framer Motion',
+              href: 'https://www.framer.com/motion/',
+              isExternal: true
+            }
+          ]}
         />
       </div>
     </footer>
@@ -71,18 +110,12 @@ const SocialButton = ({ icon, href }: { icon: any; href: string }) => (
   </Link>
 )
 
-const FooterMenu = ({
-  category,
-  items
-}: {
-  category: string
-  items: string[]
-}) => (
+const FooterMenu = ({ category, items }: FooterMenuProps) => (
   <div className="flex min-w-52 max-w-80 flex-col gap-1">
     <span className="text-xs uppercase text-muted-foreground md:hidden">
       {category}
     </span>
-    {items.map((item, index) => (
+    {items.map(({ label, href, isExternal }, index) => (
       <div
         key={index}
         className="group relative h-8 w-36 cursor-pointer overflow-hidden transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-primary/10 hover:to-transparent"
@@ -90,9 +123,13 @@ const FooterMenu = ({
         <div className="absolute left-0 top-0 h-full w-1 bg-primary opacity-0 blur-md transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
         <div className="absolute left-0 top-0 h-full w-0.5 bg-primary opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
         <div className="flex h-full items-center px-4 py-1.5">
-          <span className="text-sm leading-tight transition-transform duration-300 ease-in-out group-hover:font-medium">
-            {item}
-          </span>
+          <Link
+            href={href}
+            className="text-sm leading-tight transition-transform duration-300 ease-in-out group-hover:font-medium"
+            target={isExternal ? '_blank' : undefined}
+          >
+            {label}
+          </Link>
         </div>
       </div>
     ))}
