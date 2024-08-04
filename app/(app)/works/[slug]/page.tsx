@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import WorkContent from '@/components/works/work-content'
 import WorkHeader from '@/components/works/work-header'
 import WorkImage from '@/components/works/work-image'
+import { Sitemap } from '@/config/sitemap'
 import { Work, Works } from '@/config/works'
 
 interface generateMetadataProps {
@@ -30,6 +31,8 @@ export async function generateMetadata(
       description: work
         ? work.description
         : 'Sorry, the work you are looking for does not exist.',
+      url: `${Sitemap.url}/works/${slug}`,
+      siteName: `${Sitemap.name}`,
       images: [
         {
           url: work?.imageUrl || '',
