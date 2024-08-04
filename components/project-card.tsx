@@ -31,21 +31,21 @@ export function ProjectCard({
   description
 }: ProjectCardProps) {
   return (
-    <motion.div
-      className="flex flex-col"
-      initial={{ opacity: 0, transform: 'translateY(-20px)' }}
-      animate={{ opacity: 1, transform: 'translateY(0)' }}
-      transition={{ duration: 0.5, delay: index * 0.25 }}
+    <FollowerPointerCard
+      title={
+        <TitleComponent
+          title={title}
+          avatar="https://avatars.githubusercontent.com/u/108584943?v=4"
+        />
+      }
     >
-      <Card className="group bg-card">
-        <FollowerPointerCard
-          title={
-            <TitleComponent
-              title={title}
-              avatar="https://avatars.githubusercontent.com/u/108584943?v=4"
-            />
-          }
-        >
+      <motion.div
+        className="flex flex-col"
+        initial={{ opacity: 0, transform: 'translateY(-20px)' }}
+        animate={{ opacity: 1, transform: 'translateY(0)' }}
+        transition={{ duration: 0.5, delay: index * 0.25 }}
+      >
+        <Card className="group bg-card">
           <CardHeader className="p-2">
             <div className="relative h-52 w-full">
               <Image
@@ -73,16 +73,16 @@ export function ProjectCard({
             >
               <Button
                 variant="outline"
-                className="rounded-[10px] hover:border-primary/10"
+                className="cursor-none rounded-[10px] hover:border-primary/10"
               >
                 <span>Show more</span>
                 <ChevronRight className="ml-2 size-4" />
               </Button>
             </Link>
           </CardFooter>
-        </FollowerPointerCard>
-      </Card>
-    </motion.div>
+        </Card>
+      </motion.div>
+    </FollowerPointerCard>
   )
 }
 
