@@ -22,7 +22,7 @@ const updates = [
 
 export default function UpdatesPage() {
   return (
-    <div className="z-10 space-y-8">
+    <main className="space-y-8">
       {updates
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .map((update, index) => (
@@ -41,6 +41,6 @@ export default function UpdatesPage() {
             />
           </motion.div>
         ))}
-    </div>
+    </main>
   )
 }
