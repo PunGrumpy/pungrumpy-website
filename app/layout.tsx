@@ -15,7 +15,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen font-sans antialiased',
+          'min-h-screen scroll-smooth font-sans antialiased',
           GeistSans.variable,
           GeistMono.variable
         )}
