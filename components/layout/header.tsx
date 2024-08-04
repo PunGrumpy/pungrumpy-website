@@ -117,7 +117,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
         <Button
           variant="outline"
           size="icon"
-          className="size-[62px] rounded-[20px]"
+          className="size-[62px] rounded-[20px] hover:border-muted-foreground/50 hover:bg-muted"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         >
           {theme === 'dark' ? (
