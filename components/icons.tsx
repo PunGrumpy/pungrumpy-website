@@ -12,7 +12,7 @@ export const Icons = {
     >
       <path
         d="M11 13L11 12M17 13L17 12M20.9976 10.9257L23 22.82C22.8333 22.74 22.6667 22.6333 22.5 22.5C21.6667 21.8333 20.8333 21.8333 20 22.5C19.1667 23.1667 18.3333 23.1667 17.5 22.5C16.6667 21.8333 15.8333 21.8333 15 22.5C14.1667 23.1667 13.3333 23.1667 12.5 22.5C11.6667 21.8333 10.8333 21.8333 10 22.5C9.16667 23.1667 8.33333 23.1667 7.5 22.5C6.66667 21.8333 5.83333 21.8333 5 22.5L6.98776 10.9048C7.57253 7.4936 10.53 5 13.9909 5C17.4598 5 20.4217 7.50491 20.9976 10.9257Z"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -30,7 +30,7 @@ export const Icons = {
     >
       <path
         d="M19.34 22H4.66C3.19 22 2 20.81 2 19.34V4.66C2 3.19 3.19 2 4.66 2H19.33C20.81 2 22 3.19 22 4.66V19.33C22 20.81 20.81 22 19.34 22Z"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -38,7 +38,7 @@ export const Icons = {
       />
       <path
         d="M16 12C16 14.21 14.21 16 12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8C14.21 8 16 9.79 16 12Z"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -46,7 +46,7 @@ export const Icons = {
       />
       <path
         d="M19 5.5C19 5.78 18.78 6 18.5 6C18.22 6 18 5.78 18 5.5C18 5.22 18.22 5 18.5 5C18.78 5 19 5.22 19 5.5Z"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -65,7 +65,7 @@ export const Icons = {
     >
       <path
         d="M19.34 22H4.66C3.19 22 2 20.81 2 19.34V4.66C2 3.19 3.19 2 4.66 2H19.33C20.81 2 22 3.19 22 4.66V19.33C22 20.81 20.81 22 19.34 22Z"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -73,7 +73,7 @@ export const Icons = {
       />
       <path
         d="M7 10V17"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -81,7 +81,7 @@ export const Icons = {
       />
       <path
         d="M17 17C17 17 17 12.45 17 12.44C17 11.87 17.03 11.21 16.76 10.69C16.16 9.50999 14.57 10.11 13.72 10.6C12.84 11.1 12.04 11.74 11.28 12.4C11.19 12.48 11.09 12.57 11 12.65V10.01V17"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -89,7 +89,7 @@ export const Icons = {
       />
       <path
         d="M7 7C7.27614 7 7.5 6.77614 7.5 6.5C7.5 6.22386 7.27614 6 7 6C6.72386 6 6.5 6.22386 6.5 6.5C6.5 6.77614 6.72386 7 7 7Z"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -141,7 +141,7 @@ export const Icons = {
     >
       <path
         d="M20.8791 6.72C22.7591 5 21.6991 2 21.6991 2C21.6991 2 18.6991 2 17.6491 3.87C17.0491 3.65 16.4091 3.51 15.7391 3.51H12.7691C12.1191 3.51 11.4991 3.64 10.9191 3.85C9.86911 2 6.88911 2 6.88911 2C6.88911 2 5.83911 5 7.70911 6.72C7.70911 6.72 7.21911 8.19 7.21911 9.07C7.21911 11.73 9.10911 13.96 11.6091 14.5C11.4291 14.88 11.3291 15.29 11.3291 15.73V18.61C10.6391 18.77 8.96911 19.39 8.40911 17.68C7.95911 16.31 5.97911 13.74 3.33911 14C2.52911 14.07 1.92911 14.79 2.00911 15.6C2.08911 16.41 2.79911 17.02 3.60911 16.93C3.96911 16.89 5.11911 17.39 5.66911 18.77C6.00911 19.61 6.31911 20.4 6.94911 20.93C7.61911 21.51 8.49911 21.69 9.35911 21.69C9.85911 21.69 11.2091 21.62 11.6391 21.54C12.1191 22.51 17.1891 21.86 17.1891 20.25V15.72C17.1891 15.28 17.0791 14.86 16.9091 14.49C19.4091 13.95 21.2991 11.72 21.2991 9.06C21.2991 8.14 20.8791 6.72 20.8791 6.72Z"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -231,9 +231,9 @@ export const Icons = {
           y2="8.00001"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="white" stopOpacity="0" />
-          <stop offset="0.485259" stopColor="white" stopOpacity="0.5" />
-          <stop offset="1" stopColor="white" stopOpacity="0" />
+          <stop stopColor="currentColor" stopOpacity="0" />
+          <stop offset="0.485259" stopColor="currentColor" stopOpacity="0.5" />
+          <stop offset="1" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_3_1184"
@@ -243,9 +243,9 @@ export const Icons = {
           y2="1.49741e-05"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="white" stopOpacity="0" />
-          <stop offset="0.485259" stopColor="white" stopOpacity="0.2" />
-          <stop offset="1" stopColor="white" stopOpacity="0" />
+          <stop stopColor="currentColor" stopOpacity="0" />
+          <stop offset="0.485259" stopColor="currentColor" stopOpacity="0.2" />
+          <stop offset="1" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
