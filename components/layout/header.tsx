@@ -1,9 +1,10 @@
 'use client'
 
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { AnimatePresence, motion } from 'framer-motion'
-import { BellIcon, BriefcaseBusinessIcon, FileTextIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTheme } from 'next-themes'
 import { useState } from 'react'
 
 import { Icons } from '@/components/icons'
@@ -19,6 +20,7 @@ export interface HeaderProps {
 export function Header({ className, selectedButton }: HeaderProps) {
   const pathname = usePathname()
   const [isDrawerOpen, setDrawerOpen] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   return (
     <div
@@ -112,6 +114,18 @@ export function Header({ className, selectedButton }: HeaderProps) {
           isSelected={selectedButton === 'CV'}
           isExternal
         />
+        <Button
+          variant="outline"
+          size="icon"
+          className="size-[62px] rounded-[20px]"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        >
+          {theme === 'dark' ? (
+            <SunIcon className="size-5" />
+          ) : (
+            <MoonIcon className="size-5" />
+          )}
+        </Button>
       </div>
     </div>
   )
@@ -145,7 +159,10 @@ const HeaderButton = ({
     <ButtonComponent
       {...buttonProps}
       onClick={onClick}
-      className={`flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-secondary bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted ${isSelected ? 'border-muted-foreground/25 bg-muted' : ''}`}
+      className={cn(
+        'flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-secondary bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted',
+        isSelected ? 'border-muted-foreground/25 bg-muted' : ''
+      )}
     >
       <div className="flex-1 p-2 text-xl font-medium leading-7">{label}</div>
       <div className="flex w-16 flex-col items-center justify-end text-center text-xs text-muted-foreground">
