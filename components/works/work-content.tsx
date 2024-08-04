@@ -45,11 +45,7 @@ export default function WorkContent({ work }: WorkContentProps) {
 
       <div className="mb-8">
         <h2 className="mb-4 text-2xl font-semibold">Project Details</h2>
-        <p className="text-muted-foreground">
-          {work.description} This section can be expanded with more detailed
-          information about the project, its goals, challenges faced during
-          development, and the solutions implemented.
-        </p>
+        <p className="text-muted-foreground">{work.summary}</p>
       </div>
 
       {work.links && (
