@@ -19,13 +19,13 @@ export function Header({ className, selectedButton }: HeaderProps) {
   return (
     <div
       className={cn(
-        'relative flex w-full max-w-7xl flex-row flex-wrap items-center justify-between text-left text-2xl text-foreground',
+        'flex w-full max-w-7xl flex-row flex-wrap items-center justify-between text-left text-2xl',
         className
       )}
     >
       <Link
         href="/"
-        className="flex flex-row items-center text-2xl font-bold leading-9 tracking-tighter text-foreground no-underline transition-colors hover:text-muted-foreground"
+        className="flex flex-row items-center text-2xl font-bold leading-9 tracking-tighter no-underline transition-colors hover:text-muted-foreground"
       >
         <Icons.logo className="mr-2 size-8" />
         <span className="hidden sm:block">Noppakorn Kaewsalabnil</span>
@@ -103,9 +103,7 @@ const HeaderButton = ({
       {...buttonProps}
       className={`flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-border bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted ${isSelected ? 'bg-muted' : ''}`}
     >
-      <div className="flex-1 p-2 text-xl font-medium leading-7 text-foreground">
-        {label}
-      </div>
+      <div className="flex-1 p-2 text-xl font-medium leading-7">{label}</div>
       <div className="flex w-16 flex-col items-center justify-end text-center text-xs text-muted-foreground">
         <div>{total}</div>
         <div className="text-base leading-6">{value}</div>

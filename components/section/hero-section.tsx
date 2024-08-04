@@ -20,7 +20,7 @@ export function HeroSection({ className }: HeroSectionProps) {
           initial={{ opacity: 0, transform: 'translateY(-20px)' }}
           animate={{ opacity: 1, transform: 'translateY(0)' }}
           transition={{ duration: 0.5 }}
-          className="xs:text-3xl text-5xl font-semibold leading-tight tracking-tight text-foreground sm:text-6xl"
+          className="xs:text-3xl text-5xl font-semibold leading-tight tracking-tight sm:text-6xl"
         >
           Hello, I&apos;m Noppakorn Kaewsalabnil
         </motion.h1>
