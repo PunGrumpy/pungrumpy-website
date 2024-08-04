@@ -67,10 +67,7 @@ export function ProjectCard({
             <Separator className="bg-primary/10" />
           </CardContent>
           <CardFooter className="px-4">
-            <Link
-              href={`/works/${encodeURIComponent(slug)}`}
-              className="w-full"
-            >
+            <Link href={`/works/${encodeURIComponent(slug)}`}>
               <Button
                 variant="outline"
                 className="cursor-none rounded-[10px] hover:border-primary/10"
