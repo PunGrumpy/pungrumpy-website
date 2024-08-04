@@ -17,7 +17,7 @@ export function Footer({ className }: FooterProps) {
   return (
     <footer
       className={cn(
-        'p-15 relative flex w-full max-w-7xl flex-wrap justify-between gap-20 text-left',
+        'p-15 relative flex w-full max-w-6xl flex-wrap justify-between gap-20 text-left',
         className
       )}
     >

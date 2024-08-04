@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 
 export interface HeaderProps {
   className?: string
-  selectedButton?: 'Works' | 'Takes' | 'CV'
+  selectedButton?: 'Works' | 'Updates' | 'CV'
 }
 
 export function Header({ className, selectedButton }: HeaderProps) {
@@ -21,7 +21,7 @@ export function Header({ className, selectedButton }: HeaderProps) {
   return (
     <div
       className={cn(
-        'relative flex w-full max-w-7xl flex-row flex-wrap items-center justify-between text-left text-2xl',
+        'relative flex w-full max-w-6xl flex-row flex-wrap items-center justify-between text-left text-2xl',
         className
       )}
     >
@@ -58,12 +58,11 @@ export function Header({ className, selectedButton }: HeaderProps) {
           isSelected={pathname === '/works'}
         />
         <HeaderButton
-          href="https://takes.pungrumpy.com"
-          label="Takes"
-          total="2022"
-          value="Oct"
-          isSelected={selectedButton === 'Takes'}
-          isExternal
+          href="/updates"
+          label="Updates"
+          total="2024"
+          value="Aug"
+          isSelected={pathname === '/updates'}
         />
         <HeaderButton
           href="https://cv.pungrumpy.com"
@@ -103,7 +102,7 @@ const HeaderButton = ({
   return (
     <ButtonComponent
       {...buttonProps}
-      className={`flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-border bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted ${isSelected ? 'bg-muted' : ''}`}
+      className={`flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-border bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted ${isSelected ? 'border-muted-foreground/25 bg-muted' : ''}`}
     >
       <div className="flex-1 p-2 text-xl font-medium leading-7">{label}</div>
       <div className="flex w-16 flex-col items-center justify-end text-center text-xs text-muted-foreground">
