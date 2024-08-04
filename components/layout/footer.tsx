@@ -1,8 +1,7 @@
 import Link from 'next/link'
 
+import { Icons } from '@/components/icons'
 import { cn } from '@/lib/utils'
-
-import { Icons } from '../icons'
 
 interface FooterProps {
   className?: string
@@ -38,14 +37,17 @@ export function Footer({ className }: FooterProps) {
             Ladkrabang
           </p>
           <div className="flex gap-5">
-            <SocialButton icon={<Icons.github className="size-6" />} href="#" />
+            <SocialButton
+              icon={<Icons.github className="size-6" />}
+              href="https://github.com/PunGrumpy"
+            />
             <SocialButton
               icon={<Icons.linkedin className="size-6" />}
-              href="#"
+              href="https://www.linkedin.com/in/noppakorn-kaewsalabnil"
             />
             <SocialButton
               icon={<Icons.instagram className="size-6" />}
-              href="#"
+              href="https://www.instagram.com/pungrumpy_p/"
             />
           </div>
           <p className="text-xs text-muted-foreground">
@@ -57,7 +59,8 @@ export function Footer({ className }: FooterProps) {
         <FooterMenu
           category="About"
           items={[
-            { label: 'Work', href: '/works' },
+            { label: 'Works', href: '/works' },
+            { label: 'Updates', href: '/updates' },
             {
               label: 'Takes',
               href: 'https://takes.pungrumpy.com/',
@@ -66,11 +69,6 @@ export function Footer({ className }: FooterProps) {
             {
               label: 'Curriculum Vitae',
               href: 'https://cv.pungrumpy.com/',
-              isExternal: true
-            },
-            {
-              label: 'Source Code',
-              href: 'https://github.com/PunGrumpy/pungrumpy-website',
               isExternal: true
             }
           ]}
