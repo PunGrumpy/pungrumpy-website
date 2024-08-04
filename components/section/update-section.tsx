@@ -16,13 +16,13 @@ interface UpdateItemProps {
   content?: string
 }
 
-export const UpdateItem = ({
+export function UpdateSection({
   date,
   title,
   description,
   imageSrc,
   content
-}: UpdateItemProps) => {
+}: UpdateItemProps) {
   const [isActive, setIsActive] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const id = useId()
