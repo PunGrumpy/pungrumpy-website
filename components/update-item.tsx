@@ -71,6 +71,14 @@ export const UpdateItem = ({
               ref={ref}
               className="relative flex size-full max-w-lg flex-col overflow-hidden border border-border/50 bg-background shadow-lg sm:h-fit sm:max-h-[90%] sm:rounded-3xl md:h-fit"
             >
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute right-2 top-2 z-50 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background/90 md:hidden"
+                onClick={() => setIsActive(false)}
+              >
+                <X className="size-4 text-foreground" />
+              </Button>
               <Image
                 priority
                 width={500}
