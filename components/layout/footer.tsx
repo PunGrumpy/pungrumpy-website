@@ -22,7 +22,7 @@ export function Footer({ className }: FooterProps) {
       )}
     >
       <Icons.line className="w-full" />
-      <div className="z-10 flex flex-wrap gap-5">
+      <div className="flex flex-wrap gap-5">
         <div className="flex min-w-52 max-w-80 flex-col gap-5">
           <div className="flex items-center gap-1">
             <Link
@@ -53,7 +53,7 @@ export function Footer({ className }: FooterProps) {
           </p>
         </div>
       </div>
-      <div className="z-10 flex flex-wrap gap-5">
+      <div className="flex flex-wrap gap-5">
         <FooterMenu
           category="About"
           items={[
