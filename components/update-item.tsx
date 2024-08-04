@@ -12,7 +12,6 @@ interface UpdateItemProps {
   date?: string
   title?: string
   description?: string
-  href?: string
   imageSrc?: string
   content?: string
 }
@@ -21,7 +20,6 @@ export const UpdateItem = ({
   date,
   title,
   description,
-  href,
   imageSrc,
   content
 }: UpdateItemProps) => {

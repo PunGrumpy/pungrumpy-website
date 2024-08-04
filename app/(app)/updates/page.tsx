@@ -18,7 +18,6 @@ const updates = [
     This is just the beginning. We'll keep improving and evolving our online presence.
 
     Thanks for joining us on this digital adventure!`,
-    href: '/updates/design-journey',
     image: '/updates/update-1.png'
   }
 ]
@@ -35,7 +34,6 @@ export default function UpdatesPage() {
             title={update.title}
             description={update.description}
             content={update.content}
-            href={update.href}
             imageSrc={update.image}
           />
         ))}
