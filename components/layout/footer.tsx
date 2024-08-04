@@ -127,6 +127,7 @@ const FooterMenu = ({ category, items }: FooterMenuProps) => (
             href={href}
             className="text-sm leading-tight transition-transform duration-300 ease-in-out group-hover:font-medium"
             target={isExternal ? '_blank' : undefined}
+            rel={isExternal ? 'noopener noreferrer' : undefined}
           >
             {label}
           </Link>
