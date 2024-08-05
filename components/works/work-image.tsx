@@ -14,7 +14,7 @@ export default function WorkImage({ imageUrl, title }: WorkImageProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="mb-8 overflow-hidden rounded-lg border border-border"
+      className="mb-8 overflow-hidden rounded-lg border border-primary/25"
     >
       <Image
         src={imageUrl}
