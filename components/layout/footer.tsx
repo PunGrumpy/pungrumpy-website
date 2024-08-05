@@ -114,23 +114,22 @@ const FooterMenu = ({ category, items }: FooterMenuProps) => (
       {category}
     </span>
     {items.map(({ label, href, isExternal }, index) => (
-      <div
-        key={index}
-        className="group relative h-8 w-36 cursor-pointer overflow-hidden transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-primary/10 hover:to-transparent"
+      <Link
+        key={label}
+        href={href}
+        className="text-sm leading-tight transition-transform duration-300 ease-in-out group-hover:font-medium"
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
       >
-        <div className="absolute left-0 top-0 h-full w-1 bg-primary opacity-0 blur-md transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
-        <div className="absolute left-0 top-0 h-full w-0.5 bg-primary opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
-        <div className="flex h-full items-center px-4 py-1.5">
-          <Link
-            href={href}
-            className="text-sm leading-tight transition-transform duration-300 ease-in-out group-hover:font-medium"
-            target={isExternal ? '_blank' : undefined}
-            rel={isExternal ? 'noopener noreferrer' : undefined}
-          >
-            {label}
-          </Link>
+        <div
+          key={index}
+          className="group relative h-8 w-36 cursor-pointer overflow-hidden transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-primary/10 hover:to-transparent"
+        >
+          <div className="absolute left-0 top-0 h-full w-1 bg-primary opacity-0 blur-md transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
+          <div className="absolute left-0 top-0 h-full w-0.5 bg-primary opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
+          <div className="flex h-full items-center px-4 py-1.5">{label}</div>
         </div>
-      </div>
+      </Link>
     ))}
   </div>
 )
