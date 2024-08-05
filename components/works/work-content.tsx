@@ -32,17 +32,6 @@ export default function WorkContent({ work }: WorkContentProps) {
         </div>
       )}
 
-      {work.roles && (
-        <div className="mb-6">
-          <h2 className="mb-2 text-xl font-semibold">Roles</h2>
-          <ul className="list-inside list-disc text-muted-foreground">
-            {work.roles.map(role => (
-              <li key={role}>{role}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
       <div className="mb-8">
         <h2 className="mb-4 text-2xl font-semibold">Project Details</h2>
         <p className="text-muted-foreground">{work.summary}</p>

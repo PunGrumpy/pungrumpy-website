@@ -13,7 +13,7 @@ export type Work = {
   description: string
   summary: string
   technologies?: string[]
-  roles?: string[]
+  maintained?: boolean
   links?: {
     github?: string
     website?: string
@@ -31,7 +31,7 @@ export const Works: Work[] = [
       'An online platform for learning UX/UI design and coding, developed as part of the Human-Computer Interaction course at the university.',
     summary: `Paperclip is an innovative online learning platform designed to teach UX/UI design and coding skills. Developed as a part of the Human-Computer Interaction course, this project aims to provide an interactive and engaging environment for students to learn essential digital skills. The platform features intuitive lessons, practical exercises, and real-world projects to help users gain hands-on experience in both design and coding aspects of digital product development.`,
     technologies: ['Figma'],
-    roles: ['Creator', 'Frontend Developer', 'UI/UX Designer'],
+    maintained: true,
     links: {
       website:
         'https://www.figma.com/design/GJKlQNTn0wqRmOiMQjutBe/Paperclip-(UI)?t=qsZtHbpshKEyb849-1/'
@@ -53,7 +53,7 @@ export const Works: Work[] = [
       'shadcn/ui',
       'Framer Motion'
     ],
-    roles: ['Creator', 'Frontend Developer', 'UI/UX Designer', 'Maintainer'],
+    maintained: true,
     links: {
       website: 'https://pongsathorn-portfolio.netlify.app/'
     }
@@ -68,7 +68,7 @@ export const Works: Work[] = [
       'A plugin for Elysia.js that provides a beautiful and simple logging middleware with a customizable design and features.',
     summary: `Logixlysia is an advanced logging middleware plugin developed for the Elysia.js framework. This open-source project aims to enhance the development experience by providing developers with a powerful, yet easy-to-use logging solution. Featuring a customizable design and a rich set of features, Logixlysia allows developers to effortlessly track and analyze application behavior, debug issues, and monitor performance. The plugin's beautiful log output and flexible configuration options make it an essential tool for both small-scale projects and large enterprise applications built with Elysia.js.`,
     technologies: ['TypeScript', 'Elysia.js', 'Bun'],
-    roles: ['Creator', 'Maintainer'],
+    maintained: true,
     links: {
       github: 'https://github.com/PunGrumps/logixlysia/',
       website: 'https://www.npmjs.com/package/logixlysia/'
@@ -84,7 +84,7 @@ export const Works: Work[] = [
       "A Chrome extension that transforms KMITL's schedule table into a more beautiful and interactive design with a dark mode.",
     summary: `KMITL Wizard is a innovative Chrome extension designed to enhance the user experience for students at King Mongkut's Institute of Technology Ladkrabang (KMITL). This community-driven project transforms the institute's standard schedule table into a visually appealing and interactive interface. By incorporating modern design principles and introducing features like dark mode, the extension significantly improves readability and usability. KMITL Wizard not only makes schedule management more efficient but also demonstrates the power of community-led initiatives in improving digital tools for educational institutions.`,
     technologies: ['TypeScript', 'Svelte', 'Tailwind CSS', 'Vite'],
-    roles: ['Creator', 'Frontend Developer', 'Maintainer'],
+    maintained: true,
     links: {
       github: 'https://github.com/PunGrumpy/kmitl-wizard/'
     }
@@ -106,7 +106,7 @@ export const Works: Work[] = [
       'Framer Motion',
       'Cheerio'
     ],
-    roles: ['Creator', 'Fullstack Developer', 'Maintainer'],
+    maintained: true,
     links: {
       github: 'https://github.com/PunGrumpy/og-tester/',
       website: 'https://og.pungrumpy.com/'
@@ -122,7 +122,7 @@ export const Works: Work[] = [
       'A simple website that describes members, projects, and activities of the 42 Bangkok Rush team. Built using HTML, CSS, and JavaScript.',
     summary: `The 42 Rush Project is a collaborative effort by students of 42 Bangkok, showcasing the innovative and intensive learning environment of the 42 coding school. This website serves as a comprehensive platform to highlight the achievements, projects, and activities of the 42 Bangkok Rush team. Built using fundamental web technologies, the site demonstrates the team's ability to create functional and aesthetically pleasing web solutions within a short timeframe, reflecting the 'rush' nature of the project. Visitors can explore team member profiles, view ongoing and completed projects, and get a glimpse into the unique learning methodology employed at 42 Bangkok.`,
     technologies: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
-    roles: ['Frontend Developer', 'Maintainer'],
+    maintained: false,
     links: {
       website: 'https://42-rush-project.vercel.app/'
     }

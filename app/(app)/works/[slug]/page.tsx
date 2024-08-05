@@ -86,6 +86,7 @@ export default function WorkDetailPage({ params }: WorkDetailPageProps) {
       <WorkImage imageUrl={work.imageUrl} title={work.title} />
       <WorkHeader
         title={work.title}
+        maintained={work.maintained}
         iconType={work.iconType}
         projectType={work.projectType}
       />
