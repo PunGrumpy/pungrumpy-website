@@ -1,15 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Metadata } from 'next'
 
 import { UpdateSection } from '@/components/section/update-section'
 import { Updates } from '@/config/updates'
-
-export const metadata: Metadata = {
-  title: 'Updates',
-  description: 'A describe changelong of my personal website.'
-}
 
 export default function UpdatesPage() {
   return (
