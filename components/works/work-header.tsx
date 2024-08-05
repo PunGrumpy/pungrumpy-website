@@ -1,49 +1,61 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArchiveIcon, HeartPulseIcon } from 'lucide-react'
+import Image from 'next/image'
 
-import { Badge } from '../ui/badge'
+import { ProjectTypeIcon } from '@/components/project-type-icon'
+import { StatusBadge } from '@/components/status-badge'
+import { ProjectType, StatusType } from '@/types'
 
 interface WorkHeaderProps {
-  title: string
-  maintained?: boolean
-  iconType: React.ReactNode
-  projectType: string
+  name: string
+  tagline: string
+  status: StatusType
+  projectType: ProjectType
+  coverImage: string
+  alt: string
 }
 
 export default function WorkHeader({
-  title,
-  maintained,
-  iconType,
-  projectType
+  name,
+  tagline,
+  status,
+  projectType,
+  coverImage,
+  alt
 }: WorkHeaderProps) {
-  const badgeMaintained = maintained ? (
-    <Badge variant="outline" className="bg-green-500 px-2 py-1">
-      <HeartPulseIcon className="mr-1 size-4" />
-      Maintained
-    </Badge>
-  ) : (
-    <Badge variant="outline" className="bg-yellow-500 px-2 py-1">
-      <ArchiveIcon className="mr-1 size-4" />
-      Archived
-    </Badge>
-  )
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      <div className="mb-4 flex flex-wrap items-center gap-4">
-        <h1 className="text-4xl font-bold">{title}</h1>
-        {badgeMaintained}
+      <div className="mb-8 flex items-center justify-between">
+        <h1 className="text-4xl font-bold">{name}</h1>
+        <StatusBadge status={status} />
       </div>
+
       <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
-        {iconType}
-        <span>{projectType}</span>
+        <ProjectTypeIcon type={projectType} size="md" />
+        <span className="text-base font-medium capitalize">{projectType}</span>
       </div>
+
+      <p className="mb-8 text-xl text-muted-foreground">{tagline}</p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="mb-8 overflow-hidden rounded-lg border border-primary/25"
+      >
+        <Image
+          src={coverImage}
+          alt={alt}
+          width={1920}
+          height={1080}
+          className="w-full object-cover"
+        />
+      </motion.div>
     </motion.div>
   )
 }

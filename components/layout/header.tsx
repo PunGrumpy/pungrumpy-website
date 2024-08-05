@@ -10,19 +10,29 @@ import { useState } from 'react'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Updates } from '@/config/updates'
-import { Works } from '@/config/works'
-import { cn } from '@/lib/utils'
+import { cn, formatDateString } from '@/lib/utils'
+import { sanityFetcher } from '@/sanity/lib/client'
+import { ProjectInterface, UpdateInterface } from '@/types'
 
 export interface HeaderProps {
   className?: string
   selectedButton?: 'Works' | 'Updates' | 'CV'
 }
 
-export function Header({ className, selectedButton }: HeaderProps) {
+export async function Header({ className, selectedButton }: HeaderProps) {
   const pathname = usePathname()
   const [isDrawerOpen, setDrawerOpen] = useState(false)
   const { theme, setTheme } = useTheme()
+
+  const project: ProjectInterface[] = await sanityFetcher({
+    query: `*[_type == "project"]`,
+    tags: ['projects']
+  })
+
+  const update: UpdateInterface[] = await sanityFetcher({
+    query: `*[_type == "update"]`,
+    tags: ['updates']
+  })
 
   return (
     <div
@@ -104,14 +114,21 @@ export function Header({ className, selectedButton }: HeaderProps) {
           href="/works"
           label="Works"
           total="Total"
-          value={Works.length.toString()}
+          value={project.length.toString()}
           isSelected={pathname === '/works'}
         />
         <HeaderButton
           href="/updates"
           label="Updates"
-          value={Updates.at(-1)?.date.split(' ')[0] || '-'}
-          total={Updates.at(-1)?.date.split(' ')[2] || '-'}
+          total={
+            formatDateString(update[update.length - 1]?.date).split(' ')[2] ||
+            '-'
+          }
+          value={
+            formatDateString(update[update.length - 1]?.date, 'short').split(
+              ' '
+            )[0] || '-'
+          }
           isSelected={pathname === '/updates'}
         />
         <HeaderButton
