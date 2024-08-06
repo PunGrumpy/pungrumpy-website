@@ -79,7 +79,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   }
 
   return (
-    <div className="container z-10 mx-auto max-w-4xl px-4 py-8">
+    <div className="container z-10 mx-auto max-w-6xl px-4 py-8">
       <WorkHeader
         name={project.name}
         tagline={project.tagline}
