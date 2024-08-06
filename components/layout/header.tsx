@@ -60,13 +60,13 @@ export function Header({
             <Button
               variant="outline"
               size="icon"
-              className="size-10 rounded-full border border-border bg-muted/50 md:hidden"
+              className="size-10 rounded-full border border-border md:hidden"
             >
               <Icons.menu />
             </Button>
           </div>
         </SheetTrigger>
-        <SheetContent className="flex flex-col bg-background/95 p-10 backdrop-blur-lg">
+        <SheetContent className="flex flex-col bg-background p-10 backdrop-blur-lg">
           <AnimatePresence>
             {isDrawerOpen && (
               <motion.div
@@ -109,7 +109,7 @@ export function Header({
         </SheetContent>
       </Sheet>
 
-      <div className="hidden min-w-56 max-w-2xl flex-1 items-center justify-start gap-5 rounded-[32px] border border-border bg-background p-3 shadow-lg backdrop-blur-md md:flex">
+      <div className="hidden min-w-56 max-w-2xl flex-1 items-center justify-start gap-5 rounded-[32px] border border-border p-3 shadow-lg backdrop-blur-md md:flex">
         <HeaderButton
           href="/works"
           label="Works"
@@ -180,7 +180,7 @@ const HeaderButton = ({
       {...buttonProps}
       onClick={onClick}
       className={cn(
-        'flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-border bg-background px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted',
+        'flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-border px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted',
         isSelected ? 'border-muted-foreground/25 bg-muted' : ''
       )}
     >
