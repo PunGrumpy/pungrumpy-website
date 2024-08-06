@@ -6,28 +6,33 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+import { ProjectTypeIcon } from '@/components/project-type-icon'
+import { ProjectStatusBadge } from '@/components/status-badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
 interface ProjectCardProps {
   index: number
+  name: string
   slug: string
-  imageUrl: string
-  iconType: React.ReactNode
-  projectType: string
-  title: string
-  description: string
+  maintainStatus: MaintainStatusType
+  projectStage: ProjectStageType
+  projectType: ProjectType
+  tagline: string
+  coverImage: string
 }
 
 export function ProjectCard({
   index,
+  name,
   slug,
-  imageUrl,
-  iconType,
+  maintainStatus,
+  projectStage,
   projectType,
-  title,
-  description
+  tagline,
+  coverImage
 }: ProjectCardProps) {
   return (
     <motion.div
@@ -40,28 +45,32 @@ export function ProjectCard({
         <CardHeader className="p-2">
           <div className="relative h-52 w-full">
             <Image
-              src={imageUrl}
-              alt={title}
+              src={coverImage}
+              alt={name}
               fill
-              className="rounded-md transition duration-200 group-hover:scale-95 group-hover:rounded-xl md:object-cover"
+              className="rounded-md transition-transform duration-200 group-hover:scale-95 group-hover:rounded-xl group-hover:border group-hover:border-primary/20 md:object-cover"
             />
           </div>
         </CardHeader>
         <CardContent className="space-y-4 p-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            {iconType}
-            <span>{projectType}</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <ProjectTypeIcon type={projectType} size="sm" />
+              <h3 className="font-semibold">{name}</h3>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <ProjectStatusBadge maintainStatus={maintainStatus} size="sm" />
+            <ProjectStatusBadge projectStage={projectStage} size="sm" />
           </div>
           <Separator className="bg-primary/10" />
-          <h3 className="font-medium">{title}</h3>
-          <p className="text-sm text-muted-foreground">{description}</p>
-          <Separator className="bg-primary/10" />
+          <p className="h-10 text-sm text-muted-foreground">{tagline}</p>
         </CardContent>
         <CardFooter className="px-4">
-          <Link href={`/works/${encodeURIComponent(slug)}`}>
+          <Link href={`/works/${encodeURIComponent(slug)}`} className="w-full">
             <Button
               variant="outline"
-              className="rounded-[10px] hover:border-primary/10"
+              className="w-full rounded-[10px] hover:border-primary/10"
             >
               <span>Show more</span>
               <ChevronRight className="ml-2 size-4" />

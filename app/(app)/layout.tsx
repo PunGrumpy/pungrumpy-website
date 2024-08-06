@@ -4,6 +4,9 @@ import { Footer } from '@/components/layout/footer'
 import { Grid } from '@/components/layout/grid'
 import { Header } from '@/components/layout/header'
 import { Sitemap } from '@/config/sitemap'
+import { formatDateString } from '@/lib/utils'
+import { sanityFetcher } from '@/sanity/lib/client'
+import type { ProjectInterface, UpdateInterface } from '@/types'
 
 export const viewport: Viewport = {
   themeColor: [
@@ -94,11 +97,31 @@ interface AppLayoutProps {
   children: React.ReactNode
 }
 
-export default function AppLayout({ children }: AppLayoutProps) {
+export default async function AppLayout({ children }: AppLayoutProps) {
+  const project: ProjectInterface[] = await sanityFetcher({
+    query: `*[_type == "project"]`,
+    tags: ['projects']
+  })
+
+  const update: UpdateInterface[] = await sanityFetcher({
+    query: `*[_type == "update"]`,
+    tags: ['updates']
+  })
+
   return (
     <div className="flex flex-row flex-wrap items-center justify-center gap-14 rounded-3xl p-14 text-start">
       <Grid />
-      <Header />
+      <Header
+        totalProject={project.length}
+        yearUpdate={
+          formatDateString(update[update.length - 1]?.date).split(' ')[2] || '-'
+        }
+        monthUpdate={
+          formatDateString(update[update.length - 1]?.date, 'short').split(
+            ' '
+          )[0] || '-'
+        }
+      />
       {children}
       <Footer />
     </div>

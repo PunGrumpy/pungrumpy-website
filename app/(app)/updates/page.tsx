@@ -1,26 +1,31 @@
 import { Metadata } from 'next'
 
 import { UpdateSection } from '@/components/section/update-section'
-import { Updates } from '@/config/updates'
+import { sanityFetcher } from '@/sanity/lib/client'
+import { updateQuery } from '@/sanity/lib/query'
+import type { UpdateInterface } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Updates',
-  description: 'A describe changelong of my personal website.'
+  description: 'A describe changelog of my personal website.'
 }
 
-export default function UpdatesPage() {
+export default async function UpdatesPage() {
+  const updates: UpdateInterface[] = await sanityFetcher({
+    query: updateQuery,
+    tags: ['updates']
+  })
+
   return (
     <main className="space-y-8">
-      {Updates.sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-      ).map((update, index) => (
+      {updates.map((update, index) => (
         <UpdateSection
-          key={index}
+          key={update._id}
           index={index}
           date={update.date}
           title={update.title}
           description={update.description}
-          imageSrc={update.image}
+          coverImage={update.coverImage.image}
         />
       ))}
     </main>

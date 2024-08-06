@@ -1,28 +1,36 @@
 import { Metadata } from 'next'
 
-import { ProjectCard } from '@/components/project-card'
-import { Works } from '@/config/works'
+import { ProjectCard } from '@/components/card/project-card'
+import { sanityFetcher } from '@/sanity/lib/client'
+import { projectsQuery } from '@/sanity/lib/query'
+import type { ProjectInterface } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Works',
   description: 'A collection of my works and projects.'
 }
 
-export default function WorksPage() {
+export default async function WorksPage() {
+  const projects: ProjectInterface[] = await sanityFetcher({
+    query: projectsQuery,
+    tags: ['projects']
+  })
+
   return (
     <>
       <div className="gap-15 z-10 mx-auto flex max-w-6xl flex-col items-center">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {Works.map((work, index) => (
+          {projects.map((project, index) => (
             <ProjectCard
-              key={work.title}
+              key={project._id}
               index={index}
-              slug={work.slug}
-              imageUrl={work.imageUrl}
-              iconType={work.iconType}
-              projectType={work.projectType}
-              title={work.title}
-              description={work.description}
+              name={project.name}
+              slug={project.slug}
+              maintainStatus={project.maintainStatus}
+              projectStage={project.projectStage}
+              projectType={project.projectType}
+              tagline={project.tagline}
+              coverImage={project.coverImage.image}
             />
           ))}
         </div>

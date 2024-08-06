@@ -3,12 +3,15 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-interface UpdateItemProps {
+import { formatDateString } from '@/lib/utils'
+
+interface UpdateSectionProps {
   index: number
-  date?: string
-  title?: string
-  description?: string
-  imageSrc?: string
+  date: string
+  title: string
+  description: string
+  coverImage: string
+  alt?: string
 }
 
 export function UpdateSection({
@@ -16,8 +19,9 @@ export function UpdateSection({
   date,
   title,
   description,
-  imageSrc
-}: UpdateItemProps) {
+  coverImage,
+  alt
+}: UpdateSectionProps) {
   return (
     <motion.div
       initial={{ opacity: 0, transform: 'translateY(-20px)' }}
@@ -26,7 +30,9 @@ export function UpdateSection({
     >
       <article className="z-10 flex w-full max-w-6xl flex-wrap items-center gap-8 rounded-xl p-4 text-left text-lg text-muted-foreground sm:gap-14">
         <div className="flex min-w-full flex-1 flex-col gap-4 sm:min-w-80 sm:gap-8">
-          <div className="w-full text-sm leading-5 sm:text-base">{date}</div>
+          <div className="w-full text-sm leading-5 sm:text-base">
+            {formatDateString(date)}
+          </div>
           <h2 className="w-full text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
             {title}
           </h2>
@@ -35,8 +41,8 @@ export function UpdateSection({
         <div className="items-start justify-start overflow-hidden rounded-3xl border border-border transition-transform duration-500 hover:scale-105 sm:hover:scale-110">
           <Image
             className="object-cover"
-            src={imageSrc || '/gallery/gallery-1.png'}
-            alt={title || 'Gallery Image'}
+            src={coverImage}
+            alt={alt || title}
             width={500}
             height={500}
           />
