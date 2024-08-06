@@ -7,7 +7,7 @@ export type ProjectType =
   | 'openSource'
   | 'hackathon'
 
-export type MaintainStatusType = 'active' | 'minimal' | 'inactive'
+export type MaintainStatusType = 'active' | 'minimal' | 'inactive' | 'unknown'
 
 export type ProjectStageType =
   | 'concept'
@@ -15,6 +15,7 @@ export type ProjectStageType =
   | 'beta'
   | 'released'
   | 'deprecated'
+  | 'unknown'
 
 export interface ProjectInterface {
   _id: string

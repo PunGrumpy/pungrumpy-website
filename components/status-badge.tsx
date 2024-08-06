@@ -2,15 +2,7 @@ import { Circle, HelpCircle } from 'lucide-react'
 import React from 'react'
 
 import { cn } from '@/lib/utils'
-
-type MaintainStatusType = 'active' | 'minimal' | 'inactive' | 'unknown'
-type ProjectStageType =
-  | 'concept'
-  | 'development'
-  | 'beta'
-  | 'released'
-  | 'deprecated'
-  | 'unknown'
+import type { MaintainStatusType, ProjectStageType } from '@/types'
 
 interface ProjectStatusBadgeProps {
   maintainStatus?: MaintainStatusType | null
@@ -100,7 +92,7 @@ export function ProjectStatusBadge({
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full font-medium',
+        'inline-flex items-center rounded-full font-medium backdrop-blur-sm',
         color,
         sizeConfig[size],
         className

@@ -8,7 +8,7 @@ import {
 import React from 'react'
 
 import { cn } from '@/lib/utils'
-import { ProjectType } from '@/types'
+import type { ProjectType } from '@/types'
 
 const projectTypeIcons: Record<ProjectType, React.ElementType> = {
   university: GraduationCap,
@@ -20,7 +20,7 @@ const projectTypeIcons: Record<ProjectType, React.ElementType> = {
 
 interface ProjectTypeIconProps {
   type: ProjectType
-  variant?: 'default' | 'outline' | 'solid'
+  variant?: 'default' | 'outline' | 'solid' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   className?: string
 }
@@ -28,7 +28,8 @@ interface ProjectTypeIconProps {
 const variantStyles = {
   default: 'bg-primary/10 text-primary',
   outline: 'bg-transparent border-2 border-primary text-primary',
-  solid: 'bg-primary text-primary-foreground'
+  solid: 'bg-primary text-primary-foreground',
+  ghost: 'text-primary hover:bg-primary/10 transition-colors'
 }
 
 const sizeStyles = {

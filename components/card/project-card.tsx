@@ -11,7 +11,7 @@ import { ProjectStatusBadge } from '@/components/status-badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
+import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
 interface ProjectCardProps {
   index: number

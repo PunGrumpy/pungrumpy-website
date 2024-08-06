@@ -3,11 +3,10 @@ import { notFound } from 'next/navigation'
 
 import WorkContent from '@/components/works/work-content'
 import WorkHeader from '@/components/works/work-header'
-import WorkStats from '@/components/works/work-stats'
 import { Sitemap } from '@/config/sitemap'
 import { sanityFetcher } from '@/sanity/lib/client'
 import { singleProjectQuery } from '@/sanity/lib/query'
-import { ProjectInterface } from '@/types'
+import type { ProjectInterface } from '@/types'
 
 interface WorkDetailPageProps {
   params: { project: string }
@@ -89,24 +88,18 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
         coverImage={project.coverImage.image}
         alt={project.coverImage.alt || project.name}
       />
-      <div className="mt-12 grid gap-8 md:grid-cols-3">
-        <div className="md:col-span-2">
-          <WorkContent
-            description={project.description}
-            technologies={project.technologies}
-            startDate={project.startDate}
-            endDate={project.endDate || 'Present'}
-            projectUrl={project.projectUrl}
-            repositoryUrl={project.repository}
-          />
-        </div>
-        <div>
-          <WorkStats
-            maintainStatus={project.maintainStatus}
-            projectStage={project.projectStage}
-            contributors={project.contributors}
-          />
-        </div>
+      <div className="md:col-span-2">
+        <WorkContent
+          description={project.description}
+          technologies={project.technologies}
+          startDate={project.startDate}
+          endDate={project.endDate || 'Present'}
+          projectUrl={project.projectUrl}
+          repositoryUrl={project.repository}
+          maintainStatus={project.maintainStatus}
+          projectStage={project.projectStage}
+          contributors={project.contributors}
+        />
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { ProjectCard } from '@/components/card/project-card'
 import { sanityFetcher } from '@/sanity/lib/client'
 import { projectsQuery } from '@/sanity/lib/query'
-import { ProjectInterface } from '@/types'
+import type { ProjectInterface } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Works',

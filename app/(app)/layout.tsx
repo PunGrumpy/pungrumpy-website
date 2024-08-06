@@ -6,7 +6,7 @@ import { Header } from '@/components/layout/header'
 import { Sitemap } from '@/config/sitemap'
 import { formatDateString } from '@/lib/utils'
 import { sanityFetcher } from '@/sanity/lib/client'
-import { ProjectInterface, UpdateInterface } from '@/types'
+import type { ProjectInterface, UpdateInterface } from '@/types'
 
 export const viewport: Viewport = {
   themeColor: [
