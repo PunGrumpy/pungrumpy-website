@@ -11,13 +11,14 @@ import { StatusBadge } from '@/components/status-badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import { ProjectType, StatusType } from '@/types'
 
 interface ProjectCardProps {
   index: number
   name: string
   slug: string
-  status: 'inDevelopment' | 'completed' | 'onHold' | 'archived'
-  projectType: 'university' | 'client' | 'personal' | 'openSource' | 'hackathon'
+  status: StatusType
+  projectType: ProjectType
   tagline: string
   coverImage: string
 }
