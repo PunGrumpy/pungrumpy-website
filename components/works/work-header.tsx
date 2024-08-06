@@ -3,8 +3,17 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-import { ProjectTypeIcon } from '@/components/project-type-icon'
-import { ProjectStatusBadge } from '@/components/status-badge'
+import { Badge } from '@/components/ui/badge'
+import {
+  gerProjectTypeLabel,
+  getMaintainStatusIcon,
+  getMaintainStatusLabel,
+  getMaintainStatusVariant,
+  getProjectStageIcon,
+  getProjectStageLabel,
+  getProjectStageVariant,
+  getProjectTypeIcon
+} from '@/lib/variant'
 import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
 interface WorkHeaderProps {
@@ -33,15 +42,17 @@ export default function WorkHeader({
       transition={{ duration: 0.5 }}
       className="relative mb-12"
     >
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-background"></div>
-      <Image
-        src={coverImage}
-        alt={alt}
-        width={1920}
-        height={1080}
-        className="size-full rounded-xl object-cover"
-      />
-      <div className="absolute inset-x-0 bottom-0 z-20 p-8">
+      <div className="inset-0 z-10 bg-gradient-to-b from-transparent to-background md:absolute" />
+      <div className="rounded-xl bg-gradient-to-b from-primary/20 to-transparent p-px">
+        <Image
+          src={coverImage}
+          alt={alt}
+          width={1920}
+          height={1080}
+          className="size-full rounded-[calc(0.75rem-1px)] object-cover"
+        />
+      </div>
+      <div className="inset-x-0 bottom-0 z-20 p-8 md:absolute">
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -64,14 +75,27 @@ export default function WorkHeader({
           transition={{ delay: 0.4 }}
           className="flex flex-wrap gap-2"
         >
-          <ProjectStatusBadge maintainStatus={maintainStatus} size="md" />
-          <ProjectStatusBadge projectStage={projectStage} size="md" />
-          <div className="flex items-center rounded-full bg-background/70 px-2 py-1 text-foreground backdrop-blur-sm">
-            <ProjectTypeIcon type={projectType} size="sm" variant="ghost" />
-            <span className="text-sm font-medium capitalize">
-              {projectType}
-            </span>
-          </div>
+          <Badge
+            size="md"
+            variant={getMaintainStatusVariant(maintainStatus)}
+            icon={getMaintainStatusIcon(maintainStatus)}
+          >
+            {getMaintainStatusLabel(maintainStatus)}
+          </Badge>
+          <Badge
+            size="md"
+            variant={getProjectStageVariant(projectStage)}
+            icon={getProjectStageIcon(projectStage)}
+          >
+            {getProjectStageLabel(projectStage)}
+          </Badge>
+          <Badge
+            variant="inverted"
+            size="md"
+            icon={getProjectTypeIcon(projectType)}
+          >
+            {gerProjectTypeLabel(projectType)}
+          </Badge>
         </motion.div>
       </div>
     </motion.div>

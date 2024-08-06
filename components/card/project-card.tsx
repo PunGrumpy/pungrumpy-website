@@ -4,13 +4,20 @@ import { motion } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
-import { ProjectTypeIcon } from '@/components/project-type-icon'
-import { ProjectStatusBadge } from '@/components/status-badge'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import {
+  getMaintainStatusIcon,
+  getMaintainStatusLabel,
+  getMaintainStatusVariant,
+  getProjectStageIcon,
+  getProjectStageLabel,
+  getProjectStageVariant,
+  getProjectTypeIconElement
+} from '@/lib/variant'
 import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
 interface ProjectCardProps {
@@ -55,13 +62,27 @@ export function ProjectCard({
         <CardContent className="space-y-4 p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <ProjectTypeIcon type={projectType} size="sm" />
+              <div className="inline-flex items-center rounded-full border-transparent bg-primary/10 p-2 text-xs text-primary shadow backdrop-blur-sm">
+                {getProjectTypeIconElement(projectType)}
+              </div>
               <h3 className="font-semibold">{name}</h3>
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
-            <ProjectStatusBadge maintainStatus={maintainStatus} size="sm" />
-            <ProjectStatusBadge projectStage={projectStage} size="sm" />
+            <Badge
+              size="sm"
+              variant={getMaintainStatusVariant(maintainStatus)}
+              icon={getMaintainStatusIcon(maintainStatus)}
+            >
+              {getMaintainStatusLabel(maintainStatus)}
+            </Badge>
+            <Badge
+              size="sm"
+              variant={getProjectStageVariant(projectStage)}
+              icon={getProjectStageIcon(projectStage)}
+            >
+              {getProjectStageLabel(projectStage)}
+            </Badge>
           </div>
           <Separator className="bg-primary/10" />
           <p className="h-10 text-sm text-muted-foreground">{tagline}</p>
