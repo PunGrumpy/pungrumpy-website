@@ -52,7 +52,7 @@ export default function WorkHeader({
           className="size-full rounded-[calc(0.75rem-1px)] object-cover"
         />
       </div>
-      <div className="inset-x-0 bottom-0 z-20 p-8 md:absolute">
+      <div className="inset-x-0 bottom-0 z-20 py-8 md:absolute md:p-8">
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
