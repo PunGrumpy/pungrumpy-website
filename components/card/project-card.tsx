@@ -50,14 +50,16 @@ export function ProjectCard({
     >
       <Card className="group bg-card">
         <CardHeader className="p-2">
-          <div className="relative h-52 w-full">
-            <Image
-              src={coverImage}
-              alt={name}
-              fill
-              className="rounded-md transition-transform duration-200 group-hover:scale-95 group-hover:rounded-xl group-hover:border group-hover:border-primary/20 md:object-cover"
-            />
-          </div>
+          <Link href={`/works/${encodeURIComponent(slug)}`}>
+            <div className="relative h-52 w-full">
+              <Image
+                src={coverImage}
+                alt={name}
+                fill
+                className="rounded-md transition-transform duration-200 group-hover:scale-95 group-hover:rounded-xl group-hover:border group-hover:border-primary/20 md:object-cover"
+              />
+            </div>
+          </Link>
         </CardHeader>
         <CardContent className="space-y-4 p-4">
           <div className="flex items-center justify-between">
