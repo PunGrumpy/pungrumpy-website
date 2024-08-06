@@ -10,29 +10,26 @@ import { useState } from 'react'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { cn, formatDateString } from '@/lib/utils'
-import { sanityFetcher } from '@/sanity/lib/client'
-import { ProjectInterface, UpdateInterface } from '@/types'
+import { cn } from '@/lib/utils'
 
 export interface HeaderProps {
   className?: string
   selectedButton?: 'Works' | 'Updates' | 'CV'
+  totalProject?: number
+  yearUpdate?: string
+  monthUpdate?: string
 }
 
-export async function Header({ className, selectedButton }: HeaderProps) {
+export function Header({
+  className,
+  selectedButton,
+  totalProject,
+  yearUpdate,
+  monthUpdate
+}: HeaderProps) {
   const pathname = usePathname()
   const [isDrawerOpen, setDrawerOpen] = useState(false)
   const { theme, setTheme } = useTheme()
-
-  const project: ProjectInterface[] = await sanityFetcher({
-    query: `*[_type == "project"]`,
-    tags: ['projects']
-  })
-
-  const update: UpdateInterface[] = await sanityFetcher({
-    query: `*[_type == "update"]`,
-    tags: ['updates']
-  })
 
   return (
     <div
@@ -114,20 +111,16 @@ export async function Header({ className, selectedButton }: HeaderProps) {
           href="/works"
           label="Works"
           total="Total"
-          value={project.length.toString()}
+          value={totalProject?.toString() || '0'}
           isSelected={pathname === '/works'}
         />
         <HeaderButton
           href="/updates"
           label="Updates"
-          total={
-            formatDateString(update[update.length - 1]?.date).split(' ')[2] ||
-            '-'
-          }
+          total={yearUpdate || new Date().getFullYear().toString()}
           value={
-            formatDateString(update[update.length - 1]?.date, 'short').split(
-              ' '
-            )[0] || '-'
+            monthUpdate ||
+            new Date().toLocaleString('en-US', { month: 'short' })
           }
           isSelected={pathname === '/updates'}
         />
