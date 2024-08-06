@@ -39,7 +39,7 @@ export default function WorkHeader({
         alt={alt}
         width={1920}
         height={1080}
-        className="h-[50vh] w-full rounded-xl object-cover"
+        className="size-full rounded-xl object-cover"
       />
       <div className="absolute inset-x-0 bottom-0 z-20 p-8">
         <motion.h1
