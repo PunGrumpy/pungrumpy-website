@@ -79,15 +79,18 @@ export function Header({
                   href="/works"
                   label="Works"
                   total="Total"
-                  value="2"
+                  value={totalProject?.toString() || '0'}
                   isSelected={pathname === '/works'}
                   onClick={() => setDrawerOpen(false)}
                 />
                 <HeaderButton
                   href="/updates"
                   label="Updates"
-                  total="2024"
-                  value="Aug"
+                  total={yearUpdate || new Date().getFullYear().toString()}
+                  value={
+                    monthUpdate ||
+                    new Date().toLocaleString('en-US', { month: 'short' })
+                  }
                   isSelected={pathname === '/updates'}
                   onClick={() => setDrawerOpen(false)}
                 />
