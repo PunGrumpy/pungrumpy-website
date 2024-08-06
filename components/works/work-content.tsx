@@ -61,7 +61,7 @@ export default function WorkContent({
       </div>
 
       <div className="space-y-8">
-        <section className="rounded-lg bg-card p-6 shadow-md">
+        <section className="rounded-lg border border-border bg-card p-6 shadow-md">
           <h2 className="mb-4 text-xl font-semibold">Project Details</h2>
           <div className="space-y-4">
             <div className="flex items-center">
