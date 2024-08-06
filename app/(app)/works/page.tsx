@@ -26,7 +26,8 @@ export default async function WorksPage() {
               index={index}
               name={project.name}
               slug={project.slug}
-              status={project.status}
+              maintainStatus={project.maintainStatus}
+              projectStage={project.projectStage}
               projectType={project.projectType}
               tagline={project.tagline}
               coverImage={project.coverImage.image}

@@ -83,7 +83,8 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
       <WorkHeader
         name={project.name}
         tagline={project.tagline}
-        status={project.status}
+        maintainStatus={project.maintainStatus}
+        projectStage={project.projectStage}
         projectType={project.projectType}
         coverImage={project.coverImage.image}
         alt={project.coverImage.alt || project.name}
@@ -101,11 +102,9 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
         </div>
         <div>
           <WorkStats
-            maintainStatus="Maintained"
-            projectStage="In Progress"
-            lastUpdated="2021-09-01"
-            contributors={['pungrumpy']}
-            highlights={['Next.js', 'Tailwind CSS', 'Vercel']}
+            maintainStatus={project.maintainStatus}
+            projectStage={project.projectStage}
+            contributors={project.contributors}
           />
         </div>
       </div>

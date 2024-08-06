@@ -7,17 +7,18 @@ import Link from 'next/link'
 import React from 'react'
 
 import { ProjectTypeIcon } from '@/components/project-type-icon'
-import { StatusBadge } from '@/components/status-badge'
+import { ProjectStatusBadge } from '@/components/status-badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { ProjectType, StatusType } from '@/types'
+import { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
 interface ProjectCardProps {
   index: number
   name: string
   slug: string
-  status: StatusType
+  maintainStatus: MaintainStatusType
+  projectStage: ProjectStageType
   projectType: ProjectType
   tagline: string
   coverImage: string
@@ -27,7 +28,8 @@ export function ProjectCard({
   index,
   name,
   slug,
-  status,
+  maintainStatus,
+  projectStage,
   projectType,
   tagline,
   coverImage
@@ -52,11 +54,14 @@ export function ProjectCard({
         </CardHeader>
         <CardContent className="space-y-4 p-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1">
-              <ProjectTypeIcon type={projectType} className="size-8" />
+            <div className="flex items-center gap-2">
+              <ProjectTypeIcon type={projectType} size="sm" />
               <h3 className="font-semibold">{name}</h3>
             </div>
-            <StatusBadge status={status} size="sm" />
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <ProjectStatusBadge maintainStatus={maintainStatus} size="sm" />
+            <ProjectStatusBadge projectStage={projectStage} size="sm" />
           </div>
           <Separator className="bg-primary/10" />
           <p className="h-10 text-sm text-muted-foreground">{tagline}</p>

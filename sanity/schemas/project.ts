@@ -34,19 +34,40 @@ const project = defineType({
         'When did you finish working on this project? Leave blank if ongoing.'
     }),
     defineField({
-      name: 'status',
-      title: 'Project Status',
+      name: 'maintainStatus',
+      title: 'Maintain Status',
       type: 'string',
       options: {
         list: [
-          { title: 'In Development', value: 'inDevelopment' },
-          { title: 'Completed', value: 'completed' },
-          { title: 'On Hold', value: 'onHold' },
-          { title: 'Archived', value: 'archived' }
+          { title: 'Actively Maintained', value: 'active' },
+          { title: 'Minimal Maintenance', value: 'minimal' },
+          { title: 'No Longer Maintained', value: 'inactive' }
         ],
         layout: 'radio'
       },
-      description: 'What is the current status of this project?'
+      description: 'Current maintenance status of the project'
+    }),
+    defineField({
+      name: 'projectStage',
+      title: 'Project Stage',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Concept', value: 'concept' },
+          { title: 'In Development', value: 'development' },
+          { title: 'Beta', value: 'beta' },
+          { title: 'Released', value: 'released' },
+          { title: 'Deprecated', value: 'deprecated' }
+        ]
+      },
+      description: 'Current stage of the project lifecycle'
+    }),
+    defineField({
+      name: 'contributors',
+      title: 'Contributors',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'List of contributors to the project'
     }),
     defineField({
       name: 'projectType',

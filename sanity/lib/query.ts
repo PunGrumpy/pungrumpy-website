@@ -10,7 +10,8 @@ export const projectsQuery = groq`*[_type == "project"] | order(_createdAt desc)
       "lqip": asset->metadata.lqip,
       alt,
     },
-    status,
+    maintainStatus,
+    projectStage,
     projectType,
 }`
 
@@ -20,7 +21,9 @@ export const singleProjectQuery = groq`*[_type == "project" && slug.current == $
     tagline,
     startDate,
     endDate,
-    status,
+    maintainStatus,
+    projectStage,
+    contributors,
     projectType,
     projectUrl,
     repository,
