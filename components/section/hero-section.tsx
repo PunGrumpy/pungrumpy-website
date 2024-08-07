@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 
+import { Scene } from '@/components/scene'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -66,15 +66,9 @@ export function HeroSection({ className }: HeroSectionProps) {
         initial={{ opacity: 0, transform: 'translateY(-20px)' }}
         animate={{ opacity: 1, transform: 'translateY(0)' }}
         transition={{ duration: 0.5, delay: 0.5 }}
+        className="flex flex-1 items-center justify-center"
       >
-        <Image
-          src="/hero-image.png"
-          alt="Hero Image"
-          width={520}
-          height={500}
-          className="min-w-80 flex-1 rounded-3xl border border-border object-cover"
-          priority
-        />
+        <Scene />
       </motion.div>
     </div>
   )
