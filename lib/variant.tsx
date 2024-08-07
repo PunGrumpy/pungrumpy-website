@@ -1,12 +1,17 @@
 import {
+  Archive,
   BriefcaseBusiness,
+  CircleAlert,
   CircleCheck,
   CircleDashed,
   CircleX,
+  Code2,
   FolderOpen,
   GraduationCap,
   Info,
+  Lightbulb,
   LucideIcon,
+  Rocket,
   Trophy,
   User
 } from 'lucide-react'
@@ -49,11 +54,11 @@ const maintainStatusMap: Record<
   minimal: {
     label: 'Minimal Maintenance',
     variant: 'amber-subtle',
-    icon: Info
+    icon: CircleAlert
   },
   inactive: {
     label: 'No Longer Maintained',
-    variant: 'gray-subtle',
+    variant: 'red-subtle',
     icon: CircleX
   },
   unknown: { label: 'Unknown', variant: 'blue-subtle', icon: CircleDashed }
@@ -63,15 +68,15 @@ const projectStageMap: Record<
   ProjectStageType,
   VariantInfo<ProjectStageType>
 > = {
-  concept: { label: 'Concept', variant: 'purple-subtle', icon: GraduationCap },
+  concept: { label: 'Concept', variant: 'purple-subtle', icon: Lightbulb },
   development: {
     label: 'In Development',
     variant: 'blue-subtle',
-    icon: FolderOpen
+    icon: Code2
   },
-  beta: { label: 'Beta', variant: 'amber-subtle', icon: BriefcaseBusiness },
-  released: { label: 'Released', variant: 'green-subtle', icon: Trophy },
-  deprecated: { label: 'Deprecated', variant: 'red-subtle', icon: CircleX },
+  beta: { label: 'Beta', variant: 'amber-subtle', icon: Info },
+  released: { label: 'Released', variant: 'green-subtle', icon: Rocket },
+  deprecated: { label: 'Deprecated', variant: 'red-subtle', icon: Archive },
   unknown: { label: 'Unknown', variant: 'blue-subtle', icon: CircleDashed }
 }
 

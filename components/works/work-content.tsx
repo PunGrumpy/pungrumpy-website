@@ -1,7 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, LinkIcon, RefreshCw, Rocket, Users } from 'lucide-react'
+import {
+  ActivityIcon,
+  Calendar,
+  LinkIcon,
+  RefreshCw,
+  Users
+} from 'lucide-react'
 import Link from 'next/link'
 import { PortableText, PortableTextBlock } from 'next-sanity'
 
@@ -81,7 +87,7 @@ export default function WorkContent({
             )}
             {projectStage && (
               <div className="flex items-center">
-                <Rocket className="mr-2 size-5 text-primary" />
+                <ActivityIcon className="mr-2 size-5 text-primary" />
                 <span className="capitalize text-primary/85">
                   {projectStage}
                 </span>
