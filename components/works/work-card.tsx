@@ -51,7 +51,7 @@ export function WorkCard({
       <Card className="group bg-card">
         <CardHeader className="p-2">
           <Link href={`/works/${encodeURIComponent(slug)}`}>
-            <div className="relative w-full">
+            <div className="relative h-40 w-full md:h-52">
               <Image
                 src={coverImage}
                 alt={name}
