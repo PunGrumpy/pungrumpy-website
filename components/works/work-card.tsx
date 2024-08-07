@@ -51,11 +51,12 @@ export function WorkCard({
       <Card className="group bg-card">
         <CardHeader className="p-2">
           <Link href={`/works/${encodeURIComponent(slug)}`}>
-            <div className="relative h-52 w-full">
+            <div className="relative w-full">
               <Image
                 src={coverImage}
                 alt={name}
-                fill
+                width={1920}
+                height={1080}
                 className="rounded-md transition-transform duration-200 group-hover:scale-95 group-hover:rounded-xl group-hover:border group-hover:border-primary/20 md:object-cover"
               />
             </div>
