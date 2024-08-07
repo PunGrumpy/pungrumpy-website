@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { UpdateSection } from '@/components/section/update-section'
+import { UpdateCard } from '@/components/updates/update-card'
 import { sanityFetcher } from '@/sanity/lib/client'
 import { updateQuery } from '@/sanity/lib/query'
 import type { UpdateInterface } from '@/types'
@@ -19,7 +19,7 @@ export default async function UpdatesPage() {
   return (
     <main className="space-y-8">
       {updates.map((update, index) => (
-        <UpdateSection
+        <UpdateCard
           key={update._id}
           index={index}
           date={update.date}

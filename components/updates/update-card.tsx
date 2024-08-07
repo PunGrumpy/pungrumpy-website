@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import { formatDateString } from '@/lib/utils'
 
-interface UpdateSectionProps {
+interface UpdateCardProps {
   index: number
   date: string
   title: string
@@ -14,14 +14,14 @@ interface UpdateSectionProps {
   alt?: string
 }
 
-export function UpdateSection({
+export function UpdateCard({
   index,
   date,
   title,
   description,
   coverImage,
   alt
-}: UpdateSectionProps) {
+}: UpdateCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, transform: 'translateY(-20px)' }}
