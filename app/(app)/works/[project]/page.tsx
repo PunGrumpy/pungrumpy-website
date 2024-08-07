@@ -5,7 +5,7 @@ import WorkContent from '@/components/works/work-content'
 import WorkHeader from '@/components/works/work-header'
 import { Sitemap } from '@/config/sitemap'
 import { sanityFetcher } from '@/sanity/lib/client'
-import { singleProjectQuery } from '@/sanity/lib/query'
+import { projectBySlugQuery } from '@/sanity/lib/query'
 import type { ProjectInterface } from '@/types'
 
 interface WorkDetailPageProps {
@@ -18,7 +18,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const slug = params.project
   const project: ProjectInterface = await sanityFetcher({
-    query: singleProjectQuery,
+    query: projectBySlugQuery,
     tags: ['project'],
     qParams: { slug }
   })
@@ -68,7 +68,7 @@ export async function generateMetadata(
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const slug = params.project
   const project: ProjectInterface = await sanityFetcher({
-    query: singleProjectQuery,
+    query: projectBySlugQuery,
     tags: ['project'],
     qParams: { slug }
   })
