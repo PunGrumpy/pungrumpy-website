@@ -42,12 +42,13 @@ export function Header({
         href="/"
         className="flex flex-row items-center text-2xl font-bold leading-9 tracking-tighter no-underline transition-colors hover:text-muted-foreground"
       >
-        <Icons.logo className="mr-2 size-8" />
         <motion.div
           initial={{ opacity: 0, transform: 'translateY(-20px)' }}
           animate={{ opacity: 1, transform: 'translateY(0)' }}
           transition={{ duration: 0.5 }}
+          className="flex items-center gap-2"
         >
+          <Icons.logo className="size-8" />
           <span className="hidden sm:block">Noppakorn Kaewsalabnil</span>
           <span className="block sm:hidden">PunGrumpy</span>
         </motion.div>
