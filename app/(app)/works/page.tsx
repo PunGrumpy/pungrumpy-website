@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { ProjectCard } from '@/components/card/project-card'
+import { WorkCard } from '@/components/works/work-card'
 import { sanityFetcher } from '@/sanity/lib/client'
 import { projectsQuery } from '@/sanity/lib/query'
 import type { ProjectInterface } from '@/types'
@@ -21,7 +21,7 @@ export default async function WorksPage() {
       <div className="gap-15 z-10 mx-auto flex max-w-6xl flex-col items-center">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <ProjectCard
+            <WorkCard
               key={project._id}
               index={index}
               name={project.name}

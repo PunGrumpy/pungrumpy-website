@@ -20,7 +20,7 @@ import {
 } from '@/lib/variant'
 import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
-interface ProjectCardProps {
+interface WorkCardProps {
   index: number
   name: string
   slug: string
@@ -31,7 +31,7 @@ interface ProjectCardProps {
   coverImage: string
 }
 
-export function ProjectCard({
+export function WorkCard({
   index,
   name,
   slug,
@@ -40,7 +40,7 @@ export function ProjectCard({
   projectType,
   tagline,
   coverImage
-}: ProjectCardProps) {
+}: WorkCardProps) {
   return (
     <motion.div
       className="flex flex-col"
