@@ -48,3 +48,54 @@ export const updateQuery = groq`*[_type == 'update'] | order(date desc) {
       alt
     }
 }`
+
+export const takeQuery = groq`*[_type == 'take'] | order(date asc) {
+  _id,
+  _createdAt,
+  _updatedAt,
+  title,
+  "slug": slug.current,
+  date,
+  takeImage {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    "palette": asset->metadata.palette,
+    "dimensions": asset->metadata.dimensions,
+    alt,
+    caption
+  },
+  tags,
+  description,
+  camera,
+  settings {
+    aperture,
+    shutterSpeed,
+    iso,
+    focalLength
+  }
+}`
+
+export const takeBySlugQuery = groq`*[_type == 'take' && slug.current == $slug][0] {
+  _id,
+  _createdAt,
+  _updatedAt,
+  title,
+  date,
+  takeImage {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    "palette": asset->metadata.palette,
+    "dimensions": asset->metadata.dimensions,
+    alt,
+    caption
+  },
+  tags,
+  description,
+  camera,
+  settings {
+    aperture,
+    shutterSpeed,
+    iso,
+    focalLength
+  }
+}`
