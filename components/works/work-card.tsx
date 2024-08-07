@@ -55,8 +55,7 @@ export function WorkCard({
               <Image
                 src={coverImage}
                 alt={name}
-                width={1920}
-                height={1080}
+                fill
                 className="rounded-md transition-transform duration-200 group-hover:scale-95 group-hover:rounded-xl group-hover:border group-hover:border-primary/20 md:object-cover"
               />
             </div>
