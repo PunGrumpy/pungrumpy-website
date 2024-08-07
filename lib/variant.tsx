@@ -10,103 +10,109 @@ import {
   Trophy,
   User
 } from 'lucide-react'
+import { ReactElement } from 'react'
 
 import { BadgeProps } from '@/components/ui/badge'
 import { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
-export function getMaintainStatusLabel(status: MaintainStatusType): string {
-  const labels: Record<MaintainStatusType, string> = {
-    active: 'Actively Maintained',
-    minimal: 'Minimal Maintenance',
-    inactive: 'No Longer Maintained',
-    unknown: 'Unknown'
-  }
-  return labels[status] || 'Unknown'
+type VariantInfo<T extends string> = {
+  label: string
+  variant: BadgeProps['variant']
+  icon: LucideIcon
 }
 
-export function getMaintainStatusVariant(
-  status: MaintainStatusType
-): BadgeProps['variant'] {
-  const variants: Record<MaintainStatusType, BadgeProps['variant']> = {
-    active: 'green-subtle',
-    minimal: 'amber-subtle',
-    inactive: 'gray-subtle',
-    unknown: 'blue-subtle'
+const createVariantGetter = <T extends string>(
+  variantMap: Record<T, VariantInfo<T>>,
+  defaultVariant: VariantInfo<T>
+) => {
+  return {
+    getLabel: (key: T): string =>
+      variantMap[key]?.label ?? defaultVariant.label,
+    getVariant: (key: T): BadgeProps['variant'] =>
+      variantMap[key]?.variant ?? defaultVariant.variant,
+    getIcon: (key: T): ReactElement => {
+      const Icon = variantMap[key]?.icon ?? defaultVariant.icon
+      return <Icon className="size-4" />
+    }
   }
-  return variants[status] || 'blue-subtle'
 }
 
-export function getMaintainStatusIcon(status: MaintainStatusType): LucideIcon {
-  const icons: Record<MaintainStatusType, LucideIcon> = {
-    active: CircleCheck,
-    minimal: Info,
-    inactive: CircleX,
-    unknown: CircleDashed
-  }
-  return icons[status] || CircleDashed
+const maintainStatusMap: Record<
+  MaintainStatusType,
+  VariantInfo<MaintainStatusType>
+> = {
+  active: {
+    label: 'Actively Maintained',
+    variant: 'green-subtle',
+    icon: CircleCheck
+  },
+  minimal: {
+    label: 'Minimal Maintenance',
+    variant: 'amber-subtle',
+    icon: Info
+  },
+  inactive: {
+    label: 'No Longer Maintained',
+    variant: 'gray-subtle',
+    icon: CircleX
+  },
+  unknown: { label: 'Unknown', variant: 'blue-subtle', icon: CircleDashed }
 }
 
-export function getProjectStageLabel(stage: ProjectStageType): string {
-  const labels: Record<ProjectStageType, string> = {
-    concept: 'Concept',
-    development: 'In Development',
-    beta: 'Beta',
-    released: 'Released',
-    deprecated: 'Deprecated',
-    unknown: 'Unknown'
-  }
-  return labels[stage] || 'Unknown'
+const projectStageMap: Record<
+  ProjectStageType,
+  VariantInfo<ProjectStageType>
+> = {
+  concept: { label: 'Concept', variant: 'purple-subtle', icon: GraduationCap },
+  development: {
+    label: 'In Development',
+    variant: 'blue-subtle',
+    icon: FolderOpen
+  },
+  beta: { label: 'Beta', variant: 'amber-subtle', icon: BriefcaseBusiness },
+  released: { label: 'Released', variant: 'green-subtle', icon: Trophy },
+  deprecated: { label: 'Deprecated', variant: 'red-subtle', icon: CircleX },
+  unknown: { label: 'Unknown', variant: 'blue-subtle', icon: CircleDashed }
 }
 
-export function getProjectStageVariant(
-  stage: ProjectStageType
-): BadgeProps['variant'] {
-  const variants: Record<ProjectStageType, BadgeProps['variant']> = {
-    concept: 'purple-subtle',
-    development: 'blue-subtle',
-    beta: 'amber-subtle',
-    released: 'green-subtle',
-    deprecated: 'red-subtle',
-    unknown: 'blue-subtle'
-  }
-  return variants[stage] || 'blue-subtle'
+const projectTypeMap: Record<ProjectType, VariantInfo<ProjectType>> = {
+  university: {
+    label: 'University',
+    variant: 'blue-subtle',
+    icon: GraduationCap
+  },
+  client: { label: 'Client', variant: 'green-subtle', icon: BriefcaseBusiness },
+  personal: { label: 'Personal', variant: 'purple-subtle', icon: User },
+  openSource: {
+    label: 'Open Source',
+    variant: 'amber-subtle',
+    icon: FolderOpen
+  },
+  hackathon: { label: 'Hackathon', variant: 'red-subtle', icon: Trophy }
 }
 
-export function getProjectStageIcon(stage: ProjectStageType): LucideIcon {
-  const icons: Record<ProjectStageType, LucideIcon> = {
-    concept: Info,
-    development: Info,
-    beta: Info,
-    released: CircleCheck,
-    deprecated: CircleX,
-    unknown: CircleDashed
-  }
-  return icons[stage] || CircleDashed
-}
+const maintainStatusGetter = createVariantGetter(
+  maintainStatusMap,
+  maintainStatusMap.unknown
+)
+const projectStageGetter = createVariantGetter(
+  projectStageMap,
+  projectStageMap.unknown
+)
+const projectTypeGetter = createVariantGetter(projectTypeMap, {
+  label: 'Unknown',
+  variant: 'blue-subtle',
+  icon: CircleDashed
+})
 
-export function gerProjectTypeLabel(type: ProjectType): string {
-  const labels: Record<ProjectType, string> = {
-    university: 'University',
-    client: 'Client',
-    personal: 'Personal',
-    openSource: 'Open Source',
-    hackathon: 'Hackathon'
-  }
-  return labels[type] || 'Unknown'
-}
+export const getMaintainStatusLabel = maintainStatusGetter.getLabel
+export const getMaintainStatusVariant = maintainStatusGetter.getVariant
+export const getMaintainStatusIcon = maintainStatusGetter.getIcon
 
-export function getProjectTypeIcon(type: ProjectType): LucideIcon {
-  const icons: Record<ProjectType, LucideIcon> = {
-    university: GraduationCap,
-    client: BriefcaseBusiness,
-    personal: User,
-    openSource: FolderOpen,
-    hackathon: Trophy
-  }
-  return icons[type] || FolderOpen
-}
+export const getProjectStageLabel = projectStageGetter.getLabel
+export const getProjectStageVariant = projectStageGetter.getVariant
+export const getProjectStageIcon = projectStageGetter.getIcon
 
-export function getProjectTypeIconElement(type: ProjectType) {
-  const Icon = getProjectTypeIcon(type)
-  return <Icon className="size-4" />
-}
+export const getProjectTypeLabel = projectTypeGetter.getLabel
+export const getProjectTypeVariant = projectTypeGetter.getVariant
+export const getProjectTypeIcon = projectTypeGetter.getIcon

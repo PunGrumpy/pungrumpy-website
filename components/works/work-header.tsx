@@ -5,14 +5,14 @@ import Image from 'next/image'
 
 import { Badge } from '@/components/ui/badge'
 import {
-  gerProjectTypeLabel,
   getMaintainStatusIcon,
   getMaintainStatusLabel,
   getMaintainStatusVariant,
   getProjectStageIcon,
   getProjectStageLabel,
   getProjectStageVariant,
-  getProjectTypeIcon
+  getProjectTypeIcon,
+  getProjectTypeLabel
 } from '@/lib/variant'
 import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
@@ -94,7 +94,7 @@ export default function WorkHeader({
             size="md"
             icon={getProjectTypeIcon(projectType)}
           >
-            {gerProjectTypeLabel(projectType)}
+            {getProjectTypeLabel(projectType)}
           </Badge>
         </motion.div>
       </div>

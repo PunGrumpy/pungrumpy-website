@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import { LucideIcon } from 'lucide-react'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
@@ -50,30 +49,31 @@ const badgeVariants = cva(
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {
-  icon?: LucideIcon
+  icon?: React.ReactElement
 }
 
 function Badge({
   className,
   variant,
   size,
-  icon: Icon,
+  icon,
   children,
   ...props
 }: BadgeProps) {
-  const IconComponent = Icon
-
   return (
     <div className={cn(badgeVariants({ variant, size }), className)} {...props}>
-      {IconComponent && (
-        <IconComponent
-          className={cn('mr-1', {
-            'size-3': size === 'sm',
-            'size-4': size === 'md',
-            'size-5': size === 'lg'
-          })}
-        />
-      )}
+      {icon &&
+        React.cloneElement(icon, {
+          className: cn(
+            'mr-1',
+            {
+              'size-3': size === 'sm',
+              'size-4': size === 'md',
+              'size-5': size === 'lg'
+            },
+            icon.props.className
+          )
+        })}
       {children}
     </div>
   )

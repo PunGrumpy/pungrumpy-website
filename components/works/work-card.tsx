@@ -16,7 +16,7 @@ import {
   getProjectStageIcon,
   getProjectStageLabel,
   getProjectStageVariant,
-  getProjectTypeIconElement
+  getProjectTypeIcon
 } from '@/lib/variant'
 import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
@@ -65,7 +65,7 @@ export function WorkCard({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="inline-flex items-center rounded-full border-transparent bg-primary/10 p-2 text-xs text-primary shadow backdrop-blur-sm">
-                {getProjectTypeIconElement(projectType)}
+                {getProjectTypeIcon(projectType)}
               </div>
               <h3 className="font-semibold">{name}</h3>
             </div>
