@@ -6,6 +6,9 @@ import { projectsQuery } from '@/sanity/lib/query'
 import type { ProjectInterface } from '@/types'
 
 export const metadata: Metadata = {
+  metadataBase: process.env.NEXT_PUBLIC_METADATA_BASE
+    ? new URL(`${process.env.NEXT_PUBLIC_METADATA_BASE}/works`)
+    : new URL('http://localhost:3000/works'),
   title: 'Works',
   description: 'A collection of my works and projects.'
 }
