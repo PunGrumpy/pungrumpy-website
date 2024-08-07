@@ -49,7 +49,7 @@ export default function WorkContent({
       <div className="space-y-8 md:col-span-2">
         <section>
           <h2 className="mb-4 text-2xl font-semibold">Project Description</h2>
-          <div className="prose prose-invert max-w-none font-normal text-primary/90">
+          <div className="prose prose-invert max-w-none text-primary/90">
             <PortableText value={description} />
           </div>
         </section>
