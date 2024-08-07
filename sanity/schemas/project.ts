@@ -118,8 +118,8 @@ const project = defineType({
       fields: [
         {
           name: 'alt',
-          title: 'Alt',
-          type: 'string'
+          type: 'string',
+          title: 'Alternative text'
         }
       ]
     },
