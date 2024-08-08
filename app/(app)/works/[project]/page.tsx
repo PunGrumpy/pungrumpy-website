@@ -78,7 +78,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   }
 
   return (
-    <div className="container z-10 mx-auto max-w-6xl px-4 py-8">
+    <main className="z-10 flex max-w-6xl flex-col space-y-16">
       <WorkHeader
         name={project.name}
         tagline={project.tagline}
@@ -101,6 +101,6 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
           contributors={project.contributors}
         />
       </div>
-    </div>
+    </main>
   )
 }

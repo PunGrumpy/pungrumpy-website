@@ -40,7 +40,7 @@ export default function WorkHeader({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="relative mb-12"
+      className="relative"
     >
       <div className="inset-0 z-10 bg-gradient-to-b from-transparent to-background md:absolute" />
       <div className="rounded-xl bg-gradient-to-b from-primary/20 to-transparent p-px">
