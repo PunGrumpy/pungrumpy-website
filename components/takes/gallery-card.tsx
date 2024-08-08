@@ -23,10 +23,12 @@ export function GalleryCard({ take }: GalleryCardProps) {
           />
         </div>
         <div className="p-4">
-          <h3 className="mb-2 h-14 text-lg font-semibold">{take.title}</h3>
-          <p className="mb-2 text-sm text-muted-foreground">
-            {formatDateString(take.date)}
-          </p>
+          <div className="h-20">
+            <h3 className="mb-2 text-lg font-semibold">{take.title}</h3>
+            <p className="mb-2 text-sm text-muted-foreground">
+              {formatDateString(take.date)}
+            </p>
+          </div>
           <div className="mb-2 mt-4 flex items-center justify-between">
             <div className="flex flex-wrap gap-2">
               {take.tags.map((tag, index) => (
