@@ -130,7 +130,7 @@ export function TakesGallery({
             />
           ))}
         </div>
-        <div className="flex w-60 items-center rounded-[32px] border border-border bg-background p-3">
+        <div className="flex items-center rounded-[32px] border border-border bg-background p-3 md:w-60">
           <Input
             placeholder="Search"
             value={searchQuery}

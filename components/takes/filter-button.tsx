@@ -19,7 +19,7 @@ export function FilterButton({
   return (
     <Button
       variant="outline"
-      className={`flex h-12 min-w-40 items-center justify-between gap-4 rounded-[20px] transition duration-300 ease-in-out ${
+      className={`flex h-12 w-full items-center justify-between gap-4 rounded-[20px] transition duration-300 ease-in-out md:w-48 ${
         isActive
           ? 'border-muted-foreground/25 bg-muted'
           : 'hover:border-muted-foreground/50 hover:bg-muted'
