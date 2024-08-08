@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
+import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { formatDateString } from '@/lib/utils'
 import { TakeInterface } from '@/types'
@@ -11,7 +12,7 @@ interface GalleryCardProps {
 
 export function GalleryCard({ take }: GalleryCardProps) {
   return (
-    <Card className="m-4 overflow-hidden md:w-[342px]">
+    <Card className="md:w-[calc(33.33% - 16px)] w-full overflow-hidden">
       <CardContent className="p-0">
         <div className="relative aspect-square">
           <Image
@@ -29,12 +30,9 @@ export function GalleryCard({ take }: GalleryCardProps) {
           <div className="mb-2 flex items-center justify-between">
             <div className="flex flex-wrap gap-2">
               {take.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="rounded-full bg-secondary px-2 py-1 text-xs text-secondary-foreground"
-                >
+                <Badge key={index} variant="secondary" size="sm">
                   {tag}
-                </span>
+                </Badge>
               ))}
             </div>
           </div>

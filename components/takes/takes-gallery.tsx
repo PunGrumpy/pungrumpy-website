@@ -149,7 +149,7 @@ export function TakesGallery({
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-16 lg:grid-cols-3"
         >
           {filteredAndSortedTakes.length === 0 ? (
             <motion.p
