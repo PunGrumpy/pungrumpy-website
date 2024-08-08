@@ -6,7 +6,7 @@ import { Header } from '@/components/layout/header'
 import { Sitemap } from '@/config/sitemap'
 import { formatDateString } from '@/lib/utils'
 import { sanityFetcher } from '@/sanity/lib/client'
-import type { ProjectInterface, UpdateInterface } from '@/types'
+import type { ProjectInterface, TakeInterface, UpdateInterface } from '@/types'
 
 export const viewport: Viewport = {
   themeColor: [
@@ -108,6 +108,11 @@ export default async function AppLayout({ children }: AppLayoutProps) {
     tags: ['updates']
   })
 
+  const take: TakeInterface[] = await sanityFetcher({
+    query: `*[_type == "take"]`,
+    tags: ['takes']
+  })
+
   return (
     <div className="flex flex-row flex-wrap items-center justify-center gap-14 rounded-3xl p-14 text-start">
       <Grid />
@@ -121,6 +126,7 @@ export default async function AppLayout({ children }: AppLayoutProps) {
             ' '
           )[0] || '-'
         }
+        totalTake={take.length}
       />
       {children}
       <Footer />

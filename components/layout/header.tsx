@@ -14,18 +14,18 @@ import { cn } from '@/lib/utils'
 
 export interface HeaderProps {
   className?: string
-  selectedButton?: 'Works' | 'Updates' | 'CV'
   totalProject?: number
   yearUpdate?: string
   monthUpdate?: string
+  totalTake?: number
 }
 
 export function Header({
   className,
-  selectedButton,
   totalProject,
   yearUpdate,
-  monthUpdate
+  monthUpdate,
+  totalTake
 }: HeaderProps) {
   const pathname = usePathname()
   const [isDrawerOpen, setDrawerOpen] = useState(false)
@@ -96,12 +96,11 @@ export function Header({
                   onClick={() => setDrawerOpen(false)}
                 />
                 <HeaderButton
-                  href="https://cv.pungrumpy.com"
-                  label="CV"
-                  total="Info"
-                  value="More"
-                  isSelected={selectedButton === 'CV'}
-                  isExternal
+                  href="/takes"
+                  label="Takes"
+                  total="Taken"
+                  value={totalTake?.toString() || '0'}
+                  isSelected={pathname === '/takes'}
                   onClick={() => setDrawerOpen(false)}
                 />
               </motion.div>
@@ -129,12 +128,11 @@ export function Header({
           isSelected={pathname === '/updates'}
         />
         <HeaderButton
-          href="https://cv.pungrumpy.com"
-          label="CV"
-          total="Info"
-          value="More"
-          isSelected={selectedButton === 'CV'}
-          isExternal
+          href="/takes"
+          label="Takes"
+          total="Taken"
+          value={totalTake?.toString() || '0'}
+          isSelected={pathname === '/takes'}
         />
         <Button
           variant="outline"

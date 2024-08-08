@@ -61,11 +61,7 @@ export function Footer({ className }: FooterProps) {
           items={[
             { label: 'Works', href: '/works' },
             { label: 'Updates', href: '/updates' },
-            {
-              label: 'Takes',
-              href: 'https://takes.pungrumpy.com/',
-              isExternal: true
-            },
+            { label: 'Takes', href: '/takes' },
             {
               label: 'Curriculum Vitae',
               href: 'https://cv.pungrumpy.com/',
