@@ -117,7 +117,7 @@ export function TakesGallery({
   }
 
   return (
-    <div className="z-10 flex w-full max-w-6xl flex-col space-y-16 rounded-xl">
+    <main className="z-10 flex w-full max-w-6xl flex-col space-y-16 rounded-xl">
       <div className="flex flex-wrap items-center justify-between gap-5">
         <div className="flex flex-row flex-wrap items-center justify-start gap-5 rounded-[32px] border border-border bg-background p-3">
           {(['Date', 'Title', 'Random'] as FilterType[]).map(filterType => (
@@ -167,6 +167,6 @@ export function TakesGallery({
           )}
         </motion.div>
       </AnimatePresence>
-    </div>
+    </main>
   )
 }
