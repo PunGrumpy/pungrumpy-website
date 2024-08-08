@@ -65,14 +65,6 @@ export const takeQuery = groq`*[_type == 'take'] | order(date asc) {
     caption
   },
   tags,
-  description,
-  camera,
-  settings {
-    aperture,
-    shutterSpeed,
-    iso,
-    focalLength
-  }
 }`
 
 export const takeBySlugQuery = groq`*[_type == 'take' && slug.current == $slug][0] {
