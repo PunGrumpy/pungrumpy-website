@@ -11,7 +11,7 @@ interface GalleryCardProps {
 
 export function GalleryCard({ take }: GalleryCardProps) {
   return (
-    <Card className="m-2 overflow-hidden">
+    <Card className="m-4 overflow-hidden md:w-[342px]">
       <CardContent className="p-0">
         <div className="relative aspect-square">
           <Image
