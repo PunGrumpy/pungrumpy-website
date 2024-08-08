@@ -10,7 +10,7 @@ import { useState } from 'react'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { cn } from '@/lib/utils'
+import { cn, formatDateString } from '@/lib/utils'
 
 export interface HeaderProps {
   className?: string
@@ -87,10 +87,13 @@ export function Header({
                 <HeaderButton
                   href="/updates"
                   label="Updates"
-                  total={yearUpdate || new Date().getFullYear().toString()}
+                  total={
+                    yearUpdate ||
+                    formatDateString(Date(), 'short').split(' ')[2]
+                  }
                   value={
                     monthUpdate ||
-                    new Date().toLocaleString('en-US', { month: 'short' })
+                    formatDateString(Date(), 'short').split(' ')[0]
                   }
                   isSelected={pathname === '/updates'}
                   onClick={() => setDrawerOpen(false)}
@@ -120,11 +123,8 @@ export function Header({
         <HeaderButton
           href="/updates"
           label="Updates"
-          total={yearUpdate || new Date().getFullYear().toString()}
-          value={
-            monthUpdate ||
-            new Date().toLocaleString('en-US', { month: 'short' })
-          }
+          value={monthUpdate || formatDateString(Date(), 'short').split(' ')[0]}
+          total={yearUpdate || formatDateString(Date(), 'short').split(' ')[2]}
           isSelected={pathname === '/updates'}
         />
         <HeaderButton
