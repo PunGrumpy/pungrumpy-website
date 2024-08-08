@@ -135,7 +135,7 @@ export function TakesGallery({
             placeholder="Search"
             value={searchQuery}
             onChange={handleSearch}
-            className="text-md border-muted-foreground/2 h-12 rounded-[20px] border bg-transparent pr-10 leading-7 transition duration-300 ease-in-out"
+            className="text-md h-12 rounded-[20px] border bg-transparent pr-10 leading-7 transition duration-300 ease-in-out"
             endIcon={<SearchIcon className="size-5 text-muted-foreground" />}
           />
         </div>
