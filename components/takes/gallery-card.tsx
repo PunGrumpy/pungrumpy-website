@@ -27,7 +27,7 @@ export function GalleryCard({ take }: GalleryCardProps) {
           <p className="mb-2 text-sm text-muted-foreground">
             {formatDateString(take.date)}
           </p>
-          <div className="mb-2 flex items-center justify-between">
+          <div className="mb-2 mt-4 flex items-center justify-between">
             <div className="flex flex-wrap gap-2">
               {take.tags.map((tag, index) => (
                 <Badge key={index} variant="secondary" size="sm">
