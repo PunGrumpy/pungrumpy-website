@@ -23,7 +23,7 @@ export function GalleryCard({ take }: GalleryCardProps) {
           />
         </div>
         <div className="p-4">
-          <h3 className="mb-2 text-lg font-semibold">{take.title}</h3>
+          <h3 className="mb-2 h-14 text-lg font-semibold">{take.title}</h3>
           <p className="mb-2 text-sm text-muted-foreground">
             {formatDateString(take.date)}
           </p>
