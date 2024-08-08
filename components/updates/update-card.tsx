@@ -28,7 +28,7 @@ export function UpdateCard({
       animate={{ opacity: 1, transform: 'translateY(0)' }}
       transition={{ duration: 0.5, delay: index * 0.25 }}
     >
-      <article className="z-10 flex w-full max-w-6xl flex-wrap items-center gap-8 rounded-xl p-4 text-left text-lg text-muted-foreground sm:gap-14">
+      <article className="z-10 flex w-full max-w-6xl flex-wrap items-center gap-8 rounded-xl text-left text-lg text-muted-foreground sm:gap-14">
         <div className="flex min-w-full flex-1 flex-col gap-4 sm:min-w-80 sm:gap-8">
           <div className="w-full text-sm leading-5 sm:text-base">
             {formatDateString(date)}

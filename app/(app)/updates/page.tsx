@@ -20,7 +20,7 @@ export default async function UpdatesPage() {
   })
 
   return (
-    <main className="space-y-8">
+    <main className="space-y-16">
       {updates.map((update, index) => (
         <UpdateCard
           key={update._id}
