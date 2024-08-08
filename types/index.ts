@@ -51,3 +51,33 @@ export interface UpdateInterface {
     alt?: string
   }
 }
+
+export interface TakeInterface {
+  _id: string
+  title: string
+  slug: string
+  date: string
+  takeImage: {
+    image: string
+    alt: string
+    caption?: string
+  }
+  tags: string[]
+  description: PortableTextBlock[]
+  camera: string
+  cameraType: 'dslr' | 'mirrorless' | 'film' | 'smartphone' | 'other'
+  lensType:
+    | 'wideAngle'
+    | 'standard'
+    | 'telephoto'
+    | 'macro'
+    | 'prime'
+    | 'zoom'
+    | 'other'
+  settings: {
+    aperture: string
+    shutterSpeed: string
+    iso: number
+    focalLength: string
+  }
+}

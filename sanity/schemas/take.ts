@@ -1,5 +1,5 @@
 import { Camera } from 'lucide-react'
-import { defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 const take = defineType({
   name: 'take',
@@ -81,6 +81,38 @@ const take = defineType({
       type: 'string',
       description: 'The camera used to take the photo'
     },
+    defineField({
+      name: 'cameraType',
+      title: 'Camera Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'DSLR', value: 'dslr' },
+          { title: 'Mirrorless', value: 'mirrorless' },
+          { title: 'Film', value: 'film' },
+          { title: 'Smartphone', value: 'smartphone' },
+          { title: 'Other', value: 'other' }
+        ]
+      },
+      validation: Rule => Rule.required()
+    }),
+    defineField({
+      name: 'lensType',
+      title: 'Lens Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Wide Angle', value: 'wideAngle' },
+          { title: 'Standard', value: 'standard' },
+          { title: 'Telephoto', value: 'telephoto' },
+          { title: 'Macro', value: 'macro' },
+          { title: 'Prime', value: 'prime' },
+          { title: 'Zoom', value: 'zoom' },
+          { title: 'Other', value: 'other' }
+        ]
+      },
+      validation: Rule => Rule.required()
+    }),
     {
       name: 'settings',
       title: 'Camera Settings',
