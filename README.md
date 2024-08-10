@@ -30,12 +30,15 @@ Welcome to the repository of my personal website. This project contain the code 
 - 🎨 Tailwind CSS for styling
 - 🎉 shadcn/ui for UI components
 - 🎬 Framer Motion for animations
+- 🍦 Spline for 3D design and animations
+- 📦 TypeScript
 - 📱 Responsive design
 - 🌗 Light / Dark mode
 - 💼 SEO friendly
 - 💄 Prettier - code formatting
 - 🚨 ESLint - linting
 - 💻 Sentry - error tracking
+- 📝 Sanity - headless CMS
 - 🍞 Bun - Package manager
 
 ## 🔨 Requirements
