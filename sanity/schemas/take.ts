@@ -72,7 +72,8 @@ const take = defineType({
     {
       name: 'description',
       title: 'Description',
-      type: 'text',
+      type: 'array',
+      of: [{ type: 'block' }],
       description: 'A detailed description of the photo'
     },
     {
