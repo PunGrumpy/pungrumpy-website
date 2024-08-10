@@ -49,25 +49,7 @@ export const updateQuery = groq`*[_type == 'update'] | order(date desc) {
     }
 }`
 
-export const takeQuery = groq`*[_type == 'take'] | order(date asc) {
-  _id,
-  _createdAt,
-  _updatedAt,
-  title,
-  "slug": slug.current,
-  date,
-  takeImage {
-    "image": asset->url,
-    "lqip": asset->metadata.lqip,
-    "palette": asset->metadata.palette,
-    "dimensions": asset->metadata.dimensions,
-    alt,
-    caption
-  },
-  tags,
-}`
-
-export const takeBySlugQuery = groq`*[_type == 'take' && slug.current == $slug][0] {
+export const takeQuery = groq`*[_type == 'take'] | order(date desc) {
   _id,
   _createdAt,
   _updatedAt,
@@ -88,6 +70,7 @@ export const takeBySlugQuery = groq`*[_type == 'take' && slug.current == $slug][
     aperture,
     shutterSpeed,
     iso,
+    exposureCompensation,
     focalLength
   }
 }`

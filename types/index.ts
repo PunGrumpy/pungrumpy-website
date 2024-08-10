@@ -17,6 +17,17 @@ export type ProjectStageType =
   | 'deprecated'
   | 'unknown'
 
+export type LensType =
+  | 'wideAngle'
+  | 'standard'
+  | 'telephoto'
+  | 'macro'
+  | 'prime'
+  | 'zoom'
+  | 'other'
+
+export type CameraType = 'dslr' | 'mirrorless' | 'film' | 'smartphone' | 'other'
+
 export interface ProjectInterface {
   _id: string
   name: string
@@ -60,24 +71,19 @@ export interface TakeInterface {
   takeImage: {
     image: string
     alt: string
+    lqip: string
     caption?: string
   }
   tags: string[]
   description: PortableTextBlock[]
   camera: string
-  cameraType: 'dslr' | 'mirrorless' | 'film' | 'smartphone' | 'other'
-  lensType:
-    | 'wideAngle'
-    | 'standard'
-    | 'telephoto'
-    | 'macro'
-    | 'prime'
-    | 'zoom'
-    | 'other'
+  cameraType: CameraType
+  lensType: LensType
   settings: {
     aperture: string
     shutterSpeed: string
     iso: number
+    exposureCompensation: string
     focalLength: string
   }
 }
