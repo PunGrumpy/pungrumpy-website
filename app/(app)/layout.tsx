@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
+        url: '/metadata/favicon.ico'
+      },
+      {
         media: '(prefers-color-scheme: dark)',
         url: '/metadata/favicon-dark.ico'
       },
