@@ -16,6 +16,10 @@
     <a aria-label="Sentry" href="https://sentry.io">
         <img alt="Sentry" src="https://img.shields.io/badge/Sentry-black?style=for-the-badge&logo=sentry&logoColor=" />
     </a>
+    <a aria-label="Sanity" href="https://www.sanity.io">
+        <img alt="Sanity" src="https://img.shields.io/badge/Sanity-black?style=for-the-badge&logo=sanity&logoColor=F03E2F" />
+    </a>
+
 </div>
 
 Welcome to the repository of my personal website. This project contain the code for my personal website, which is built with Next.js, TailwindCSS, shadcn/ui, and Framer Motion.
