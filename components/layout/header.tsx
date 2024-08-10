@@ -7,10 +7,13 @@ import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'
 
+import { HeaderButton } from '@/components/button/header-button'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { cn, formatDateString } from '@/lib/utils'
+
+import { ThemeToggleIcon } from '../button/theme-button'
 
 export interface HeaderProps {
   className?: string
@@ -106,6 +109,20 @@ export function Header({
                   isSelected={pathname === '/takes'}
                   onClick={() => setDrawerOpen(false)}
                 />
+                <a
+                  className="flex w-full flex-1 items-center justify-start gap-2 rounded-[20px] border border-border px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted"
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                >
+                  <div className="flex-1 p-2 text-xl font-medium leading-7">
+                    Theme
+                  </div>
+                  <div className="flex w-16 flex-col items-center justify-end text-center text-xs text-muted-foreground">
+                    <div>Toggle</div>
+                    <div className="text-base leading-6">
+                      {theme === 'dark' ? 'Light' : 'Dark'}
+                    </div>
+                  </div>
+                </a>
               </motion.div>
             )}
           </AnimatePresence>
@@ -140,55 +157,12 @@ export function Header({
           className="size-[62px] rounded-[20px] border-border hover:border-muted-foreground/50 hover:bg-muted"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         >
-          {theme === 'dark' ? (
-            <SunIcon className="size-5" />
-          ) : (
-            <MoonIcon className="size-5" />
-          )}
+          <ThemeToggleIcon
+            theme={theme === 'dark' ? 'light' : 'dark'}
+            className="size-5"
+          />
         </Button>
       </div>
     </div>
-  )
-}
-
-interface HeaderButtonProps {
-  href: string
-  label: string
-  total: string
-  value: string
-  isSelected?: boolean
-  isExternal?: boolean
-  onClick?: () => void
-}
-
-const HeaderButton = ({
-  href,
-  label,
-  total,
-  value,
-  isSelected,
-  isExternal,
-  onClick
-}: HeaderButtonProps) => {
-  const ButtonComponent = isExternal ? 'a' : Link
-  const buttonProps = isExternal
-    ? { href, target: '_blank', rel: 'noopener noreferrer' }
-    : { href }
-
-  return (
-    <ButtonComponent
-      {...buttonProps}
-      onClick={onClick}
-      className={cn(
-        'flex min-w-24 flex-1 items-center justify-start gap-2 rounded-[20px] border border-border px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted',
-        isSelected ? 'border-muted-foreground/25 bg-muted' : ''
-      )}
-    >
-      <div className="flex-1 p-2 text-xl font-medium leading-7">{label}</div>
-      <div className="flex w-16 flex-col items-center justify-end text-center text-xs text-muted-foreground">
-        <div>{total}</div>
-        <div className="text-base leading-6">{value}</div>
-      </div>
-    </ButtonComponent>
   )
 }
