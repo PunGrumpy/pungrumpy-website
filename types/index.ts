@@ -83,6 +83,7 @@ export interface TakeInterface {
     aperture: string
     shutterSpeed: string
     iso: number
+    exposureCompensation: string
     focalLength: string
   }
 }

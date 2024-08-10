@@ -122,7 +122,16 @@ const take = defineType({
         { name: 'aperture', type: 'string', title: 'Aperture' },
         { name: 'shutterSpeed', type: 'string', title: 'Shutter Speed' },
         { name: 'iso', type: 'number', title: 'ISO' },
-        { name: 'focalLength', type: 'string', title: 'Focal Length' }
+        {
+          name: 'exposureCompensation',
+          type: 'string',
+          title: 'Exposure Compensation'
+        },
+        {
+          name: 'focalLength',
+          type: 'string',
+          title: 'Focal Length'
+        }
       ],
       description: 'Technical details of the photo'
     }
