@@ -43,64 +43,113 @@ export function WorkCard({
 }: WorkCardProps) {
   return (
     <motion.div
-      className="flex flex-col"
-      initial={{ opacity: 0, transform: 'translateY(-20px)' }}
-      animate={{ opacity: 1, transform: 'translateY(0)' }}
-      transition={{ duration: 0.5, delay: index * 0.25 }}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Card className="group bg-card">
-        <CardHeader className="p-2">
-          <Link href={`/works/${encodeURIComponent(slug)}`}>
-            <div className="relative h-40 w-full md:h-52">
-              <Image
-                src={coverImage}
-                alt={name}
-                fill
-                className="rounded-md transition-transform duration-200 group-hover:scale-95 group-hover:rounded-xl group-hover:border group-hover:border-primary/20 md:object-cover"
-              />
-            </div>
-          </Link>
-        </CardHeader>
-        <CardContent className="space-y-4 p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="inline-flex items-center rounded-full border-transparent bg-primary/10 p-2 text-xs text-primary shadow backdrop-blur-sm">
-                {getProjectTypeIcon(projectType)}
+      <motion.div whileHover="hover" initial="initial" className="h-full">
+        <Card className="relative h-full overflow-hidden bg-card">
+          <CardHeader className="p-2">
+            <Link href={`/works/${encodeURIComponent(slug)}`}>
+              <motion.div className="relative h-40 w-full overflow-hidden rounded-md md:h-52">
+                <Image
+                  src={coverImage}
+                  alt={name}
+                  fill
+                  className="object-cover"
+                />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"
+                  variants={{
+                    initial: { opacity: 0 },
+                    hover: { opacity: 1 }
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            </Link>
+          </CardHeader>
+          <CardContent className="space-y-4 p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <motion.div
+                  className="inline-flex items-center rounded-full bg-foreground/10 p-2 text-xs text-foreground shadow"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {getProjectTypeIcon(projectType)}
+                </motion.div>
+                <motion.h3 className="font-semibold">{name}</motion.h3>
               </div>
-              <h3 className="font-semibold">{name}</h3>
             </div>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <Badge
-              size="sm"
-              variant={getMaintainStatusVariant(maintainStatus)}
-              icon={getMaintainStatusIcon(maintainStatus)}
+            <div className="flex flex-wrap gap-2">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Badge
+                  size="sm"
+                  variant={getMaintainStatusVariant(maintainStatus)}
+                  icon={getMaintainStatusIcon(maintainStatus)}
+                >
+                  {getMaintainStatusLabel(maintainStatus)}
+                </Badge>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Badge
+                  size="sm"
+                  variant={getProjectStageVariant(projectStage)}
+                  icon={getProjectStageIcon(projectStage)}
+                >
+                  {getProjectStageLabel(projectStage)}
+                </Badge>
+              </motion.div>
+            </div>
+            <motion.div
+              variants={{
+                hover: { opacity: 1 }
+              }}
+              transition={{ duration: 0.3 }}
             >
-              {getMaintainStatusLabel(maintainStatus)}
-            </Badge>
-            <Badge
-              size="sm"
-              variant={getProjectStageVariant(projectStage)}
-              icon={getProjectStageIcon(projectStage)}
+              <Separator className="bg-foreground/10" />
+            </motion.div>
+            <motion.p className="h-10 text-sm text-muted-foreground">
+              {tagline}
+            </motion.p>
+          </CardContent>
+          <CardFooter className="px-4">
+            <Link
+              href={`/works/${encodeURIComponent(slug)}`}
+              className="w-full"
             >
-              {getProjectStageLabel(projectStage)}
-            </Badge>
-          </div>
-          <Separator className="bg-primary/10" />
-          <p className="h-10 text-sm text-muted-foreground">{tagline}</p>
-        </CardContent>
-        <CardFooter className="px-4">
-          <Link href={`/works/${encodeURIComponent(slug)}`} className="w-full">
-            <Button
-              variant="outline"
-              className="w-full rounded-[10px] hover:border-primary/10"
-            >
-              <span>Show more</span>
-              <ChevronRight className="ml-2 size-4" />
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
+              <motion.div
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+              >
+                <Button
+                  variant="outline"
+                  className="w-full rounded-[10px] hover:border-primary/25"
+                >
+                  <span>Show more</span>
+                  <motion.div
+                    variants={{
+                      hover: { x: 5 }
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronRight className="ml-2 size-4" />
+                  </motion.div>
+                </Button>
+              </motion.div>
+            </Link>
+          </CardFooter>
+        </Card>
+      </motion.div>
     </motion.div>
   )
 }
