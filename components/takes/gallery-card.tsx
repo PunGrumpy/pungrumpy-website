@@ -28,6 +28,7 @@ export function GalleryCard({ take }: GalleryCardProps) {
             src={take.takeImage.image}
             alt={take.takeImage.alt}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
             className="object-cover"
           />
           <AnimatePresence>
