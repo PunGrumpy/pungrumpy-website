@@ -109,12 +109,7 @@ export default function WorkContent({
             {contributors && contributors.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-2">
                 {contributors.map((contributor, index) => (
-                  <Badge
-                    key={index}
-                    variant="subtle"
-                    color="default"
-                    className="px-2 py-1"
-                  >
+                  <Badge key={index} variant="outline" className="px-2 py-1">
                     {contributor}
                   </Badge>
                 ))}

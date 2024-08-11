@@ -8,7 +8,8 @@ const badgeVariants = tv({
   variants: {
     variant: {
       filled: '',
-      subtle: 'bg-opacity-10'
+      subtle: 'bg-opacity-10',
+      outline: 'border border-border'
     },
     color: {
       default: 'bg-primary text-primary-foreground',
@@ -31,19 +32,23 @@ const badgeVariants = tv({
   },
   compoundVariants: [
     {
+      variant: 'outline',
+      class: 'text-primary bg-transparent border-border'
+    },
+    {
       variant: 'subtle',
       color: 'default',
-      class: 'text-primary bg-primary'
+      class: 'text-primary bg-primary/10'
     },
     {
       variant: 'subtle',
       color: 'secondary',
-      class: 'text-secondary bg-secondary'
+      class: 'text-secondary bg-secondary/10'
     },
     {
       variant: 'subtle',
       color: 'destructive',
-      class: 'text-destructive bg-destructive'
+      class: 'text-destructive bg-destructive/10'
     },
     {
       variant: 'subtle',
