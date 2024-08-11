@@ -58,7 +58,12 @@ export default function WorkContent({
           <h2 className="mb-4 text-2xl font-semibold">Technologies Used</h2>
           <div className="flex flex-wrap gap-2">
             {technologies.map(tech => (
-              <Badge key={tech} variant="secondary" className="px-3 py-1">
+              <Badge
+                key={tech}
+                variant="filled"
+                color="secondary"
+                className="px-3 py-1"
+              >
                 {tech}
               </Badge>
             ))}
@@ -104,7 +109,12 @@ export default function WorkContent({
             {contributors && contributors.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-2">
                 {contributors.map((contributor, index) => (
-                  <Badge key={index} variant="outline" className="px-2 py-1">
+                  <Badge
+                    key={index}
+                    variant="subtle"
+                    color="default"
+                    className="px-2 py-1"
+                  >
                     {contributor}
                   </Badge>
                 ))}

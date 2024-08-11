@@ -5,12 +5,12 @@ import Image from 'next/image'
 
 import { Badge } from '@/components/ui/badge'
 import {
+  getMaintainStatusColor,
   getMaintainStatusIcon,
   getMaintainStatusLabel,
-  getMaintainStatusVariant,
+  getProjectStageColor,
   getProjectStageIcon,
   getProjectStageLabel,
-  getProjectStageVariant,
   getProjectTypeIcon,
   getProjectTypeLabel
 } from '@/lib/variant'
@@ -77,20 +77,23 @@ export default function WorkHeader({
         >
           <Badge
             size="md"
-            variant={getMaintainStatusVariant(maintainStatus)}
+            variant="subtle"
+            color={getMaintainStatusColor(maintainStatus)}
             icon={getMaintainStatusIcon(maintainStatus)}
           >
             {getMaintainStatusLabel(maintainStatus)}
           </Badge>
           <Badge
             size="md"
-            variant={getProjectStageVariant(projectStage)}
+            variant="subtle"
+            color={getProjectStageColor(projectStage)}
             icon={getProjectStageIcon(projectStage)}
           >
             {getProjectStageLabel(projectStage)}
           </Badge>
           <Badge
-            variant="inverted"
+            variant="filled"
+            color="secondary"
             size="md"
             icon={getProjectTypeIcon(projectType)}
           >

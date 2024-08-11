@@ -22,7 +22,7 @@ import { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
 
 type VariantInfo<T extends string> = {
   label: string
-  variant: BadgeProps['variant']
+  color: BadgeProps['color']
   icon: LucideIcon
 }
 
@@ -33,8 +33,8 @@ const createVariantGetter = <T extends string>(
   return {
     getLabel: (key: T): string =>
       variantMap[key]?.label ?? defaultVariant.label,
-    getVariant: (key: T): BadgeProps['variant'] =>
-      variantMap[key]?.variant ?? defaultVariant.variant,
+    getColor: (key: T): BadgeProps['color'] =>
+      variantMap[key]?.color ?? defaultVariant.color,
     getIcon: (key: T): ReactElement => {
       const Icon = variantMap[key]?.icon ?? defaultVariant.icon
       return <Icon className="size-4" />
@@ -48,52 +48,52 @@ const maintainStatusMap: Record<
 > = {
   active: {
     label: 'Actively Maintained',
-    variant: 'green-subtle',
+    color: 'green',
     icon: CircleCheck
   },
   minimal: {
     label: 'Minimal Maintenance',
-    variant: 'amber-subtle',
+    color: 'amber',
     icon: CircleAlert
   },
   inactive: {
     label: 'No Longer Maintained',
-    variant: 'red-subtle',
+    color: 'red',
     icon: CircleX
   },
-  unknown: { label: 'Unknown', variant: 'blue-subtle', icon: CircleDashed }
+  unknown: { label: 'Unknown', color: 'blue', icon: CircleDashed }
 }
 
 const projectStageMap: Record<
   ProjectStageType,
   VariantInfo<ProjectStageType>
 > = {
-  concept: { label: 'Concept', variant: 'purple-subtle', icon: Lightbulb },
+  concept: { label: 'Concept', color: 'purple', icon: Lightbulb },
   development: {
     label: 'In Development',
-    variant: 'blue-subtle',
+    color: 'blue',
     icon: Code2
   },
-  beta: { label: 'Beta', variant: 'amber-subtle', icon: Info },
-  released: { label: 'Released', variant: 'green-subtle', icon: Rocket },
-  deprecated: { label: 'Deprecated', variant: 'red-subtle', icon: Archive },
-  unknown: { label: 'Unknown', variant: 'blue-subtle', icon: CircleDashed }
+  beta: { label: 'Beta', color: 'amber', icon: Info },
+  released: { label: 'Released', color: 'green', icon: Rocket },
+  deprecated: { label: 'Deprecated', color: 'red', icon: Archive },
+  unknown: { label: 'Unknown', color: 'blue', icon: CircleDashed }
 }
 
 const projectTypeMap: Record<ProjectType, VariantInfo<ProjectType>> = {
   university: {
     label: 'University',
-    variant: 'blue-subtle',
+    color: 'blue',
     icon: GraduationCap
   },
-  client: { label: 'Client', variant: 'green-subtle', icon: BriefcaseBusiness },
-  personal: { label: 'Personal', variant: 'purple-subtle', icon: User },
+  client: { label: 'Client', color: 'green', icon: BriefcaseBusiness },
+  personal: { label: 'Personal', color: 'purple', icon: User },
   openSource: {
     label: 'Open Source',
-    variant: 'amber-subtle',
+    color: 'amber',
     icon: FolderOpen
   },
-  hackathon: { label: 'Hackathon', variant: 'red-subtle', icon: Trophy }
+  hackathon: { label: 'Hackathon', color: 'red', icon: Trophy }
 }
 
 const maintainStatusGetter = createVariantGetter(
@@ -106,18 +106,18 @@ const projectStageGetter = createVariantGetter(
 )
 const projectTypeGetter = createVariantGetter(projectTypeMap, {
   label: 'Unknown',
-  variant: 'blue-subtle',
+  color: 'blue',
   icon: CircleDashed
 })
 
 export const getMaintainStatusLabel = maintainStatusGetter.getLabel
-export const getMaintainStatusVariant = maintainStatusGetter.getVariant
+export const getMaintainStatusColor = maintainStatusGetter.getColor
 export const getMaintainStatusIcon = maintainStatusGetter.getIcon
 
 export const getProjectStageLabel = projectStageGetter.getLabel
-export const getProjectStageVariant = projectStageGetter.getVariant
+export const getProjectStageColor = projectStageGetter.getColor
 export const getProjectStageIcon = projectStageGetter.getIcon
 
 export const getProjectTypeLabel = projectTypeGetter.getLabel
-export const getProjectTypeVariant = projectTypeGetter.getVariant
+export const getProjectTypeColor = projectTypeGetter.getColor
 export const getProjectTypeIcon = projectTypeGetter.getIcon

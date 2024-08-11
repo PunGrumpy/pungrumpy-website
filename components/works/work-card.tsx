@@ -10,12 +10,12 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import {
+  getMaintainStatusColor,
   getMaintainStatusIcon,
   getMaintainStatusLabel,
-  getMaintainStatusVariant,
+  getProjectStageColor,
   getProjectStageIcon,
   getProjectStageLabel,
-  getProjectStageVariant,
   getProjectTypeIcon
 } from '@/lib/variant'
 import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
@@ -89,7 +89,8 @@ export function WorkCard({
               >
                 <Badge
                   size="sm"
-                  variant={getMaintainStatusVariant(maintainStatus)}
+                  variant="subtle"
+                  color={getMaintainStatusColor(maintainStatus)}
                   icon={getMaintainStatusIcon(maintainStatus)}
                 >
                   {getMaintainStatusLabel(maintainStatus)}
@@ -101,7 +102,8 @@ export function WorkCard({
               >
                 <Badge
                   size="sm"
-                  variant={getProjectStageVariant(projectStage)}
+                  variant="subtle"
+                  color={getProjectStageColor(projectStage)}
                   icon={getProjectStageIcon(projectStage)}
                 >
                   {getProjectStageLabel(projectStage)}

@@ -42,7 +42,12 @@ export function GalleryCard({ take }: GalleryCardProps) {
                 <p className="mb-2 text-sm">{formatDateString(take.date)}</p>
                 <div className="mb-2 flex flex-wrap gap-2">
                   {take.tags.map((tag, index) => (
-                    <Badge key={index} variant="secondary" size="sm">
+                    <Badge
+                      key={index}
+                      variant="filled"
+                      color="secondary"
+                      size="sm"
+                    >
                       {tag}
                     </Badge>
                   ))}
@@ -89,7 +94,7 @@ export function GalleryCard({ take }: GalleryCardProps) {
           </div>
           <div className="mb-2 mt-4 flex flex-wrap gap-2">
             {take.tags.map((tag, index) => (
-              <Badge key={index} variant="secondary" size="sm">
+              <Badge key={index} variant="filled" color="secondary" size="sm">
                 {tag}
               </Badge>
             ))}

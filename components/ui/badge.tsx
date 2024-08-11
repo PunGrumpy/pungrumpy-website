@@ -1,67 +1,120 @@
-import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'
 
-const badgeVariants = cva(
-  'inline-flex items-center rounded-full backdrop-blur-sm',
-  {
-    variants: {
-      variant: {
-        default:
-          'border-transparent bg-primary text-primary-foreground shadow ',
-        secondary: 'border-transparent bg-secondary text-secondary-foreground',
-        destructive:
-          'border-transparent bg-destructive text-destructive-foreground shadow',
-        outline: 'text-foreground bg-transparent border border-foreground/20',
-        ghost: 'text-foreground bg-transparent',
-        gray: 'text-foreground bg-gray-500',
-        'gray-subtle': 'text-gray-500 bg-gray-500/10',
-        blue: 'text-foreground bg-blue-500',
-        'blue-subtle': 'text-blue-500 bg-blue-500/10',
-        purple: 'text-foreground bg-purple-500',
-        'purple-subtle': 'text-purple-500 bg-purple-500/10',
-        amber: 'text-foreground bg-amber-500',
-        'amber-subtle': 'text-amber-500 bg-amber-500/10',
-        red: 'text-foreground bg-red-500',
-        'red-subtle': 'text-red-500 bg-red-500/10',
-        pink: 'text-foreground bg-pink-500',
-        'pink-subtle': 'text-pink-500 bg-pink-500/10',
-        green: 'text-foreground bg-green-500',
-        'green-subtle': 'text-green-500 bg-green-500/10',
-        teal: 'text-foreground bg-teal-500',
-        'teal-subtle': 'text-teal-500 bg-teal-500/10',
-        inverted: 'text-background bg-primary'
-      },
-      size: {
-        sm: 'text-xs px-2 py-1',
-        md: 'text-sm px-3 py-1.5',
-        lg: 'text-base px-4 py-2'
-      }
+const badgeVariants = tv({
+  base: 'inline-flex items-center rounded-full backdrop-blur-sm',
+  variants: {
+    variant: {
+      filled: '',
+      subtle: 'bg-opacity-10'
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'md'
+    color: {
+      default: 'bg-primary text-primary-foreground',
+      secondary: 'bg-secondary text-secondary-foreground',
+      destructive: 'bg-destructive text-destructive-foreground',
+      gray: 'bg-gray-500 text-white',
+      blue: 'bg-blue-500 text-white',
+      purple: 'bg-purple-500 text-white',
+      amber: 'bg-amber-500 text-white',
+      red: 'bg-red-500 text-white',
+      pink: 'bg-pink-500 text-white',
+      green: 'bg-green-500 text-white',
+      teal: 'bg-teal-500 text-white'
+    },
+    size: {
+      sm: 'text-xs px-2 py-1',
+      md: 'text-sm px-3 py-1.5',
+      lg: 'text-base px-4 py-2'
     }
+  },
+  compoundVariants: [
+    {
+      variant: 'subtle',
+      color: 'default',
+      class: 'text-primary bg-primary'
+    },
+    {
+      variant: 'subtle',
+      color: 'secondary',
+      class: 'text-secondary bg-secondary'
+    },
+    {
+      variant: 'subtle',
+      color: 'destructive',
+      class: 'text-destructive bg-destructive'
+    },
+    {
+      variant: 'subtle',
+      color: 'gray',
+      class: 'text-gray-500 bg-gray-500'
+    },
+    {
+      variant: 'subtle',
+      color: 'blue',
+      class: 'text-blue-500 bg-blue-500'
+    },
+    {
+      variant: 'subtle',
+      color: 'purple',
+      class: 'text-purple-500 bg-purple-500'
+    },
+    {
+      variant: 'subtle',
+      color: 'amber',
+      class: 'text-amber-500 bg-amber-500'
+    },
+    {
+      variant: 'subtle',
+      color: 'red',
+      class: 'text-red-500 bg-red-500'
+    },
+    {
+      variant: 'subtle',
+      color: 'pink',
+      class: 'text-pink-500 bg-pink-500'
+    },
+    {
+      variant: 'subtle',
+      color: 'green',
+      class: 'text-green-500 bg-green-500'
+    },
+    {
+      variant: 'subtle',
+      color: 'teal',
+      class: 'text-teal-500 bg-teal-500'
+    }
+  ],
+  defaultVariants: {
+    variant: 'filled',
+    color: 'default',
+    size: 'md'
   }
-)
+})
+
+type BadgeVariantProps = VariantProps<typeof badgeVariants>
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>,
+    BadgeVariantProps {
   icon?: React.ReactElement
 }
 
 function Badge({
   className,
   variant,
+  color,
   size,
   icon,
   children,
   ...props
 }: BadgeProps) {
   return (
-    <div className={cn(badgeVariants({ variant, size }), className)} {...props}>
+    <div
+      className={cn(badgeVariants({ variant, color, size }), className)}
+      {...props}
+    >
       {icon &&
         React.cloneElement(icon, {
           className: cn(
