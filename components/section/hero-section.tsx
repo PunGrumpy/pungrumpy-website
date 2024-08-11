@@ -68,7 +68,10 @@ export function HeroSection({ className }: HeroSectionProps) {
         transition={{ duration: 0.5, delay: 0.5 }}
         className="flex flex-1 items-center justify-center"
       >
-        <Scene />
+        <Scene
+          scene="https://prod.spline.design/wilNy8PO5GgG6gyi/scene.splinecode"
+          ratio={1 / 1}
+        />
       </motion.div>
     </div>
   )
