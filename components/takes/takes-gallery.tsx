@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { SearchIcon } from 'lucide-react'
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { FilterButton } from '@/components/takes/filter-button'
 import { GalleryCard } from '@/components/takes/gallery-card'

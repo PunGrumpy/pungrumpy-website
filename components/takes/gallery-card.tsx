@@ -1,8 +1,10 @@
+'use client'
+
 import { AnimatePresence, motion } from 'framer-motion'
 import { Aperture, Camera, Focus, SunDim, Timer, Zap } from 'lucide-react'
 import Image from 'next/image'
 import { PortableText } from 'next-sanity'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
