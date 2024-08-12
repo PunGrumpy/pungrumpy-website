@@ -23,17 +23,7 @@ export default async function WorksPage() {
     <main className="gap-15 z-10 mx-auto flex max-w-6xl flex-col items-center">
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-16 lg:grid-cols-3">
         {projects.map((project, index) => (
-          <WorkCard
-            key={project._id}
-            index={index}
-            name={project.name}
-            slug={project.slug}
-            maintainStatus={project.maintainStatus}
-            projectStage={project.projectStage}
-            projectType={project.projectType}
-            tagline={project.tagline}
-            coverImage={project.coverImage.image}
-          />
+          <WorkCard key={project._id} id={index} work={{ ...project }} />
         ))}
       </div>
     </main>

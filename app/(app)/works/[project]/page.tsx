@@ -80,25 +80,15 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   return (
     <main className="z-10 flex max-w-6xl flex-col space-y-16">
       <WorkHeader
-        name={project.name}
-        tagline={project.tagline}
-        maintainStatus={project.maintainStatus}
-        projectStage={project.projectStage}
-        projectType={project.projectType}
-        coverImage={project.coverImage.image}
-        alt={project.coverImage.alt || project.name}
+        work={{
+          ...project
+        }}
       />
       <div className="md:col-span-2">
         <WorkContent
-          description={project.description}
-          technologies={project.technologies}
-          startDate={project.startDate}
-          endDate={project.endDate || 'Present'}
-          projectUrl={project.projectUrl}
-          repositoryUrl={project.repository}
-          maintainStatus={project.maintainStatus}
-          projectStage={project.projectStage}
-          contributors={project.contributors}
+          work={{
+            ...project
+          }}
         />
       </div>
     </main>

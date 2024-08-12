@@ -14,27 +14,13 @@ import {
   getProjectTypeIcon,
   getProjectTypeLabel
 } from '@/lib/variant'
-import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
+import type { ProjectInterface } from '@/types'
 
 interface WorkHeaderProps {
-  name: string
-  tagline: string
-  maintainStatus: MaintainStatusType
-  projectStage: ProjectStageType
-  projectType: ProjectType
-  coverImage: string
-  alt: string
+  work: ProjectInterface
 }
 
-export default function WorkHeader({
-  name,
-  tagline,
-  maintainStatus,
-  projectStage,
-  projectType,
-  coverImage,
-  alt
-}: WorkHeaderProps) {
+export default function WorkHeader({ work }: WorkHeaderProps) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -45,8 +31,8 @@ export default function WorkHeader({
       <div className="inset-0 z-10 bg-gradient-to-b from-transparent to-background md:absolute" />
       <div className="rounded-xl bg-gradient-to-b from-primary/20 to-transparent p-px">
         <Image
-          src={coverImage}
-          alt={alt}
+          src={work.coverImage.image}
+          alt={work.coverImage.alt}
           width={1920}
           height={1080}
           className="size-full rounded-[calc(0.75rem-1px)] object-cover"
@@ -59,7 +45,7 @@ export default function WorkHeader({
           transition={{ delay: 0.2 }}
           className="shadow-text mb-2 text-4xl font-bold text-primary"
         >
-          {name}
+          {work.name}
         </motion.h1>
         <motion.p
           initial={{ y: 20, opacity: 0 }}
@@ -67,7 +53,7 @@ export default function WorkHeader({
           transition={{ delay: 0.3 }}
           className="shadow-text mb-4 text-xl text-primary/80"
         >
-          {tagline}
+          {work.tagline}
         </motion.p>
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -78,26 +64,26 @@ export default function WorkHeader({
           <Badge
             size="md"
             variant="subtle"
-            color={getMaintainStatusColor(maintainStatus)}
-            icon={getMaintainStatusIcon(maintainStatus)}
+            color={getMaintainStatusColor(work.maintainStatus)}
+            icon={getMaintainStatusIcon(work.maintainStatus)}
           >
-            {getMaintainStatusLabel(maintainStatus)}
+            {getMaintainStatusLabel(work.maintainStatus)}
           </Badge>
           <Badge
             size="md"
             variant="subtle"
-            color={getProjectStageColor(projectStage)}
-            icon={getProjectStageIcon(projectStage)}
+            color={getProjectStageColor(work.projectStage)}
+            icon={getProjectStageIcon(work.projectStage)}
           >
-            {getProjectStageLabel(projectStage)}
+            {getProjectStageLabel(work.projectStage)}
           </Badge>
           <Badge
             variant="filled"
             color="secondary"
             size="md"
-            icon={getProjectTypeIcon(projectType)}
+            icon={getProjectTypeIcon(work.projectType)}
           >
-            {getProjectTypeLabel(projectType)}
+            {getProjectTypeLabel(work.projectType)}
           </Badge>
         </motion.div>
       </div>

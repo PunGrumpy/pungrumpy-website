@@ -119,12 +119,15 @@ export default async function AppLayout({ children }: AppLayoutProps) {
       <Header
         totalProject={project.length}
         yearUpdate={
-          formatDateString(update[update.length - 1]?.date).split(' ')[2] || '-'
+          formatDateString(update[update.length - 1]?.date || '').split(
+            ' '
+          )[2] || '-'
         }
         monthUpdate={
-          formatDateString(update[update.length - 1]?.date, 'short').split(
-            ' '
-          )[0] || '-'
+          formatDateString(
+            update[update.length - 1]?.date || '',
+            'short'
+          ).split(' ')[0] || '-'
         }
         totalTake={take.length}
       />

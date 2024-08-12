@@ -9,36 +9,19 @@ import {
   Users
 } from 'lucide-react'
 import Link from 'next/link'
-import { PortableText, PortableTextBlock } from 'next-sanity'
+import { PortableText } from 'next-sanity'
 
 import { Icons } from '@/components/icons'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { formatDateString } from '@/lib/utils'
+import { ProjectInterface } from '@/types'
 
 interface WorkContentProps {
-  description: PortableTextBlock[]
-  technologies: string[]
-  startDate: string
-  endDate: string
-  projectUrl: string
-  repositoryUrl: string
-  maintainStatus?: string
-  projectStage?: string
-  contributors?: string[]
+  work: ProjectInterface
 }
 
-export default function WorkContent({
-  description,
-  technologies,
-  startDate,
-  endDate,
-  projectUrl,
-  repositoryUrl,
-  maintainStatus,
-  projectStage,
-  contributors
-}: WorkContentProps) {
+export default function WorkContent({ work }: WorkContentProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -50,14 +33,14 @@ export default function WorkContent({
         <section>
           <h2 className="mb-4 text-2xl font-semibold">Project Description</h2>
           <div className="prose prose-invert max-w-none text-primary/90">
-            <PortableText value={description} />
+            <PortableText value={work.description} />
           </div>
         </section>
 
         <section>
           <h2 className="mb-4 text-2xl font-semibold">Technologies Used</h2>
           <div className="flex flex-wrap gap-2">
-            {technologies.map(tech => (
+            {work.technologies.map(tech => (
               <Badge
                 key={tech}
                 variant="filled"
@@ -78,37 +61,39 @@ export default function WorkContent({
             <div className="flex items-center">
               <Calendar className="mr-2 size-5 text-primary" />
               <span className="text-primary/85">
-                {formatDateString(startDate)} -{' '}
-                {endDate === 'Present' ? 'Ongoing' : formatDateString(endDate)}
+                {formatDateString(work.startDate)} -{' '}
+                {work.endDate === 'Present'
+                  ? 'Ongoing'
+                  : formatDateString(work.endDate || '')}
               </span>
             </div>
-            {maintainStatus && (
+            {work.maintainStatus && (
               <div className="flex items-center">
                 <RefreshCw className="mr-2 size-5 text-primary" />
                 <span className="capitalize text-primary/85">
-                  {maintainStatus} Maintenance
+                  {work.maintainStatus} Maintenance
                 </span>
               </div>
             )}
-            {projectStage && (
+            {work.projectStage && (
               <div className="flex items-center">
                 <ActivityIcon className="mr-2 size-5 text-primary" />
                 <span className="capitalize text-primary/85">
-                  {projectStage}
+                  {work.projectStage}
                 </span>
               </div>
             )}
             <div className="flex items-center">
               <Users className="mr-2 size-5 text-primary" />
               <span className="text-primary/85">
-                {contributors && contributors.length > 0
-                  ? `${contributors.length} Contributors`
+                {work.contributors && work.contributors.length > 0
+                  ? `${work.contributors.length} Contributors`
                   : 'No Contributors'}
               </span>
             </div>
-            {contributors && contributors.length > 0 && (
+            {work.contributors && work.contributors.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-2">
-                {contributors.map((contributor, index) => (
+                {work.contributors.map((contributor, index) => (
                   <Badge key={index} variant="outline" className="px-2 py-1">
                     {contributor}
                   </Badge>
@@ -116,14 +101,14 @@ export default function WorkContent({
               </div>
             )}
             <div className="flex flex-col gap-2 pt-4">
-              {projectUrl && (
+              {work.projectUrl && (
                 <Button
                   asChild
                   variant="outline"
                   className="w-full justify-start"
                 >
                   <Link
-                    href={projectUrl}
+                    href={work.projectUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -132,14 +117,14 @@ export default function WorkContent({
                   </Link>
                 </Button>
               )}
-              {repositoryUrl && (
+              {work.repository && (
                 <Button
                   asChild
                   variant="outline"
                   className="w-full justify-start"
                 >
                   <Link
-                    href={repositoryUrl}
+                    href={work.repository}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

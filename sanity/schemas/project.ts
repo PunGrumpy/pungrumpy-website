@@ -113,7 +113,7 @@ const project = defineType({
       description: 'Upload a cover image for this project',
       options: {
         hotspot: true,
-        metadata: ['lqip']
+        metadata: ['lqip', 'palette']
       },
       fields: [
         {

@@ -30,6 +30,7 @@ export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $
     coverImage {
       "image": asset->url,
       "lqip": asset->metadata.lqip,
+      "palette": asset->metadata.palette,
       alt,
     },
     description,

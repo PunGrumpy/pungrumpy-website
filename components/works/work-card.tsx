@@ -18,43 +18,28 @@ import {
   getProjectStageLabel,
   getProjectTypeIcon
 } from '@/lib/variant'
-import type { MaintainStatusType, ProjectStageType, ProjectType } from '@/types'
+import type { ProjectInterface } from '@/types'
 
 interface WorkCardProps {
-  index: number
-  name: string
-  slug: string
-  maintainStatus: MaintainStatusType
-  projectStage: ProjectStageType
-  projectType: ProjectType
-  tagline: string
-  coverImage: string
+  id: number
+  work: ProjectInterface
 }
 
-export function WorkCard({
-  index,
-  name,
-  slug,
-  maintainStatus,
-  projectStage,
-  projectType,
-  tagline,
-  coverImage
-}: WorkCardProps) {
+export function WorkCard({ id, work }: WorkCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: id * 0.1 }}
     >
       <motion.div whileHover="hover" initial="initial" className="h-full">
         <Card className="relative h-full overflow-hidden bg-card">
           <CardHeader className="p-2">
-            <Link href={`/works/${encodeURIComponent(slug)}`}>
+            <Link href={`/works/${encodeURIComponent(work.slug)}`}>
               <motion.div className="relative h-40 w-full overflow-hidden rounded-md md:h-52">
                 <Image
-                  src={coverImage}
-                  alt={name}
+                  src={work.coverImage.image}
+                  alt={work.coverImage.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
@@ -78,9 +63,9 @@ export function WorkCard({
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {getProjectTypeIcon(projectType)}
+                  {getProjectTypeIcon(work.projectType)}
                 </motion.div>
-                <motion.h3 className="font-semibold">{name}</motion.h3>
+                <motion.h3 className="font-semibold">{work.name}</motion.h3>
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -91,10 +76,10 @@ export function WorkCard({
                 <Badge
                   size="sm"
                   variant="subtle"
-                  color={getMaintainStatusColor(maintainStatus)}
-                  icon={getMaintainStatusIcon(maintainStatus)}
+                  color={getMaintainStatusColor(work.maintainStatus)}
+                  icon={getMaintainStatusIcon(work.maintainStatus)}
                 >
-                  {getMaintainStatusLabel(maintainStatus)}
+                  {getMaintainStatusLabel(work.maintainStatus)}
                 </Badge>
               </motion.div>
               <motion.div
@@ -104,10 +89,10 @@ export function WorkCard({
                 <Badge
                   size="sm"
                   variant="subtle"
-                  color={getProjectStageColor(projectStage)}
-                  icon={getProjectStageIcon(projectStage)}
+                  color={getProjectStageColor(work.projectStage)}
+                  icon={getProjectStageIcon(work.projectStage)}
                 >
-                  {getProjectStageLabel(projectStage)}
+                  {getProjectStageLabel(work.projectStage)}
                 </Badge>
               </motion.div>
             </div>
@@ -120,12 +105,12 @@ export function WorkCard({
               <Separator className="bg-foreground/10" />
             </motion.div>
             <motion.p className="h-10 text-sm text-muted-foreground">
-              {tagline}
+              {work.tagline}
             </motion.p>
           </CardContent>
           <CardFooter className="px-4">
             <Link
-              href={`/works/${encodeURIComponent(slug)}`}
+              href={`/works/${encodeURIComponent(work.slug)}`}
               className="w-full"
             >
               <motion.div
