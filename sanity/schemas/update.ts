@@ -27,7 +27,7 @@ const update = defineType({
       type: 'array',
       of: [{ type: 'block' }],
       description: 'A detailed description of the photo',
-      validation: rule => rule.required().min(10).max(1000)
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'coverImage',
