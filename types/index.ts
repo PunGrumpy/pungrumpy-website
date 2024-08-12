@@ -6,7 +6,9 @@ export type ProjectType =
   | 'personal'
   | 'openSource'
   | 'hackathon'
+
 export type MaintainStatusType = 'active' | 'minimal' | 'inactive' | 'unknown'
+
 export type ProjectStageType =
   | 'concept'
   | 'development'
@@ -14,6 +16,7 @@ export type ProjectStageType =
   | 'released'
   | 'deprecated'
   | 'unknown'
+
 export type LensType =
   | 'wideAngle'
   | 'standard'
@@ -22,38 +25,13 @@ export type LensType =
   | 'prime'
   | 'zoom'
   | 'other'
+
 export type CameraType = 'dslr' | 'mirrorless' | 'film' | 'smartphone' | 'other'
 
-interface ImageMetadata {
-  image: string
-  alt: string
-  lqip?: string
-  palette?: {
-    darkMuted?: { background: string; foreground: string }
-    lightVibrant?: { background: string; foreground: string }
-    darkVibrant?: { background: string; foreground: string }
-    vibrant?: { background: string; foreground: string }
-    dominant?: { background: string; foreground: string }
-    lightMuted?: { background: string; foreground: string }
-    muted?: { background: string; foreground: string }
-  }
-  dimensions?: {
-    width: number
-    height: number
-    aspectRatio: number
-  }
-}
-
-interface BaseContent {
+export interface ProjectInterface {
   _id: string
-  title: string
-  slug: string
-  date: string
-  description: PortableTextBlock[]
-}
-
-export interface ProjectInterface extends BaseContent {
   name: string
+  slug: string
   tagline: string
   startDate: string
   endDate?: string
@@ -63,19 +41,55 @@ export interface ProjectInterface extends BaseContent {
   projectType: ProjectType
   projectUrl: string
   repository: string
-  coverImage: ImageMetadata
+  coverImage: {
+    image: string
+    alt: string
+    lqip: string
+  }
+  description: PortableTextBlock[]
   technologies: string[]
 }
 
-export interface UpdateInterface extends Partial<BaseContent> {
+export interface UpdateInterface {
+  _id: string
   _createdAt: string
   _updatedAt?: string
-  coverImage: Omit<ImageMetadata, 'lqip' | 'palette' | 'dimensions'>
+  title: string
+  date: string
+  description: PortableTextBlock[]
+  coverImage: {
+    image: string
+    alt: string
+  }
 }
 
-export interface TakeInterface extends BaseContent {
-  takeImage: ImageMetadata & { caption?: string }
+export interface TakeInterface {
+  _id: string
+  title: string
+  slug: string
+  date: string
+  takeImage: {
+    image: string
+    alt: string
+    lqip: string
+    caption?: string
+    palette?: {
+      darkMuted?: { background: string; foreground: string }
+      lightVibrant?: { background: string; foreground: string }
+      darkVibrant?: { background: string; foreground: string }
+      vibrant?: { background: string; foreground: string }
+      dominant?: { background: string; foreground: string }
+      lightMuted?: { background: string; foreground: string }
+      muted?: { background: string; foreground: string }
+    }
+    dimensions?: {
+      width: number
+      height: number
+      aspectRatio: number
+    }
+  }
   tags: string[]
+  description: PortableTextBlock[]
   camera: string
   cameraType: CameraType
   lensType: LensType

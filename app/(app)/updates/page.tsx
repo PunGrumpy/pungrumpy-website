@@ -22,14 +22,7 @@ export default async function UpdatesPage() {
   return (
     <main className="space-y-16">
       {updates.map((update, index) => (
-        <UpdateCard
-          key={update._id}
-          index={index}
-          date={update.date}
-          title={update.title}
-          description={update.description}
-          coverImage={update.coverImage.image}
-        />
+        <UpdateCard key={update._id} id={index} update={{ ...update }} />
       ))}
     </main>
   )

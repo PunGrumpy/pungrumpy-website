@@ -24,8 +24,9 @@ const update = defineType({
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'text',
-      description: 'Write a brief description of the update',
+      type: 'array',
+      of: [{ type: 'block' }],
+      description: 'A detailed description of the photo',
       validation: rule => rule.required().min(10).max(1000)
     }),
     defineField({

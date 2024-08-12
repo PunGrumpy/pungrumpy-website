@@ -38,11 +38,11 @@ const itemVariants = {
   }
 }
 
-export function TakesGallery({
-  initialTakes
-}: {
+interface TakesGalleryProps {
   initialTakes: TakeInterface[]
-}) {
+}
+
+export function TakesGallery({ initialTakes }: TakesGalleryProps) {
   const [takes] = useState<TakeInterface[]>(initialTakes)
   const [activeFilter, setActiveFilter] = useState<FilterType>('Date')
   const [filterStates, setFilterStates] = useState<

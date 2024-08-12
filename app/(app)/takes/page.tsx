@@ -22,7 +22,7 @@ export default async function TakesPage() {
 
   return (
     <main className="z-10">
-      <TakesGallery initialTakes={takes} />
+      <TakesGallery initialTakes={{ ...takes }} />
     </main>
   )
 }
