@@ -1,5 +1,5 @@
 import { Camera } from 'lucide-react'
-import { defineField, defineType } from 'sanity'
+import { defineType } from 'sanity'
 
 const take = defineType({
   name: 'take',
@@ -83,7 +83,7 @@ const take = defineType({
       type: 'string',
       description: 'The camera used to take the photo'
     },
-    defineField({
+    {
       name: 'cameraType',
       title: 'Camera Type',
       type: 'string',
@@ -97,8 +97,8 @@ const take = defineType({
         ]
       },
       validation: Rule => Rule.required()
-    }),
-    defineField({
+    },
+    {
       name: 'lensType',
       title: 'Lens Type',
       type: 'string',
@@ -114,7 +114,7 @@ const take = defineType({
         ]
       },
       validation: Rule => Rule.required()
-    }),
+    },
     {
       name: 'settings',
       title: 'Camera Settings',

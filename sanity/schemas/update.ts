@@ -1,5 +1,5 @@
 import { CalendarIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
+import { defineType } from 'sanity'
 
 const update = defineType({
   name: 'update',
@@ -7,29 +7,29 @@ const update = defineType({
   type: 'document',
   icon: CalendarIcon,
   fields: [
-    defineField({
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
       description: 'Enter the title of the update',
       validation: rule => rule.required().max(200)
-    }),
-    defineField({
+    },
+    {
       name: 'date',
       title: 'Date',
       type: 'date',
       description: 'When was this update published?',
       validation: rule => rule.required()
-    }),
-    defineField({
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'array',
       of: [{ type: 'block' }],
       description: 'A detailed description of the photo',
       validation: rule => rule.required()
-    }),
-    defineField({
+    },
+    {
       name: 'coverImage',
       title: 'Cover Image',
       type: 'image',
@@ -44,13 +44,13 @@ const update = defineType({
           description: 'Important for SEO and accessibility.'
         }
       ]
-    })
+    }
   ],
   preview: {
     select: {
       title: 'title',
-      date: 'date',
-      media: 'image'
+      media: 'coverImage',
+      date: 'date'
     },
     prepare(selection) {
       const { title, date, media } = selection

@@ -1,5 +1,5 @@
 import { Package } from 'lucide-react'
-import { defineField, defineType } from 'sanity'
+import { defineType } from 'sanity'
 
 const project = defineType({
   name: 'project',
@@ -14,26 +14,26 @@ const project = defineType({
       type: 'string',
       description: 'Enter the name of the project'
     },
-    defineField({
+    {
       name: 'tagline',
       title: 'Tagline',
       type: 'string',
       validation: rule => rule.max(60).required()
-    }),
-    defineField({
+    },
+    {
       name: 'startDate',
       title: 'Start Date',
       type: 'date',
       description: 'When did you start working on this project?'
-    }),
-    defineField({
+    },
+    {
       name: 'endDate',
       title: 'End Date',
       type: 'date',
       description:
         'When did you finish working on this project? Leave blank if ongoing.'
-    }),
-    defineField({
+    },
+    {
       name: 'maintainStatus',
       title: 'Maintain Status',
       type: 'string',
@@ -46,8 +46,8 @@ const project = defineType({
         layout: 'radio'
       },
       description: 'Current maintenance status of the project'
-    }),
-    defineField({
+    },
+    {
       name: 'projectStage',
       title: 'Project Stage',
       type: 'string',
@@ -61,15 +61,15 @@ const project = defineType({
         ]
       },
       description: 'Current stage of the project lifecycle'
-    }),
-    defineField({
+    },
+    {
       name: 'contributors',
       title: 'Contributors',
       type: 'array',
       of: [{ type: 'string' }],
       description: 'List of contributors to the project'
-    }),
-    defineField({
+    },
+    {
       name: 'projectType',
       title: 'Project Type',
       type: 'string',
@@ -84,7 +84,7 @@ const project = defineType({
         layout: 'radio'
       },
       description: 'What type of project is this?'
-    }),
+    },
     {
       name: 'slug',
       title: 'Slug',
@@ -123,20 +123,20 @@ const project = defineType({
         }
       ]
     },
-    defineField({
+    {
       name: 'description',
       title: 'Description',
       type: 'array',
       of: [{ type: 'block' }],
       description: 'Write a full description about this project'
-    }),
-    defineField({
+    },
+    {
       name: 'technologies',
       title: 'Technologies',
       type: 'array',
       of: [{ type: 'string' }],
       description: 'List the technologies used in this project'
-    })
+    }
   ]
 })
 
