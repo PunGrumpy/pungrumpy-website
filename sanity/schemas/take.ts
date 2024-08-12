@@ -67,7 +67,8 @@ const take = defineType({
       options: {
         layout: 'tags'
       },
-      description: 'Tags to categorize the photo'
+      description: 'Tags to categorize the photo',
+      validation: Rule => Rule.required()
     },
     {
       name: 'description',
