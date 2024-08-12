@@ -54,6 +54,7 @@ export const takeQuery = groq`*[_type == 'take'] | order(date desc) {
   _createdAt,
   _updatedAt,
   title,
+  slug,
   date,
   takeImage {
     "image": asset->url,
@@ -66,6 +67,8 @@ export const takeQuery = groq`*[_type == 'take'] | order(date desc) {
   tags,
   description,
   camera,
+  cameraType,
+  lensType,
   settings {
     aperture,
     shutterSpeed,

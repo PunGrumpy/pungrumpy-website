@@ -37,10 +37,14 @@ export function GalleryCard({ take }: GalleryCardProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 overflow-y-auto bg-background/70 p-4 backdrop-blur-md"
+                className="absolute inset-0 overflow-y-auto bg-card/70 p-4 backdrop-blur-md"
               >
-                <h3 className="mb-2 text-lg font-semibold">{take.title}</h3>
-                <p className="mb-2 text-sm">{formatDateString(take.date)}</p>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  {take.title}
+                </h3>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  {formatDateString(take.date)}
+                </p>
                 <div className="mb-2 flex flex-wrap gap-2">
                   {take.tags.map((tag, index) => (
                     <Badge
@@ -53,13 +57,15 @@ export function GalleryCard({ take }: GalleryCardProps) {
                     </Badge>
                   ))}
                 </div>
-                <div className="mb-2 text-sm">
+                <div className="mb-2 text-sm text-foreground">
                   <PortableText value={take.description} />
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-xs">
+                <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
                   <div className="flex items-center">
                     <Camera className="mr-1 size-4" />
-                    <span>{take.camera}</span>
+                    <span>
+                      {take.camera} ({take.cameraType})
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <Aperture className="mr-1 size-4" />
@@ -79,20 +85,22 @@ export function GalleryCard({ take }: GalleryCardProps) {
                   </div>
                   <div className="flex items-center">
                     <Focus className="mr-1 size-4" />
-                    <span>{take.settings.focalLength} mm</span>
+                    <span>
+                      {take.settings.focalLength} mm ({take.lensType})
+                    </span>
                   </div>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-        <motion.div className="p-4">
-          <div className="h-20">
-            <h3 className="mb-2 text-lg font-semibold">{take.title}</h3>
-            <p className="mb-2 text-sm text-muted-foreground">
-              {formatDateString(take.date)}
-            </p>
-          </div>
+        <div className="p-4">
+          <h3 className="mb-2 text-lg font-semibold text-foreground">
+            {take.title}
+          </h3>
+          <p className="mb-2 text-sm text-muted-foreground">
+            {formatDateString(take.date)}
+          </p>
           <div className="mb-2 mt-4 flex flex-wrap gap-2">
             {take.tags.map((tag, index) => (
               <Badge key={index} variant="filled" color="secondary" size="sm">
@@ -100,7 +108,7 @@ export function GalleryCard({ take }: GalleryCardProps) {
               </Badge>
             ))}
           </div>
-        </motion.div>
+        </div>
       </CardContent>
     </Card>
   )

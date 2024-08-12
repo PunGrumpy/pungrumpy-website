@@ -73,6 +73,20 @@ export interface TakeInterface {
     alt: string
     lqip: string
     caption?: string
+    palette?: {
+      darkMuted?: { background: string; foreground: string }
+      lightVibrant?: { background: string; foreground: string }
+      darkVibrant?: { background: string; foreground: string }
+      vibrant?: { background: string; foreground: string }
+      dominant?: { background: string; foreground: string }
+      lightMuted?: { background: string; foreground: string }
+      muted?: { background: string; foreground: string }
+    }
+    dimensions?: {
+      width: number
+      height: number
+      aspectRatio: number
+    }
   }
   tags: string[]
   description: PortableTextBlock[]
