@@ -17,6 +17,8 @@ interface GalleryCardProps {
 
 export function GalleryCard({ take }: GalleryCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const dominantColor =
+    take.takeImage.palette?.dominant?.background || 'rgba(0, 0, 0, 0.5)'
 
   return (
     <Card
@@ -97,12 +99,14 @@ export function GalleryCard({ take }: GalleryCardProps) {
           </AnimatePresence>
         </div>
         <div className="p-4">
-          <h3 className="mb-2 text-lg font-semibold text-foreground">
-            {take.title}
-          </h3>
-          <p className="mb-2 text-sm text-muted-foreground">
-            {formatDateString(take.date)}
-          </p>
+          <div className="h-20">
+            <h3 className="mb-2 text-lg font-semibold text-foreground">
+              {take.title}
+            </h3>
+            <p className="mb-2 text-sm text-muted-foreground">
+              {formatDateString(take.date)}
+            </p>
+          </div>
           <div className="mb-2 mt-4 flex flex-wrap gap-2">
             {take.tags.map((tag, index) => (
               <Badge key={index} variant="filled" color="secondary" size="sm">
