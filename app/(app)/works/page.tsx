@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { projectFetch } from '@/app/(app)/actions'
+import { fetchProjects } from '@/app/(app)/actions'
 import { WorkCard } from '@/components/card/work-card'
 
 export const metadata: Metadata = {
@@ -11,11 +11,13 @@ export const metadata: Metadata = {
   description: 'A collection of my works and projects.'
 }
 
-export default function WorksPage() {
+export default async function WorksPage() {
+  const projects = await fetchProjects()
+
   return (
     <main className="gap-15 z-10 mx-auto flex max-w-6xl flex-col items-center">
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-16 lg:grid-cols-3">
-        {projectFetch.map((project, index) => (
+        {projects.map((project, index) => (
           <WorkCard key={project._id} id={index} work={{ ...project }} />
         ))}
       </div>

@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { takeFetch } from '@/app/(app)/actions'
+import { fetchTakes } from '@/app/(app)/actions'
 import { TakesGallery } from '@/components/takes/takes-gallery'
 
 export const metadata: Metadata = {
@@ -11,10 +11,12 @@ export const metadata: Metadata = {
   description: 'A collection of my takes and photos.'
 }
 
-export default function TakesPage() {
+export default async function TakesPage() {
+  const takes = await fetchTakes()
+
   return (
     <main className="z-10">
-      <TakesGallery initialTakes={takeFetch} />
+      <TakesGallery initialTakes={takes} />
     </main>
   )
 }

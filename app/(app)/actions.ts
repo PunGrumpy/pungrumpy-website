@@ -7,27 +7,29 @@ import {
 } from '@/sanity/lib/query'
 import type { ProjectInterface, TakeInterface, UpdateInterface } from '@/types'
 
-export const projectFetch: ProjectInterface[] = await sanityFetcher({
-  query: projectsQuery,
-  tags: ['projects']
-})
+export const fetchProjects = async (): Promise<ProjectInterface[]> =>
+  sanityFetcher({
+    query: projectsQuery,
+    tags: ['projects']
+  })
 
-export const projectFetchBySlug = async (
+export const fetchProjectBySlug = async (
   slug: string
-): Promise<ProjectInterface> => {
-  return await sanityFetcher({
+): Promise<ProjectInterface> =>
+  sanityFetcher({
     query: projectBySlugQuery,
     tags: ['project'],
     qParams: { slug }
   })
-}
 
-export const updateFetch: UpdateInterface[] = await sanityFetcher({
-  query: updateQuery,
-  tags: ['updates']
-})
+export const fetchUpdates = async (): Promise<UpdateInterface[]> =>
+  sanityFetcher({
+    query: updateQuery,
+    tags: ['updates']
+  })
 
-export const takeFetch: TakeInterface[] = await sanityFetcher({
-  query: takeQuery,
-  tags: ['takes']
-})
+export const fetchTakes = async (): Promise<TakeInterface[]> =>
+  sanityFetcher({
+    query: takeQuery,
+    tags: ['takes']
+  })

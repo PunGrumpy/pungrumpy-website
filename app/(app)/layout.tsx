@@ -5,10 +5,8 @@ import { Grid } from '@/components/layout/grid'
 import { Header } from '@/components/layout/header'
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/config/sitemap'
 import { formatDateString } from '@/lib/utils'
-import { sanityFetcher } from '@/sanity/lib/client'
-import type { ProjectInterface, TakeInterface, UpdateInterface } from '@/types'
 
-import { projectFetch, takeFetch, updateFetch } from './actions'
+import { fetchProjects, fetchTakes, fetchUpdates } from './actions'
 
 export const viewport: Viewport = {
   themeColor: [
@@ -99,24 +97,29 @@ interface AppLayoutProps {
   children: React.ReactNode
 }
 
-export default function AppLayout({ children }: AppLayoutProps) {
+export default async function AppLayout({ children }: AppLayoutProps) {
+  const [projects, updates, takes] = await Promise.all([
+    fetchProjects(),
+    fetchUpdates(),
+    fetchTakes()
+  ])
+
+  const latestUpdate = updates[updates.length - 1]
+  const updateYear = latestUpdate
+    ? formatDateString(latestUpdate.date).split(' ')[2]
+    : '-'
+  const updateMonth = latestUpdate
+    ? formatDateString(latestUpdate.date, 'short').split(' ')[0]
+    : '-'
+
   return (
     <div className="flex flex-row flex-wrap items-center justify-center gap-14 rounded-3xl p-14 text-start">
       <Grid />
       <Header
-        totalProject={projectFetch.length}
-        yearUpdate={
-          formatDateString(
-            updateFetch[updateFetch.length - 1]?.date || ''
-          ).split(' ')[2] || '-'
-        }
-        monthUpdate={
-          formatDateString(
-            updateFetch[updateFetch.length - 1]?.date || '',
-            'short'
-          ).split(' ')[0] || '-'
-        }
-        totalTake={takeFetch.length}
+        totalProject={projects.length}
+        yearUpdate={updateYear}
+        monthUpdate={updateMonth}
+        totalTake={takes.length}
       />
       {children}
       <Footer />

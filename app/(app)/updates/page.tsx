@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { updateFetch } from '@/app/(app)/actions'
+import { fetchUpdates } from '@/app/(app)/actions'
 import { UpdateCard } from '@/components/card/update-card'
 
 export const metadata: Metadata = {
@@ -11,10 +11,12 @@ export const metadata: Metadata = {
   description: 'A describe changelog of my personal website.'
 }
 
-export default function UpdatesPage() {
+export default async function UpdatesPage() {
+  const updates = await fetchUpdates()
+
   return (
     <main className="space-y-16">
-      {updateFetch.map((update, index) => (
+      {updates.map((update, index) => (
         <UpdateCard key={update._id} id={index} update={{ ...update }} />
       ))}
     </main>

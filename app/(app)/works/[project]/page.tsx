@@ -1,7 +1,7 @@
 import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { projectFetchBySlug } from '@/app/(app)/actions'
+import { fetchProjectBySlug } from '@/app/(app)/actions'
 import { WorkContent } from '@/components/works/work-content'
 import { WorkHeader } from '@/components/works/work-header'
 import { SITE_TITLE, SITE_URL } from '@/config/sitemap'
@@ -15,7 +15,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.project
-  const project = await projectFetchBySlug(slug)
+  const project = await fetchProjectBySlug(slug)
 
   const previousOGImages = (await parent).openGraph?.images || []
   const previousTwitterImages = (await parent).twitter?.images || []
@@ -61,7 +61,7 @@ export async function generateMetadata(
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const slug = params.project
-  const project = await projectFetchBySlug(slug)
+  const project = await fetchProjectBySlug(slug)
 
   if (!project) {
     notFound()
