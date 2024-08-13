@@ -12,30 +12,45 @@ interface HeroSectionProps {
   className?: string
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 }
+}
+
 export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
   return (
-    <div className="flex w-full max-w-6xl flex-wrap items-center gap-14 rounded-3xl">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="flex w-full max-w-6xl flex-wrap items-center gap-14 rounded-3xl"
+    >
       <div className={cn('flex min-w-80 flex-1 flex-col gap-8', className)}>
         <motion.h1
-          initial={{ opacity: 0, transform: 'translateY(-20px)' }}
-          animate={{ opacity: 1, transform: 'translateY(0)' }}
-          transition={{ duration: 0.5 }}
+          variants={itemVariants}
           className="xs:text-3xl text-5xl font-semibold leading-tight tracking-tight sm:text-6xl"
         >
           Hello, I&apos;m Noppakorn Kaewsalabnil
         </motion.h1>
         <motion.h2
-          initial={{ opacity: 0, transform: 'translateY(-20px)' }}
-          animate={{ opacity: 1, transform: 'translateY(0)' }}
-          transition={{ duration: 0.5, delay: 0.25 }}
+          variants={itemVariants}
           className="text-2xl font-semibold leading-normal tracking-tight text-muted-foreground"
         >
           DevOps Enthusiast and Computer Science Student
         </motion.h2>
         <motion.p
-          initial={{ opacity: 0, transform: 'translateY(-20px)' }}
-          animate={{ opacity: 1, transform: 'translateY(0)' }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          variants={itemVariants}
           className="text-lg leading-normal text-muted-foreground"
         >
           I&apos;m a dedicated computer science student at King Mongkut&apos;s
@@ -44,28 +59,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
           solutions and optimizing development processes.
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, transform: 'translateY(-20px)' }}
-          animate={{ opacity: 1, transform: 'translateY(0)' }}
-          transition={{ duration: 0.5, delay: 0.75 }}
+          variants={itemVariants}
           className="flex flex-wrap items-center gap-4"
         >
-          <Button
-            variant="outline"
-            size="default"
-            className="rounded-3xl p-6 hover:border-primary/25"
-            asChild
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="flex gap-4"
           >
-            <Link href="/works">
-              Explore My Portfolio
-              <ChevronRight className="ml-2 size-5" />
-            </Link>
-          </Button>
+            <Button
+              variant="outline"
+              size="default"
+              className="rounded-3xl p-6 hover:border-primary/25"
+              asChild
+            >
+              <Link href="/works">
+                Explore My Portfolio
+                <ChevronRight className="ml-2 size-5" />
+              </Link>
+            </Button>
+          </motion.div>
         </motion.div>
       </div>
       <motion.div
-        initial={{ opacity: 0, transform: 'translateY(-20px)' }}
-        animate={{ opacity: 1, transform: 'translateY(0)' }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        variants={itemVariants}
         className="flex flex-1 items-center justify-center"
       >
         <Scene
@@ -73,6 +91,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
           ratio={1 / 1}
         />
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
