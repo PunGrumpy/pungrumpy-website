@@ -90,6 +90,14 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setDrawerOpen(false)}
                 />
                 <HeaderButton
+                  href="/takes"
+                  label="Takes"
+                  total="Taken"
+                  value={totalTake?.toString() || '0'}
+                  isSelected={pathname === '/takes'}
+                  onClick={() => setDrawerOpen(false)}
+                />
+                <HeaderButton
                   href="/updates"
                   label="Updates"
                   total={
@@ -103,19 +111,11 @@ export const Header: React.FC<HeaderProps> = ({
                   isSelected={pathname === '/updates'}
                   onClick={() => setDrawerOpen(false)}
                 />
-                <HeaderButton
-                  href="/takes"
-                  label="Takes"
-                  total="Taken"
-                  value={totalTake?.toString() || '0'}
-                  isSelected={pathname === '/takes'}
-                  onClick={() => setDrawerOpen(false)}
-                />
                 <button
-                  className="flex w-full flex-1 items-center justify-start gap-2 rounded-[20px] border border-border px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted"
+                  className="flex w-full flex-1 items-center gap-2 rounded-[20px] border border-border px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted"
                   onClick={handleThemeToggle}
                 >
-                  <div className="flex-1 p-2 text-xl font-medium leading-7">
+                  <div className="flex-1 justify-start p-2 text-start text-xl font-medium leading-7">
                     Theme
                   </div>
                   <div className="flex w-16 flex-col items-center justify-end text-center text-xs text-muted-foreground">
@@ -140,18 +140,18 @@ export const Header: React.FC<HeaderProps> = ({
           isSelected={pathname === '/works'}
         />
         <HeaderButton
-          href="/updates"
-          label="Updates"
-          value={monthUpdate || formatDateString(Date(), 'short').split(' ')[0]}
-          total={yearUpdate || formatDateString(Date(), 'short').split(' ')[2]}
-          isSelected={pathname === '/updates'}
-        />
-        <HeaderButton
           href="/takes"
           label="Takes"
           total="Taken"
           value={totalTake?.toString() || '0'}
           isSelected={pathname === '/takes'}
+        />
+        <HeaderButton
+          href="/updates"
+          label="Updates"
+          value={monthUpdate || formatDateString(Date(), 'short').split(' ')[0]}
+          total={yearUpdate || formatDateString(Date(), 'short').split(' ')[2]}
+          isSelected={pathname === '/updates'}
         />
         <Button
           variant="outline"
