@@ -1,6 +1,5 @@
 'use client'
 
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -8,12 +7,11 @@ import { useTheme } from 'next-themes'
 import { useState } from 'react'
 
 import { HeaderButton } from '@/components/button/header-button'
+import { ThemeToggleIcon } from '@/components/button/theme-button'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { cn, formatDateString } from '@/lib/utils'
-
-import { ThemeToggleIcon } from '../button/theme-button'
 
 export interface HeaderProps {
   className?: string

@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { SearchIcon } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
-import { FilterButton } from '@/components/takes/filter-button'
-import { GalleryCard } from '@/components/takes/gallery-card'
+import { FilterButton } from '@/components/button/filter-button'
+import { GalleryCard } from '@/components/card/gallery-card'
 import { Input } from '@/components/ui/input'
 import { TakeInterface } from '@/types'
 

@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { WorkCard } from '@/components/works/work-card'
+import { WorkCard } from '@/components/card/work-card'
 import { sanityFetcher } from '@/sanity/lib/client'
 import { projectsQuery } from '@/sanity/lib/query'
 import type { ProjectInterface } from '@/types'

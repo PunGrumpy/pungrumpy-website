@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { UpdateCard } from '@/components/updates/update-card'
+import { UpdateCard } from '@/components/card/update-card'
 import { sanityFetcher } from '@/sanity/lib/client'
 import { updateQuery } from '@/sanity/lib/query'
 import type { UpdateInterface } from '@/types'
