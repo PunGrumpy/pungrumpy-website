@@ -51,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
             />
           </div>
           <p className="text-xs text-muted-foreground">
-            © 2024 . PRIVACY . TERMS
+            © 2024 Noppakorn Kaewsalabnil. All rights reserved.
           </p>
         </div>
       </div>
