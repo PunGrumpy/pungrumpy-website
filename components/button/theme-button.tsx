@@ -19,7 +19,7 @@ const transition = {
 }
 
 interface ThemeToggleIconProps {
-  theme: 'dark' | 'light'
+  theme: string | undefined
   className?: string
 }
 
@@ -28,19 +28,6 @@ export const ThemeToggleIcon: React.FC<ThemeToggleIconProps> = ({
   className
 }) => {
   return theme === 'dark' ? (
-    <motion.div
-      key="sun"
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      variants={iconVariants}
-      whileTap="whileTap"
-      whileHover="whileHover"
-      transition={transition}
-    >
-      <SunIcon className={className} />
-    </motion.div>
-  ) : (
     <motion.div
       key="moon"
       initial="initial"
@@ -52,6 +39,19 @@ export const ThemeToggleIcon: React.FC<ThemeToggleIconProps> = ({
       transition={transition}
     >
       <MoonIcon className={className} />
+    </motion.div>
+  ) : (
+    <motion.div
+      key="sun"
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={iconVariants}
+      whileTap="whileTap"
+      whileHover="whileHover"
+      transition={transition}
+    >
+      <SunIcon className={className} />
     </motion.div>
   )
 }
