@@ -32,7 +32,15 @@ export const GallerySection: React.FC<GalleryProps> = ({ className }) => {
       )}
     >
       {images.map((image, index) => (
-        <GalleryImage key={index} src={image.src} alt={image.alt} />
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 * index }}
+          className="flex-1"
+        >
+          <GalleryImage src={image.src} alt={image.alt} />
+        </motion.div>
       ))}
     </motion.div>
   )
@@ -40,12 +48,8 @@ export const GallerySection: React.FC<GalleryProps> = ({ className }) => {
 
 export function GalleryImage({ src, alt }: GalleryImageProps) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="group relative flex h-80 min-w-72 max-w-lg flex-1 flex-col items-start justify-start overflow-hidden rounded-3xl border border-border/50"
-    >
+    <div className="group relative flex h-80 min-w-72 max-w-lg flex-1 flex-col items-start justify-start overflow-hidden rounded-3xl border border-border/50">
       <Image src={src} alt={alt} fill className="z-0 object-cover" />
-    </motion.div>
+    </div>
   )
 }
