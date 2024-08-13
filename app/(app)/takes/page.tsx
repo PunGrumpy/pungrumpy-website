@@ -1,9 +1,8 @@
 import { Metadata } from 'next'
 
 import { TakesGallery } from '@/components/takes/takes-gallery'
-import { sanityFetcher } from '@/sanity/lib/client'
-import { takeQuery } from '@/sanity/lib/query'
-import { TakeInterface } from '@/types'
+
+import { takeFetch } from '../actions'
 
 export const metadata: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_METADATA_BASE
@@ -13,15 +12,10 @@ export const metadata: Metadata = {
   description: 'A collection of my takes and photos.'
 }
 
-export default async function TakesPage() {
-  const takes: TakeInterface[] = await sanityFetcher({
-    query: takeQuery,
-    tags: ['takes']
-  })
-
+export default function TakesPage() {
   return (
     <main className="z-10">
-      <TakesGallery initialTakes={takes} />
+      <TakesGallery initialTakes={takeFetch} />
     </main>
   )
 }

@@ -1,12 +1,10 @@
 import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { projectFetchBySlug } from '@/app/(app)/actions'
 import { WorkContent } from '@/components/works/work-content'
 import { WorkHeader } from '@/components/works/work-header'
 import { SITE_TITLE, SITE_URL } from '@/config/sitemap'
-import { sanityFetcher } from '@/sanity/lib/client'
-import { projectBySlugQuery } from '@/sanity/lib/query'
-import type { ProjectInterface } from '@/types'
 
 interface WorkDetailPageProps {
   params: { project: string }
@@ -17,11 +15,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.project
-  const project: ProjectInterface = await sanityFetcher({
-    query: projectBySlugQuery,
-    tags: ['project'],
-    qParams: { slug }
-  })
+  const project = await projectFetchBySlug(slug)
 
   const previousOGImages = (await parent).openGraph?.images || []
   const previousTwitterImages = (await parent).twitter?.images || []
@@ -67,11 +61,7 @@ export async function generateMetadata(
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const slug = params.project
-  const project: ProjectInterface = await sanityFetcher({
-    query: projectBySlugQuery,
-    tags: ['project'],
-    qParams: { slug }
-  })
+  const project = await projectFetchBySlug(slug)
 
   if (!project) {
     notFound()

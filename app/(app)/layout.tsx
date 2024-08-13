@@ -8,6 +8,8 @@ import { formatDateString } from '@/lib/utils'
 import { sanityFetcher } from '@/sanity/lib/client'
 import type { ProjectInterface, TakeInterface, UpdateInterface } from '@/types'
 
+import { projectFetch, takeFetch, updateFetch } from './actions'
+
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
@@ -97,39 +99,24 @@ interface AppLayoutProps {
   children: React.ReactNode
 }
 
-export default async function AppLayout({ children }: AppLayoutProps) {
-  const project: ProjectInterface[] = await sanityFetcher({
-    query: `*[_type == "project"]`,
-    tags: ['projects']
-  })
-
-  const update: UpdateInterface[] = await sanityFetcher({
-    query: `*[_type == "update"]`,
-    tags: ['updates']
-  })
-
-  const take: TakeInterface[] = await sanityFetcher({
-    query: `*[_type == "take"]`,
-    tags: ['takes']
-  })
-
+export default function AppLayout({ children }: AppLayoutProps) {
   return (
     <div className="flex flex-row flex-wrap items-center justify-center gap-14 rounded-3xl p-14 text-start">
       <Grid />
       <Header
-        totalProject={project.length}
+        totalProject={projectFetch.length}
         yearUpdate={
-          formatDateString(update[update.length - 1]?.date || '').split(
-            ' '
-          )[2] || '-'
+          formatDateString(
+            updateFetch[updateFetch.length - 1]?.date || ''
+          ).split(' ')[2] || '-'
         }
         monthUpdate={
           formatDateString(
-            update[update.length - 1]?.date || '',
+            updateFetch[updateFetch.length - 1]?.date || '',
             'short'
           ).split(' ')[0] || '-'
         }
-        totalTake={take.length}
+        totalTake={takeFetch.length}
       />
       {children}
       <Footer />
