@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 
 import WorkContent from '@/components/works/work-content'
 import WorkHeader from '@/components/works/work-header'
-import { Sitemap } from '@/config/sitemap'
+import { SITE_TITLE, SITE_URL } from '@/config/sitemap'
 import { sanityFetcher } from '@/sanity/lib/client'
 import { projectBySlugQuery } from '@/sanity/lib/query'
 import type { ProjectInterface } from '@/types'
@@ -32,8 +32,8 @@ export async function generateMetadata(
     openGraph: {
       title: project.name,
       description: project.tagline,
-      url: `${Sitemap.url}/works/${slug}`,
-      siteName: `${Sitemap.name}`,
+      url: `${SITE_URL}/works/${slug}`,
+      siteName: `${SITE_TITLE}`,
       images: [
         {
           url: project.coverImage.image,

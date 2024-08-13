@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Footer } from '@/components/layout/footer'
 import { Grid } from '@/components/layout/grid'
 import { Header } from '@/components/layout/header'
-import { Sitemap } from '@/config/sitemap'
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/config/sitemap'
 import { formatDateString } from '@/lib/utils'
 import { sanityFetcher } from '@/sanity/lib/client'
 import type { ProjectInterface, TakeInterface, UpdateInterface } from '@/types'
@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     ? new URL(`${process.env.NEXT_PUBLIC_METADATA_BASE}`)
     : new URL('http://localhost:3000'),
   title: {
-    default: `Home | ${Sitemap.name}`,
-    template: `%s | ${Sitemap.name}`
+    default: `Home | ${SITE_TITLE}`,
+    template: `%s | ${SITE_TITLE}`
   },
-  description: `${Sitemap.description}`,
+  description: `${SITE_DESCRIPTION}`,
   robots: 'follow, index',
   icons: {
     icon: [
@@ -58,11 +58,11 @@ export const metadata: Metadata = {
     ]
   },
   openGraph: {
-    title: `${Sitemap.name}`,
-    description: `${Sitemap.description}`,
+    title: `${SITE_TITLE}`,
+    description: `${SITE_DESCRIPTION}`,
     type: 'website',
-    url: `${Sitemap.url}`,
-    siteName: `${Sitemap.name}`,
+    url: `${SITE_URL}`,
+    siteName: `${SITE_TITLE}`,
     locale: 'en_US',
     countryName: 'Thailand',
     images: [
@@ -70,14 +70,14 @@ export const metadata: Metadata = {
         url: '/metadata/og-image.png',
         width: 1920,
         height: 1080,
-        alt: `${Sitemap.name}`
+        alt: `${SITE_TITLE}`
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${Sitemap.name}`,
-    description: `${Sitemap.description}`,
+    title: `${SITE_TITLE}`,
+    description: `${SITE_DESCRIPTION}`,
     creator: '@pungrumpy',
     site: '@pungrumpy',
     creatorId: 'pungrumpy',
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
         url: '/metadata/twitter-card.png',
         width: 1920,
         height: 1080,
-        alt: `${Sitemap.name}`
+        alt: `${SITE_TITLE}`
       }
     ]
   }
