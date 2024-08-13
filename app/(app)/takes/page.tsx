@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
 
+import { takeFetch } from '@/app/(app)/actions'
 import { TakesGallery } from '@/components/takes/takes-gallery'
-
-import { takeFetch } from '../actions'
 
 export const metadata: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_METADATA_BASE

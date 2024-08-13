@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
 
+import { projectFetch } from '@/app/(app)/actions'
 import { WorkCard } from '@/components/card/work-card'
-
-import { projectFetch } from '../actions'
 
 export const metadata: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_METADATA_BASE
