@@ -7,6 +7,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { FilterButton } from '@/components/button/filter-button'
 import { GalleryCard } from '@/components/card/gallery-card'
 import { Input } from '@/components/ui/input'
+import { useFilteredAndSortedTakes } from '@/hooks/useFilteredAndSortedTakes'
 import { TakeInterface } from '@/types'
 
 type FilterType = 'Date' | 'Title' | 'Random'
@@ -43,30 +44,11 @@ interface TakesGalleryProps {
 }
 
 export const TakesGallery: React.FC<TakesGalleryProps> = ({ initialTakes }) => {
-  const [takes] = useState<TakeInterface[]>(initialTakes)
-  const [activeFilter, setActiveFilter] = useState<FilterType>('Date')
-  const [filterStates, setFilterStates] = useState<
-    Record<FilterType, FilterState>
-  >({
-    Date: { isReversed: false },
-    Title: { isReversed: false },
-    Random: { isReversed: false }
-  })
+  const [activeFilter] = useState<FilterType>('Date')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const handleFilterChange = useCallback(
-    (filterType: FilterType) => {
-      if (activeFilter === filterType) {
-        setFilterStates(prev => ({
-          ...prev,
-          [filterType]: { isReversed: !prev[filterType].isReversed }
-        }))
-      } else {
-        setActiveFilter(filterType)
-      }
-    },
-    [activeFilter, setFilterStates, setActiveFilter]
-  )
+  const { filteredAndSortedTakes, filterStates, handleFilterChange } =
+    useFilteredAndSortedTakes(initialTakes, activeFilter, searchQuery)
 
   const handleSearch = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,41 +56,6 @@ export const TakesGallery: React.FC<TakesGalleryProps> = ({ initialTakes }) => {
     },
     []
   )
-
-  const filteredAndSortedTakes = useMemo(() => {
-    let filtered = [...takes]
-
-    if (searchQuery.trim() !== '') {
-      const query = searchQuery.toLowerCase().trim()
-      filtered = filtered.filter(
-        take =>
-          take.title.toLowerCase().includes(query) ||
-          take.tags.some(tag => tag.toLowerCase().includes(query))
-      )
-    }
-
-    const { isReversed } = filterStates[activeFilter]
-    switch (activeFilter) {
-      case 'Date':
-        filtered.sort((a, b) => {
-          const comparison =
-            new Date(b.date).getTime() - new Date(a.date).getTime()
-          return isReversed ? -comparison : comparison
-        })
-        break
-      case 'Title':
-        filtered.sort((a, b) => {
-          const comparison = a.title.localeCompare(b.title)
-          return isReversed ? -comparison : comparison
-        })
-        break
-      case 'Random':
-        filtered.sort(() => Math.random() - 0.5)
-        break
-    }
-
-    return filtered
-  }, [takes, activeFilter, filterStates, searchQuery])
 
   const getFilterLabel = useCallback(
     (filterType: FilterType): string => {
@@ -125,19 +72,25 @@ export const TakesGallery: React.FC<TakesGalleryProps> = ({ initialTakes }) => {
     [filterStates]
   )
 
+  const filterButtons = useMemo(
+    () =>
+      ['Date', 'Title', 'Random'].map(filterType => (
+        <FilterButton
+          key={filterType}
+          label={getFilterLabel(filterType as FilterType)}
+          isActive={activeFilter === filterType}
+          onClick={() => handleFilterChange(filterType as FilterType)}
+          isReversed={filterStates[filterType as FilterType].isReversed}
+        />
+      )),
+    [activeFilter, filterStates, getFilterLabel, handleFilterChange]
+  )
+
   return (
     <main className="z-10 flex w-full max-w-6xl flex-col space-y-16 rounded-xl">
       <div className="flex flex-wrap items-center justify-between gap-5">
         <div className="flex flex-row flex-wrap items-center justify-start gap-5 rounded-[32px] border border-border bg-background p-3">
-          {(['Date', 'Title', 'Random'] as FilterType[]).map(filterType => (
-            <FilterButton
-              key={filterType}
-              label={getFilterLabel(filterType)}
-              isActive={activeFilter === filterType}
-              onClick={() => handleFilterChange(filterType)}
-              isReversed={filterStates[filterType].isReversed}
-            />
-          ))}
+          {filterButtons}
         </div>
         <div className="flex items-center rounded-[32px] border border-border bg-background p-3 md:w-60">
           <Input
