@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import React from 'react'
 
 import { TakesGallery } from '@/components/takes/takes-gallery'
 import { sanityFetcher } from '@/sanity/lib/client'

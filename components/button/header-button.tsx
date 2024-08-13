@@ -12,7 +12,7 @@ interface HeaderButtonProps {
   onClick?: () => void
 }
 
-export function HeaderButton({
+export const HeaderButton: React.FC<HeaderButtonProps> = ({
   href,
   label,
   total,
@@ -20,7 +20,7 @@ export function HeaderButton({
   isSelected,
   isExternal,
   onClick
-}: HeaderButtonProps) {
+}) => {
   const ButtonComponent = isExternal ? 'a' : Link
   const buttonProps = isExternal
     ? { href, target: '_blank', rel: 'noopener noreferrer' }

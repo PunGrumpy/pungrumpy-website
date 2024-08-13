@@ -1,5 +1,4 @@
 import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react'
-import React from 'react'
 
 import { Button } from '@/components/ui/button'
 
@@ -10,12 +9,12 @@ interface FilterButtonProps {
   isReversed: boolean
 }
 
-export function FilterButton({
+export const FilterButton: React.FC<FilterButtonProps> = ({
   label,
   isActive,
   onClick,
   isReversed
-}: FilterButtonProps) {
+}) => {
   return (
     <Button
       variant="outline"

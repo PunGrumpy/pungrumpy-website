@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { SearchIcon } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 import { FilterButton } from '@/components/button/filter-button'
 import { GalleryCard } from '@/components/card/gallery-card'
@@ -42,7 +42,7 @@ interface TakesGalleryProps {
   initialTakes: TakeInterface[]
 }
 
-export function TakesGallery({ initialTakes }: TakesGalleryProps) {
+export const TakesGallery: React.FC<TakesGalleryProps> = ({ initialTakes }) => {
   const [takes] = useState<TakeInterface[]>(initialTakes)
   const [activeFilter, setActiveFilter] = useState<FilterType>('Date')
   const [filterStates, setFilterStates] = useState<
@@ -53,6 +53,27 @@ export function TakesGallery({ initialTakes }: TakesGalleryProps) {
     Random: { isReversed: false }
   })
   const [searchQuery, setSearchQuery] = useState('')
+
+  const handleFilterChange = useCallback(
+    (filterType: FilterType) => {
+      if (activeFilter === filterType) {
+        setFilterStates(prev => ({
+          ...prev,
+          [filterType]: { isReversed: !prev[filterType].isReversed }
+        }))
+      } else {
+        setActiveFilter(filterType)
+      }
+    },
+    [activeFilter, setFilterStates, setActiveFilter]
+  )
+
+  const handleSearch = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchQuery(event.target.value)
+    },
+    []
+  )
 
   const filteredAndSortedTakes = useMemo(() => {
     let filtered = [...takes]
@@ -89,32 +110,20 @@ export function TakesGallery({ initialTakes }: TakesGalleryProps) {
     return filtered
   }, [takes, activeFilter, filterStates, searchQuery])
 
-  const handleFilterChange = (filterType: FilterType) => {
-    if (activeFilter === filterType) {
-      setFilterStates(prev => ({
-        ...prev,
-        [filterType]: { isReversed: !prev[filterType].isReversed }
-      }))
-    } else {
-      setActiveFilter(filterType)
-    }
-  }
-
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value)
-  }
-
-  const getFilterLabel = (filterType: FilterType): string => {
-    const { isReversed } = filterStates[filterType]
-    switch (filterType) {
-      case 'Date':
-        return isReversed ? 'Oldest' : 'Newest'
-      case 'Title':
-        return isReversed ? 'Title (Z-A)' : 'Title (A-Z)'
-      case 'Random':
-        return 'Random'
-    }
-  }
+  const getFilterLabel = useCallback(
+    (filterType: FilterType): string => {
+      const { isReversed } = filterStates[filterType]
+      switch (filterType) {
+        case 'Date':
+          return isReversed ? 'Oldest' : 'Newest'
+        case 'Title':
+          return isReversed ? 'Title (Z-A)' : 'Title (A-Z)'
+        case 'Random':
+          return 'Random'
+      }
+    },
+    [filterStates]
+  )
 
   return (
     <main className="z-10 flex w-full max-w-6xl flex-col space-y-16 rounded-xl">

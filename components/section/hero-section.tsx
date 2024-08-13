@@ -12,7 +12,7 @@ interface HeroSectionProps {
   className?: string
 }
 
-export function HeroSection({ className }: HeroSectionProps) {
+export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
   return (
     <div className="flex w-full max-w-6xl flex-wrap items-center gap-14 rounded-3xl">
       <div className={cn('flex min-w-80 flex-1 flex-col gap-8', className)}>

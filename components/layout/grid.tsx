@@ -4,7 +4,7 @@ interface GridProps {
   className?: string
 }
 
-export function Grid({ className }: GridProps) {
+export const Grid: React.FC<GridProps> = ({ className }) => {
   return (
     <div
       className={cn(

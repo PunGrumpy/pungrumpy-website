@@ -17,7 +17,7 @@ const images = [
   { src: '/gallery/gallery-3.png', alt: 'Gallery Image 3' }
 ]
 
-export function GallerySection({ className }: GalleryProps) {
+export const GallerySection: React.FC<GalleryProps> = ({ className }) => {
   return (
     <div
       className={cn(

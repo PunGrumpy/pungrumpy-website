@@ -21,13 +21,13 @@ export interface HeaderProps {
   totalTake?: number
 }
 
-export function Header({
+export const Header: React.FC<HeaderProps> = ({
   className,
   totalProject,
   yearUpdate,
   monthUpdate,
   totalTake
-}: HeaderProps) {
+}) => {
   const pathname = usePathname()
   const [isDrawerOpen, setDrawerOpen] = useState(false)
   const { theme, setTheme } = useTheme()

@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import { PortableText } from 'next-sanity'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { formatDateString } from '@/lib/utils'
 import { UpdateInterface } from '@/types'
@@ -13,24 +13,27 @@ interface UpdateCardProps {
   update: UpdateInterface
 }
 
-export function UpdateCard({ id, update }: UpdateCardProps) {
+export const UpdateCard: React.FC<UpdateCardProps> = ({ id, update }) => {
   const [isVisible, setIsVisible] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true)
-    }, id * 250)
-
+    const timer = setTimeout(() => setIsVisible(true), id * 250)
     return () => clearTimeout(timer)
   }, [id])
 
-  const imageVariants = {
-    initial: { opacity: 0, scale: 0.8 },
-    animate: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.8 },
-    hover: { scale: 1.05, boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)' }
-  }
+  const imageVariants = useMemo(
+    () => ({
+      initial: { opacity: 0, scale: 0.8 },
+      animate: { opacity: 1, scale: 1 },
+      exit: { opacity: 0, scale: 0.8 },
+      hover: { scale: 1.05, boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)' }
+    }),
+    []
+  )
+
+  const handleMouseEnter = useCallback(() => setIsHovered(true), [])
+  const handleMouseLeave = useCallback(() => setIsHovered(false), [])
 
   return (
     <motion.div
@@ -59,8 +62,8 @@ export function UpdateCard({ id, update }: UpdateCardProps) {
               animate="animate"
               exit="exit"
               whileHover="hover"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
               <Image

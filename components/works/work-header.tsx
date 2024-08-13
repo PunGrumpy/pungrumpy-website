@@ -20,7 +20,7 @@ interface WorkHeaderProps {
   work: ProjectInterface
 }
 
-export default function WorkHeader({ work }: WorkHeaderProps) {
+export const WorkHeader: React.FC<WorkHeaderProps> = ({ work }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}

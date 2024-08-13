@@ -1,10 +1,8 @@
-'use client'
-
 import { AnimatePresence, motion } from 'framer-motion'
 import { Aperture, Camera, Focus, SunDim, Timer, Zap } from 'lucide-react'
 import Image from 'next/image'
 import { PortableText } from 'next-sanity'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
@@ -15,10 +13,67 @@ interface GalleryCardProps {
   take: TakeInterface
 }
 
-export function GalleryCard({ take }: GalleryCardProps) {
+export const GalleryCard: React.FC<GalleryCardProps> = ({ take }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const dominantColor =
-    take.takeImage.palette?.dominant?.background || 'rgba(0, 0, 0, 0.5)'
+
+  const hoverContent = useMemo(
+    () => (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="absolute inset-0 overflow-y-auto bg-card/70 p-4 backdrop-blur-md"
+      >
+        <h3 className="mb-2 text-lg font-semibold text-foreground">
+          {take.title}
+        </h3>
+        <p className="mb-2 text-sm text-muted-foreground">
+          {formatDateString(take.date)}
+        </p>
+        <div className="mb-2 flex flex-wrap gap-2">
+          {take.tags.map((tag, index) => (
+            <Badge key={index} variant="filled" color="secondary" size="sm">
+              {tag}
+            </Badge>
+          ))}
+        </div>
+        <div className="mb-2 text-sm text-foreground">
+          <PortableText value={take.description} />
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
+          <div className="flex items-center">
+            <Camera className="mr-1 size-4" />
+            <span>
+              {take.camera} ({take.cameraType})
+            </span>
+          </div>
+          <div className="flex items-center">
+            <Aperture className="mr-1 size-4" />
+            <span>{take.settings.aperture} &fnof;</span>
+          </div>
+          <div className="flex items-center">
+            <SunDim className="mr-1 size-4" />
+            <span>{take.settings.exposureCompensation} eV</span>
+          </div>
+          <div className="flex items-center">
+            <Timer className="mr-1 size-4" />
+            <span>{take.settings.shutterSpeed} sec</span>
+          </div>
+          <div className="flex items-center">
+            <Zap className="mr-1 size-4" />
+            <span>ISO {take.settings.iso}</span>
+          </div>
+          <div className="flex items-center">
+            <Focus className="mr-1 size-4" />
+            <span>
+              {take.settings.focalLength} mm ({take.lensType})
+            </span>
+          </div>
+        </div>
+      </motion.div>
+    ),
+    [take]
+  )
 
   return (
     <Card
@@ -35,68 +90,7 @@ export function GalleryCard({ take }: GalleryCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
             className="object-cover"
           />
-          <AnimatePresence>
-            {isHovered && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 overflow-y-auto bg-card/70 p-4 backdrop-blur-md"
-              >
-                <h3 className="mb-2 text-lg font-semibold text-foreground">
-                  {take.title}
-                </h3>
-                <p className="mb-2 text-sm text-muted-foreground">
-                  {formatDateString(take.date)}
-                </p>
-                <div className="mb-2 flex flex-wrap gap-2">
-                  {take.tags.map((tag, index) => (
-                    <Badge
-                      key={index}
-                      variant="filled"
-                      color="secondary"
-                      size="sm"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="mb-2 text-sm text-foreground">
-                  <PortableText value={take.description} />
-                </div>
-                <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-                  <div className="flex items-center">
-                    <Camera className="mr-1 size-4" />
-                    <span>
-                      {take.camera} ({take.cameraType})
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <Aperture className="mr-1 size-4" />
-                    <span>{take.settings.aperture} &fnof;</span>
-                  </div>
-                  <div className="flex items-center">
-                    <SunDim className="mr-1 size-4" />
-                    <span>{take.settings.exposureCompensation} eV</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Timer className="mr-1 size-4" />
-                    <span>{take.settings.shutterSpeed} sec</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Zap className="mr-1 size-4" />
-                    <span>ISO {take.settings.iso}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Focus className="mr-1 size-4" />
-                    <span>
-                      {take.settings.focalLength} mm ({take.lensType})
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <AnimatePresence>{isHovered && hoverContent}</AnimatePresence>
         </div>
         <div className="p-4">
           <div className="h-20">

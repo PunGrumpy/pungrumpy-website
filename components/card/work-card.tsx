@@ -25,7 +25,7 @@ interface WorkCardProps {
   work: ProjectInterface
 }
 
-export function WorkCard({ id, work }: WorkCardProps) {
+export const WorkCard: React.FC<WorkCardProps> = ({ id, work }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.95 }}

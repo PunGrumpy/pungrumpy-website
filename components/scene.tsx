@@ -9,7 +9,11 @@ interface SceneProps {
   className?: string
 }
 
-export async function Scene({ scene, ratio = 1 / 1, className }: SceneProps) {
+export const Scene: React.FC<SceneProps> = ({
+  scene,
+  ratio = 1 / 1,
+  className
+}) => {
   return (
     <AspectRatio
       ratio={ratio}

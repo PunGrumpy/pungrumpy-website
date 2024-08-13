@@ -21,7 +21,7 @@ interface WorkContentProps {
   work: ProjectInterface
 }
 
-export default function WorkContent({ work }: WorkContentProps) {
+export const WorkContent: React.FC<WorkContentProps> = ({ work }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

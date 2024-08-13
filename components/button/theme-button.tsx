@@ -23,7 +23,10 @@ interface ThemeToggleIconProps {
   className?: string
 }
 
-export function ThemeToggleIcon({ theme, className }: ThemeToggleIconProps) {
+export const ThemeToggleIcon: React.FC<ThemeToggleIconProps> = ({
+  theme,
+  className
+}) => {
   return theme === 'dark' ? (
     <motion.div
       key="sun"

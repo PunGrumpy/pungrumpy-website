@@ -12,7 +12,7 @@ interface FooterMenuProps {
   items: { label: string; href: string; isExternal?: boolean }[]
 }
 
-export function Footer({ className }: FooterProps) {
+export const Footer: React.FC<FooterProps> = ({ className }) => {
   return (
     <footer
       className={cn(

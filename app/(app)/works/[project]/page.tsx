@@ -1,8 +1,8 @@
 import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import WorkContent from '@/components/works/work-content'
-import WorkHeader from '@/components/works/work-header'
+import { WorkContent } from '@/components/works/work-content'
+import { WorkHeader } from '@/components/works/work-header'
 import { SITE_TITLE, SITE_URL } from '@/config/sitemap'
 import { sanityFetcher } from '@/sanity/lib/client'
 import { projectBySlugQuery } from '@/sanity/lib/query'
