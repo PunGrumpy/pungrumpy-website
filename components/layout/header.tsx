@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { HeaderButton } from '@/components/button/header-button'
 import { ThemeToggleIcon } from '@/components/button/theme-button'
@@ -30,7 +30,14 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const pathname = usePathname()
   const [isDrawerOpen, setDrawerOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
 
   const handleThemeToggle = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
