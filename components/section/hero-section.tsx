@@ -62,12 +62,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
           variants={itemVariants}
           className="flex flex-wrap items-center gap-4"
         >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="flex gap-4"
-          >
+          <div className="flex gap-4">
             <Button
               variant="outline"
               size="default"
@@ -79,7 +74,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
                 <ChevronRight className="ml-2 size-5" />
               </Link>
             </Button>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
       <motion.div
