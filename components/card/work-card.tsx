@@ -28,8 +28,8 @@ interface WorkCardProps {
 export const WorkCard: React.FC<WorkCardProps> = ({ id, work }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: id * 0.1 }}
     >
       <motion.div whileHover="hover" initial="initial" className="h-full">
