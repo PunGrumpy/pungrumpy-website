@@ -59,8 +59,8 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
         <FooterMenu
           category="About"
           items={[
+            { label: 'About', href: '/about' },
             { label: 'Works', href: '/works' },
-            { label: 'Updates', href: '/updates' },
             { label: 'Takes', href: '/takes' },
             {
               label: 'Curriculum Vitae',

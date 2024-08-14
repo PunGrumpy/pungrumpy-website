@@ -11,21 +11,17 @@ import { ThemeToggleIcon } from '@/components/button/theme-button'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { cn, formatDateString } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 export interface HeaderProps {
   className?: string
   totalProject?: number
-  yearUpdate?: string
-  monthUpdate?: string
   totalTake?: number
 }
 
 export const Header: React.FC<HeaderProps> = ({
   className,
   totalProject,
-  yearUpdate,
-  monthUpdate,
   totalTake
 }) => {
   const pathname = usePathname()
@@ -89,6 +85,14 @@ export const Header: React.FC<HeaderProps> = ({
                 className="flex flex-col gap-2 rounded-[32px] border border-border/75 p-4"
               >
                 <HeaderButton
+                  href="/about"
+                  label="About"
+                  total="I'm"
+                  value="Pun"
+                  isSelected={pathname === '/about'}
+                  onClick={() => setDrawerOpen(false)}
+                />
+                <HeaderButton
                   href="/works"
                   label="Works"
                   total="Total"
@@ -102,20 +106,6 @@ export const Header: React.FC<HeaderProps> = ({
                   total="Taken"
                   value={totalTake?.toString() || '0'}
                   isSelected={pathname === '/takes'}
-                  onClick={() => setDrawerOpen(false)}
-                />
-                <HeaderButton
-                  href="/updates"
-                  label="Updates"
-                  total={
-                    yearUpdate ||
-                    formatDateString(Date(), 'short').split(' ')[2]
-                  }
-                  value={
-                    monthUpdate ||
-                    formatDateString(Date(), 'short').split(' ')[0]
-                  }
-                  isSelected={pathname === '/updates'}
                   onClick={() => setDrawerOpen(false)}
                 />
                 <button
@@ -140,6 +130,13 @@ export const Header: React.FC<HeaderProps> = ({
 
       <div className="hidden min-w-56 max-w-2xl flex-1 items-center justify-start gap-5 rounded-[32px] border border-border p-3 shadow-lg backdrop-blur-md md:flex">
         <HeaderButton
+          href="/about"
+          label="About"
+          total="I'm"
+          value="Pun"
+          isSelected={pathname === '/about'}
+        />
+        <HeaderButton
           href="/works"
           label="Works"
           total="Total"
@@ -152,13 +149,6 @@ export const Header: React.FC<HeaderProps> = ({
           total="Taken"
           value={totalTake?.toString() || '0'}
           isSelected={pathname === '/takes'}
-        />
-        <HeaderButton
-          href="/updates"
-          label="Updates"
-          value={monthUpdate || formatDateString(Date(), 'short').split(' ')[0]}
-          total={yearUpdate || formatDateString(Date(), 'short').split(' ')[2]}
-          isSelected={pathname === '/updates'}
         />
         <Button
           variant="outline"

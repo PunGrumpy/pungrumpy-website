@@ -50,19 +50,6 @@ export interface ProjectInterface {
   technologies: string[]
 }
 
-export interface UpdateInterface {
-  _id: string
-  _createdAt: string
-  _updatedAt?: string
-  title: string
-  date: string
-  description: PortableTextBlock[]
-  coverImage: {
-    image: string
-    alt: string
-  }
-}
-
 export interface TakeInterface {
   _id: string
   title: string

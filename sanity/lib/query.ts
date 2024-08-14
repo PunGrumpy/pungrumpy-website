@@ -37,19 +37,6 @@ export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $
     technologies,
 }`
 
-export const updateQuery = groq`*[_type == 'update'] | order(date desc) {
-  _id,
-  _createdAt,
-  _updatedAt,
-  title,
-  date,
-  description,
-  coverImage {
-    "image": asset->url,
-      alt
-    }
-}`
-
 export const takeQuery = groq`*[_type == 'take'] | order(date desc) {
   _id,
   _createdAt,
