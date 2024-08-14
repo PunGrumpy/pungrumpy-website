@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import GitHubCalendar from 'react-github-calendar'
 
-import { Slide } from '@/components/animation/slide'
+import { SlideInView } from '@/components/animation/slide-in-view'
 import { YearButton } from '@/components/button/year-button'
 import { EmptyCard } from '@/components/card/empty-card'
 import { getGitHubYears } from '@/lib/utils'
@@ -30,7 +30,7 @@ export const GitHubCalendarSection: React.FC = () => {
   const years = getGitHubYears(joinYear)
 
   return (
-    <Slide className="flex w-full max-w-6xl flex-wrap items-center gap-14 rounded-3xl">
+    <SlideInView className="flex w-full max-w-6xl flex-wrap items-center gap-14 rounded-3xl">
       {username || !joinYear ? (
         <>
           <div className="flex flex-1 flex-col rounded-lg border border-border bg-card p-9">
@@ -60,6 +60,6 @@ export const GitHubCalendarSection: React.FC = () => {
           message="We could not find any GitHub credentials added to the .env file. To display the graph, provide your username and the year you joined GitHub"
         />
       )}
-    </Slide>
+    </SlideInView>
   )
 }
