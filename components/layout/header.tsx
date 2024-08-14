@@ -109,7 +109,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setDrawerOpen(false)}
                 />
                 <button
-                  className="flex w-full flex-1 items-center gap-2 rounded-[20px] border border-border px-4 py-2 transition duration-300 ease-in-out hover:border-muted-foreground/50 hover:bg-muted"
+                  className="flex w-full flex-1 items-center gap-2 rounded-[20px] border border-border px-4 py-2 transition duration-300 ease-in-out hover:border-primary/20 hover:bg-muted"
                   onClick={handleThemeToggle}
                 >
                   <div className="flex-1 justify-start p-2 text-start text-xl font-medium leading-7">
@@ -153,7 +153,7 @@ export const Header: React.FC<HeaderProps> = ({
         <Button
           variant="outline"
           size="icon"
-          className="size-[62px] rounded-[20px] border-border hover:border-muted-foreground/50 hover:bg-muted"
+          className="size-[62px] rounded-[20px] border-border hover:border-primary/20 hover:bg-muted"
           onClick={handleThemeToggle}
         >
           <ThemeToggleIcon theme={theme} className="size-5" />

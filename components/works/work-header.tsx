@@ -4,16 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 import { Badge } from '@/components/ui/badge'
-import {
-  getMaintainStatusColor,
-  getMaintainStatusIcon,
-  getMaintainStatusLabel,
-  getProjectStageColor,
-  getProjectStageIcon,
-  getProjectStageLabel,
-  getProjectTypeIcon,
-  getProjectTypeLabel
-} from '@/lib/variant'
+import { maintainStatus, projectStage, projectType } from '@/lib/variant'
 import type { ProjectInterface } from '@/types'
 
 interface WorkHeaderProps {
@@ -64,26 +55,26 @@ export const WorkHeader: React.FC<WorkHeaderProps> = ({ work }) => {
           <Badge
             size="md"
             variant="subtle"
-            color={getMaintainStatusColor(work.maintainStatus)}
-            icon={getMaintainStatusIcon(work.maintainStatus)}
+            color={maintainStatus.getColor(work.maintainStatus)}
+            icon={maintainStatus.getIcon(work.maintainStatus)}
           >
-            {getMaintainStatusLabel(work.maintainStatus)}
+            {maintainStatus.getLabel(work.maintainStatus)}
           </Badge>
           <Badge
             size="md"
             variant="subtle"
-            color={getProjectStageColor(work.projectStage)}
-            icon={getProjectStageIcon(work.projectStage)}
+            color={projectStage.getColor(work.projectStage)}
+            icon={projectStage.getIcon(work.projectStage)}
           >
-            {getProjectStageLabel(work.projectStage)}
+            {projectStage.getLabel(work.projectStage)}
           </Badge>
           <Badge
             variant="filled"
             color="secondary"
             size="md"
-            icon={getProjectTypeIcon(work.projectType)}
+            icon={projectType.getIcon(work.projectType)}
           >
-            {getProjectTypeLabel(work.projectType)}
+            {projectType.getLabel(work.projectType)}
           </Badge>
         </motion.div>
       </div>
