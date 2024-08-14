@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
           category="About"
           items={[
             { label: 'About', href: '/about' },
-            { label: 'Works', href: '/works' },
+            { label: 'Projects', href: '/projects' },
             { label: 'Takes', href: '/takes' },
             {
               label: 'Curriculum Vitae',

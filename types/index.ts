@@ -33,21 +33,26 @@ export interface ProjectInterface {
   name: string
   slug: string
   tagline: string
-  startDate: string
-  endDate?: string
   maintainStatus: MaintainStatusType
   projectStage: ProjectStageType
-  contributors: string[]
   projectType: ProjectType
   projectUrl: string
-  repository: string
+  repositoryUrl: string
   coverImage: {
     image: string
     alt: string
-    lqip: string
+    lqip?: string
+    palette?: {
+      darkMuted?: { background: string; foreground: string }
+      lightVibrant?: { background: string; foreground: string }
+      darkVibrant?: { background: string; foreground: string }
+      vibrant?: { background: string; foreground: string }
+      dominant?: { background: string; foreground: string }
+      lightMuted?: { background: string; foreground: string }
+      muted?: { background: string; foreground: string }
+    }
   }
   description: PortableTextBlock[]
-  technologies: string[]
 }
 
 export interface TakeInterface {
@@ -58,8 +63,8 @@ export interface TakeInterface {
   takeImage: {
     image: string
     alt: string
-    lqip: string
     caption?: string
+    lqip?: string
     palette?: {
       darkMuted?: { background: string; foreground: string }
       lightVibrant?: { background: string; foreground: string }

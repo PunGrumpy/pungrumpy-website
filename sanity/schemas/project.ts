@@ -21,17 +21,14 @@ const project = defineType({
       validation: rule => rule.max(60).required()
     },
     {
-      name: 'startDate',
-      title: 'Start Date',
-      type: 'date',
-      description: 'When did you start working on this project?'
-    },
-    {
-      name: 'endDate',
-      title: 'End Date',
-      type: 'date',
-      description:
-        'When did you finish working on this project? Leave blank if ongoing.'
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      description: 'Upload a logo for this project',
+      options: {
+        hotspot: true,
+        metadata: ['lqip', 'palette']
+      }
     },
     {
       name: 'maintainStatus',
@@ -61,13 +58,6 @@ const project = defineType({
         ]
       },
       description: 'Current stage of the project lifecycle'
-    },
-    {
-      name: 'contributors',
-      title: 'Contributors',
-      type: 'array',
-      of: [{ type: 'string' }],
-      description: 'List of contributors to the project'
     },
     {
       name: 'projectType',
@@ -129,13 +119,6 @@ const project = defineType({
       type: 'array',
       of: [{ type: 'block' }],
       description: 'Write a full description about this project'
-    },
-    {
-      name: 'technologies',
-      title: 'Technologies',
-      type: 'array',
-      of: [{ type: 'string' }],
-      description: 'List the technologies used in this project'
     }
   ]
 })

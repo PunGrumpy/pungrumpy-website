@@ -31,7 +31,7 @@ export default async function WorksPage() {
           {projects.map(project => (
             <Link
               key={project._id}
-              href={`/works/${encodeURIComponent(project.slug)}`}
+              href={`/projects/${encodeURIComponent(project.slug)}`}
               className="flex h-full flex-col"
             >
               {/* <Card className="relative h-full overflow-hidden bg-card transition-shadow duration-300 hover:border-primary/20">

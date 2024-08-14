@@ -93,11 +93,11 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setDrawerOpen(false)}
                 />
                 <HeaderButton
-                  href="/works"
-                  label="Works"
+                  href="/projects"
+                  label="Projects"
                   total="Total"
                   value={totalProject?.toString() || '0'}
-                  isSelected={pathname === '/works'}
+                  isSelected={pathname === '/projects'}
                   onClick={() => setDrawerOpen(false)}
                 />
                 <HeaderButton
@@ -137,11 +137,11 @@ export const Header: React.FC<HeaderProps> = ({
           isSelected={pathname === '/about'}
         />
         <HeaderButton
-          href="/works"
-          label="Works"
+          href="/projects"
+          label="Projects"
           total="Total"
           value={totalProject?.toString() || '0'}
-          isSelected={pathname === '/works'}
+          isSelected={pathname === '/projects'}
         />
         <HeaderButton
           href="/takes"
