@@ -12,13 +12,13 @@ export const ProjectComponent: React.FC<ProjectComponentProps> = ({
   project
 }) => {
   return (
-    <SlideInView>
+    <SlideInView className="space-y-8 md:space-y-16">
       <section className="mx-auto">
         <h1 className="mb-4 max-w-md text-3xl tracking-tight sm:text-5xl">
           {project.name}
         </h1>
       </section>
-      <section className="space-y-16">
+      <section className="space-y-8 md:space-y-16">
         <div className="rounded-xl bg-gradient-to-b from-primary/20 to-transparent p-px">
           <Image
             src={project.coverImage.image}
