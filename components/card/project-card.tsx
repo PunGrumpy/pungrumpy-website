@@ -20,7 +20,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               alt={project.coverImage?.alt || project.name}
               width={32}
               height={32}
-              className="size-8 object-contain"
+              className="size-8 object-contain rounded-md"
             />
           ) : (
             <div className="flex size-8 items-center justify-center rounded-full font-bold">
