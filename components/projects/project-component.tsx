@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { PortableText } from 'next-sanity'
 
 import { SlideInView } from '@/components/animation/slide-in-view'
+import { CustomPortableText } from '@/components/sanity/portable-text'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ProjectInterface } from '@/types'
@@ -75,7 +76,10 @@ export const ProjectComponent: React.FC<ProjectComponentProps> = ({
           </CardContent>
         </Card>
         <div>
-          <PortableText value={project.description} />
+          <PortableText
+            value={project.description}
+            components={CustomPortableText}
+          />
         </div>
       </section>
     </SlideInView>

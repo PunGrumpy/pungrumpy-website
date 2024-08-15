@@ -1,21 +1,21 @@
+import { TableRow } from '@sanity/table'
 import { PortableTextBlock } from 'next-sanity'
 
-export type ProjectType =
-  | 'university'
-  | 'client'
-  | 'personal'
-  | 'openSource'
-  | 'hackathon'
+export type Table = {
+  rows?: TableRow[]
+  title?: string
+}
 
-export type MaintainStatusType = 'active' | 'minimal' | 'inactive' | 'unknown'
+export interface TableInterface {
+  table?: Table
+  caption?: string
+}
 
-export type ProjectStageType =
-  | 'concept'
-  | 'development'
-  | 'beta'
-  | 'released'
-  | 'deprecated'
-  | 'unknown'
+export interface QuizValueInterface {
+  _key: string
+  question: string
+  answer: string
+}
 
 export type LensType =
   | 'wideAngle'
@@ -28,31 +28,6 @@ export type LensType =
 
 export type CameraType = 'dslr' | 'mirrorless' | 'film' | 'smartphone' | 'other'
 
-export interface ProjectInterface {
-  _id: string
-  name: string
-  slug: string
-  tagline: string
-  tags: string[]
-  projectUrl: string
-  repository: string
-  coverImage: {
-    image: string
-    alt?: string
-    lqip?: string
-    palette?: {
-      darkMuted?: { background: string; foreground: string }
-      lightVibrant?: { background: string; foreground: string }
-      darkVibrant?: { background: string; foreground: string }
-      vibrant?: { background: string; foreground: string }
-      dominant?: { background: string; foreground: string }
-      lightMuted?: { background: string; foreground: string }
-      muted?: { background: string; foreground: string }
-    }
-  }
-  description: PortableTextBlock[]
-}
-
 export interface TakeInterface {
   _id: string
   title: string
@@ -60,7 +35,7 @@ export interface TakeInterface {
   date: string
   takeImage: {
     image: string
-    alt?: string
+    alt: string
     lqip?: string
     palette?: {
       darkMuted?: { background: string; foreground: string }
@@ -71,6 +46,7 @@ export interface TakeInterface {
       lightMuted?: { background: string; foreground: string }
       muted?: { background: string; foreground: string }
     }
+    exif?: any
   }
   tags: string[]
   description: PortableTextBlock[]
@@ -84,4 +60,43 @@ export interface TakeInterface {
     exposureCompensation: string
     focalLength: string
   }
+}
+
+export interface ProjectInterface {
+  _id: string
+  name: string
+  slug: string
+  tagline: string
+  tags: string[]
+  logo?: {
+    image: string
+    alt: string
+    lqip?: string
+    palette?: {
+      darkMuted?: { background: string; foreground: string }
+      lightVibrant?: { background: string; foreground: string }
+      darkVibrant?: { background: string; foreground: string }
+      vibrant?: { background: string; foreground: string }
+      dominant?: { background: string; foreground: string }
+      lightMuted?: { background: string; foreground: string }
+      muted?: { background: string; foreground: string }
+    }
+  }
+  projectUrl?: string
+  repository?: string
+  coverImage: {
+    image: string
+    alt: string
+    lqip?: string
+    palette?: {
+      darkMuted?: { background: string; foreground: string }
+      lightVibrant?: { background: string; foreground: string }
+      darkVibrant?: { background: string; foreground: string }
+      vibrant?: { background: string; foreground: string }
+      dominant?: { background: string; foreground: string }
+      lightMuted?: { background: string; foreground: string }
+      muted?: { background: string; foreground: string }
+    }
+  }
+  description: PortableTextBlock[]
 }

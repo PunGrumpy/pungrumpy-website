@@ -1,5 +1,5 @@
 import { Camera } from 'lucide-react'
-import { defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 const take = defineType({
   name: 'take',
@@ -8,14 +8,14 @@ const take = defineType({
   type: 'document',
   icon: Camera,
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
       description: 'The title of the photo',
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -25,34 +25,35 @@ const take = defineType({
         maxLength: 96
       },
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'date',
       title: 'Date',
       type: 'datetime',
       description: 'The date and time the photo was taken',
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'takeImage',
       title: 'Take Image',
       type: 'image',
       description: 'The image that I have taken',
       options: {
         hotspot: true,
-        metadata: ['lqip', 'palette']
+        metadata: ['lqip', 'palette', 'exif']
       },
       fields: [
         {
           name: 'alt',
           type: 'string',
           title: 'Alternative text',
-          description: 'A description of the image for accessibility'
+          description: 'A description of the image for accessibility',
+          validation: Rule => Rule.required()
         }
       ],
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
@@ -61,21 +62,21 @@ const take = defineType({
         layout: 'tags'
       },
       description: 'Tags to categorize the photo'
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'array',
       of: [{ type: 'block' }],
       description: 'A detailed description of the photo'
-    },
-    {
+    }),
+    defineField({
       name: 'camera',
       title: 'Camera',
       type: 'string',
       description: 'The camera used to take the photo'
-    },
-    {
+    }),
+    defineField({
       name: 'cameraType',
       title: 'Camera Type',
       type: 'string',
@@ -89,8 +90,8 @@ const take = defineType({
         ]
       },
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'lensType',
       title: 'Lens Type',
       type: 'string',
@@ -106,8 +107,8 @@ const take = defineType({
         ]
       },
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'settings',
       title: 'Camera Settings',
       type: 'object',
@@ -127,7 +128,7 @@ const take = defineType({
         }
       ],
       description: 'Technical details of the photo'
-    }
+    })
   ],
   orderings: [
     {
