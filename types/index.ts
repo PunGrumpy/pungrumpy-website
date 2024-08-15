@@ -33,14 +33,12 @@ export interface ProjectInterface {
   name: string
   slug: string
   tagline: string
-  maintainStatus: MaintainStatusType
-  projectStage: ProjectStageType
-  projectType: ProjectType
+  tags: string[]
   projectUrl: string
   repositoryUrl: string
   coverImage: {
     image: string
-    alt: string
+    alt?: string
     lqip?: string
     palette?: {
       darkMuted?: { background: string; foreground: string }
@@ -62,8 +60,7 @@ export interface TakeInterface {
   date: string
   takeImage: {
     image: string
-    alt: string
-    caption?: string
+    alt?: string
     lqip?: string
     palette?: {
       darkMuted?: { background: string; foreground: string }
@@ -73,11 +70,6 @@ export interface TakeInterface {
       dominant?: { background: string; foreground: string }
       lightMuted?: { background: string; foreground: string }
       muted?: { background: string; foreground: string }
-    }
-    dimensions?: {
-      width: number
-      height: number
-      aspectRatio: number
     }
   }
   tags: string[]

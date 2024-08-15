@@ -21,6 +21,16 @@ const project = defineType({
       validation: rule => rule.max(60).required()
     },
     {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Add tags that describe this project',
+      options: {
+        layout: 'tags'
+      }
+    },
+    {
       name: 'logo',
       title: 'Logo',
       type: 'image',
@@ -29,51 +39,6 @@ const project = defineType({
         hotspot: true,
         metadata: ['lqip', 'palette']
       }
-    },
-    {
-      name: 'maintainStatus',
-      title: 'Maintain Status',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Actively Maintained', value: 'active' },
-          { title: 'Minimal Maintenance', value: 'minimal' },
-          { title: 'No Longer Maintained', value: 'inactive' }
-        ],
-        layout: 'radio'
-      },
-      description: 'Current maintenance status of the project'
-    },
-    {
-      name: 'projectStage',
-      title: 'Project Stage',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Concept', value: 'concept' },
-          { title: 'In Development', value: 'development' },
-          { title: 'Beta', value: 'beta' },
-          { title: 'Released', value: 'released' },
-          { title: 'Deprecated', value: 'deprecated' }
-        ]
-      },
-      description: 'Current stage of the project lifecycle'
-    },
-    {
-      name: 'projectType',
-      title: 'Project Type',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'University Project', value: 'university' },
-          { title: 'Client Work', value: 'client' },
-          { title: 'Personal Project', value: 'personal' },
-          { title: 'Open Source', value: 'openSource' },
-          { title: 'Hackathon', value: 'hackathon' }
-        ],
-        layout: 'radio'
-      },
-      description: 'What type of project is this?'
     },
     {
       name: 'slug',

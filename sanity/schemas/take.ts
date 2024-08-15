@@ -47,14 +47,7 @@ const take = defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative text',
-          description: 'A description of the image for accessibility',
-          validation: Rule => Rule.required()
-        },
-        {
-          name: 'caption',
-          type: 'string',
-          title: 'Caption',
-          description: 'A caption for the image'
+          description: 'A description of the image for accessibility'
         }
       ],
       validation: Rule => Rule.required()
@@ -67,8 +60,7 @@ const take = defineType({
       options: {
         layout: 'tags'
       },
-      description: 'Tags to categorize the photo',
-      validation: Rule => Rule.required()
+      description: 'Tags to categorize the photo'
     },
     {
       name: 'description',
