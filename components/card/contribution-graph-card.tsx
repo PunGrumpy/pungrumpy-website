@@ -30,7 +30,7 @@ export const ContributionGraphCard: React.FC = () => {
   const years = getGitHubYears(joinYear)
 
   return (
-    <SlideInView className="flex flex-col gap-4 xl:flex-row">
+    <SlideInView className="flex flex-col space-y-4 xl:flex-row xl:space-x-14 xl:space-y-0">
       {username || !joinYear ? (
         <>
           <div className="max-h-fit max-w-xs overflow-x-auto rounded-lg border border-border bg-card p-8 md:max-w-[60rem] xl:max-w-fit">
