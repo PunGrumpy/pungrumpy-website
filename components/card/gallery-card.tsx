@@ -78,9 +78,12 @@ export const GalleryCard: React.FC<GalleryCardProps> = ({ take }) => {
         <div className="relative aspect-square">
           <Image
             src={take.takeImage.image}
-            alt={take.takeImage.alt}
+            alt={take.takeImage.alt || take.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+            quality={100}
+            placeholder={take.takeImage?.lqip ? 'blur' : 'empty'}
+            blurDataURL={take.takeImage?.lqip || ''}
             className="object-cover"
           />
           <AnimatePresence>{isHovered && hoverContent}</AnimatePresence>

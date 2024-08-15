@@ -22,7 +22,7 @@ export const ProjectComponent: React.FC<ProjectComponentProps> = ({
         <div className="rounded-xl bg-gradient-to-b from-primary/20 to-transparent p-px">
           <Image
             src={project.coverImage.image}
-            alt={project.coverImage.alt}
+            alt={project.coverImage.alt || project.name}
             width={1920}
             height={1080}
             quality={100}
