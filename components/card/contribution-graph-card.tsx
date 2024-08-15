@@ -9,7 +9,7 @@ import { YearButton } from '@/components/button/year-button'
 import { EmptyCard } from '@/components/card/empty-card'
 import { getGitHubYears } from '@/lib/utils'
 
-export const GitHubCalendarSection: React.FC = () => {
+export const ContributionGraphCard: React.FC = () => {
   const [calendarYear, setCalendarYear] = useState<number | undefined>(
     undefined
   )
@@ -30,18 +30,18 @@ export const GitHubCalendarSection: React.FC = () => {
   const years = getGitHubYears(joinYear)
 
   return (
-    <SlideInView className="flex w-full max-w-6xl flex-wrap items-center gap-14 rounded-3xl">
+    <SlideInView className="flex flex-col gap-4 xl:flex-row">
       {username || !joinYear ? (
         <>
-          <div className="flex flex-1 flex-col rounded-lg border border-border bg-card p-9">
+          <div className="max-h-fit max-w-xs overflow-x-auto rounded-lg border border-border bg-card p-8 md:max-w-[60rem] xl:max-w-fit">
             <GitHubCalendar
               username={username}
               colorScheme={serverTheme}
-              blockSize={13}
+              blockSize={14}
               year={calendarYear}
             />
           </div>
-          <div className="flex flex-1 flex-col space-y-4">
+          <div className="flex flex-row flex-wrap justify-start gap-4 xl:flex-col">
             {years.slice(0, 5).map(year => (
               <YearButton
                 key={year}
