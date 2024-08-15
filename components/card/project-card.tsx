@@ -11,7 +11,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <Card className="grid w-full max-w-md gap-6 p-6 hover:border-primary/20">
+    <Card className="grid h-64 w-full max-w-md grid-rows-[auto_1fr_auto] gap-4 p-6 hover:border-primary/20">
       <div className="flex items-center gap-4">
         <div className="flex items-center justify-center rounded-md bg-primary/10 p-3">
           {project.logo ? (
@@ -20,7 +20,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               alt={project.coverImage?.alt || project.name}
               width={32}
               height={32}
-              className="size-8 object-contain rounded-md"
+              className="size-8 rounded-md object-contain"
             />
           ) : (
             <div className="flex size-8 items-center justify-center rounded-full font-bold">

@@ -121,7 +121,14 @@ const project = defineType({
       ],
       description: 'Write a full description about this project'
     })
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      media: 'logo',
+      subtitle: 'tagline'
+    }
+  }
 })
 
 export default project

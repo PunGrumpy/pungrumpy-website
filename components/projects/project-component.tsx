@@ -21,7 +21,7 @@ export const ProjectComponent: React.FC<ProjectComponentProps> = ({
     <SlideInView className="space-y-8 md:space-y-16">
       <section className="mx-auto">
         <div className="flex flex-wrap items-center justify-between space-y-4 md:flex-row md:space-y-0">
-          <h1 className="max-w-md text-3xl font-bold tracking-tight sm:text-6xl">
+          <h1 className="max-w-md text-3xl font-bold tracking-tight sm:text-5xl">
             {project.name}
           </h1>
           <div className="flex items-center gap-2 md:rounded-[32px] md:border md:border-border md:bg-background md:p-4">
