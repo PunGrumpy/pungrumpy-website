@@ -7,6 +7,7 @@ import { SlideInView } from '@/components/animation/slide-in-view'
 import { CustomPortableText } from '@/components/sanity/portable-text'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 import { ProjectInterface } from '@/types'
 
 interface ProjectComponentProps {
@@ -20,7 +21,7 @@ export const ProjectComponent: React.FC<ProjectComponentProps> = ({
     <SlideInView className="space-y-8 md:space-y-16">
       <section className="mx-auto">
         <div className="flex flex-wrap items-center justify-between space-y-4 md:flex-row md:space-y-0">
-          <h1 className="max-w-md text-3xl tracking-tight sm:text-6xl">
+          <h1 className="max-w-md text-3xl font-bold tracking-tight sm:text-6xl">
             {project.name}
           </h1>
           <div className="flex items-center gap-2 md:rounded-[32px] md:border md:border-border md:bg-background md:p-4">
@@ -28,7 +29,10 @@ export const ProjectComponent: React.FC<ProjectComponentProps> = ({
               variant="outline"
               asChild
               disabled={!project.projectUrl}
-              className="md:rounded-[20px] md:px-4 md:py-8"
+              className={cn(
+                'border-primary/20 md:rounded-[20px] md:px-4 md:py-8',
+                !project.projectUrl && 'cursor-not-allowed hover:bg-transparent'
+              )}
             >
               <a
                 href={project.projectUrl}
@@ -45,7 +49,10 @@ export const ProjectComponent: React.FC<ProjectComponentProps> = ({
               variant="outline"
               asChild
               disabled={!project.repository}
-              className="md:rounded-[20px] md:px-4 md:py-8"
+              className={cn(
+                'border-primary/20 md:rounded-[20px] md:px-4 md:py-8',
+                !project.repository && 'cursor-not-allowed hover:bg-transparent'
+              )}
             >
               <a
                 href={project.repository}
