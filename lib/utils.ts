@@ -26,3 +26,12 @@ export function getGitHubYears(joinYear: number | undefined): number[] {
   const years = Array.from({ length: duration }, (_year, i) => currentYear - i)
   return years
 }
+
+export function convertExposureTime(exposureTime: number): string {
+  if (exposureTime >= 1) {
+    return `${exposureTime}"`
+  } else {
+    const denominator = Math.round(1 / exposureTime)
+    return `1/${denominator}`
+  }
+}
