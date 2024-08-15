@@ -30,13 +30,6 @@ export const GalleryCard: React.FC<GalleryCardProps> = ({ take }) => {
         <p className="mb-2 text-sm text-muted-foreground">
           {formatDateString(take.date)}
         </p>
-        <div className="mb-2 flex flex-wrap gap-2">
-          {take.tags.map((tag, index) => (
-            <Badge key={index} variant="filled" color="secondary" size="sm">
-              {tag}
-            </Badge>
-          ))}
-        </div>
         <div className="mb-2 text-sm text-foreground">
           <PortableText value={take.description} />
         </div>

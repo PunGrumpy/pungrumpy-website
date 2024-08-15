@@ -92,7 +92,7 @@ export const TakesGallery: React.FC<TakesGalleryProps> = ({ initialTakes }) => {
         <div className="flex flex-row flex-wrap items-center justify-start gap-5 rounded-[32px] border border-border bg-background p-3">
           {filterButtons}
         </div>
-        <div className="flex items-center rounded-[32px] border border-border bg-background p-3 md:w-60">
+        <div className="flex w-full items-center rounded-[32px] border border-border bg-background p-3 md:w-60">
           <Input
             placeholder="Search"
             value={searchQuery}
