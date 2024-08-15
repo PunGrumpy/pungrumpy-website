@@ -1,13 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import {
-  Aperture,
-  Banana,
-  Camera,
-  Focus,
-  SunDim,
-  Timer,
-  Zap
-} from 'lucide-react'
+import { Aperture, Atom, Camera, Focus, SunDim, Timer, Zap } from 'lucide-react'
 import Image from 'next/image'
 import { PortableText } from 'next-sanity'
 import React, { useState } from 'react'
@@ -69,7 +61,7 @@ export const GalleryCard: React.FC<{ take: TakeInterface }> = ({ take }) => {
                 </div>
                 <div className="grid-row-3 mb-2 grid gap-2">
                   <IconWithText icon={Camera} value={camera || 'N/A'} />
-                  <IconWithText icon={Banana} value={lensModel} />
+                  <IconWithText icon={Atom} value={lensModel} />
                   <IconWithText
                     icon={Aperture}
                     value={`${exif.FNumber || settings?.aperture || 'N/A'} ƒ`}
