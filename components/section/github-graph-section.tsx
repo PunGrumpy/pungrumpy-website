@@ -9,7 +9,7 @@ export const GitHubGraphSection: React.FC = () => {
           Contribution Graph
         </h2>
       </SlideInView>
-      <SlideInView delay={0.2} className="">
+      <SlideInView delay={0.2}>
         <ContributionGraphCard />
       </SlideInView>
     </section>
