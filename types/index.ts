@@ -35,7 +35,7 @@ export interface ProjectInterface {
   tagline: string
   tags: string[]
   projectUrl: string
-  repositoryUrl: string
+  repository: string
   coverImage: {
     image: string
     alt?: string
