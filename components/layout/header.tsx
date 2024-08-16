@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
@@ -50,16 +50,11 @@ export const Header: React.FC<HeaderProps> = ({
         href="/"
         className="flex flex-row items-center text-2xl font-bold leading-9 tracking-tighter no-underline transition-colors hover:text-muted-foreground"
       >
-        <motion.div
-          initial={{ opacity: 0, transform: 'translateY(-20px)' }}
-          animate={{ opacity: 1, transform: 'translateY(0)' }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-2"
-        >
+        <div className="flex items-center gap-2">
           <Icons.logo className="size-8" />
           <span className="hidden sm:block">Noppakorn Kaewsalabnil</span>
           <span className="block sm:hidden">PunGrumpy</span>
-        </motion.div>
+        </div>
       </Link>
 
       <Sheet open={isDrawerOpen} onOpenChange={setDrawerOpen}>
@@ -77,13 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
         <SheetContent className="flex flex-col bg-background p-10 backdrop-blur-lg">
           <AnimatePresence>
             {isDrawerOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.2 }}
-                className="flex flex-col gap-2 rounded-[32px] border border-border/75 p-4"
-              >
+              <div className="flex flex-col gap-2 rounded-[32px] border border-border/75 p-4">
                 <HeaderButton
                   href="/about"
                   label="About"
@@ -122,7 +111,7 @@ export const Header: React.FC<HeaderProps> = ({
                     </div>
                   </div>
                 </button>
-              </motion.div>
+              </div>
             )}
           </AnimatePresence>
         </SheetContent>
