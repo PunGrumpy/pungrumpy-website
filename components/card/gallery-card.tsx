@@ -16,8 +16,13 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import {
   formatAperture,
+  formatExposureBias,
   formatExposureTime,
+  formatFocalLength,
+  formatISO,
   getExifValue,
+  getExposureInfo,
+  getLensInfo,
   NullableExif
 } from '@/lib/exif'
 import { formatDateString } from '@/lib/utils'
@@ -74,33 +79,34 @@ export const GalleryCard: React.FC<{ take: TakeInterface }> = ({ take }) => {
                 </div>
                 <div className="grid-row-3 mb-2 grid gap-2">
                   <IconWithText icon={Camera} value={camera || 'N/A'} />
-                  <IconWithText
-                    icon={Telescope}
-                    value={getExifValue(exif, 'LensModel', 'N/A') || 'N/A'}
-                  />
+                  <IconWithText icon={Telescope} value={getLensInfo(exif)} />
                   <IconWithText
                     icon={Aperture}
-                    value={
-                      formatAperture(
-                        getExifValue(exif, 'FNumber', undefined)
-                      ) || 'N/A'
-                    }
+                    value={formatAperture(
+                      getExifValue(exif, 'FNumber', undefined)
+                    )}
                   />
                   <IconWithText
                     icon={SunDim}
-                    value={`${getExifValue(exif, 'ExposureBiasValue', 0)?.toFixed(2) || 'N/A'} eV`}
+                    value={formatExposureBias(
+                      getExifValue(exif, 'ExposureBiasValue', undefined)
+                    )}
                   />
                   <IconWithText
                     icon={Timer}
-                    value={`${formatExposureTime(getExifValue(exif, 'ExposureTime', undefined)) || 'N/A'} sec`}
+                    value={formatExposureTime(
+                      getExifValue(exif, 'ExposureTime', undefined)
+                    )}
                   />
                   <IconWithText
                     icon={Zap}
-                    value={`ISO ${getExifValue(exif, 'ISO', undefined) || 'N/A'}`}
+                    value={formatISO(getExifValue(exif, 'ISO', undefined))}
                   />
                   <IconWithText
                     icon={Focus}
-                    value={`${getExifValue(exif, 'FocalLength', undefined) || 'N/A'} mm`}
+                    value={formatFocalLength(
+                      getExifValue(exif, 'FocalLength', undefined)
+                    )}
                   />
                 </div>
               </motion.div>
