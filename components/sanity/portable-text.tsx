@@ -1,11 +1,11 @@
 import { PortableTextComponents } from '@portabletext/react'
 import { ExternalLink, Quote } from 'lucide-react'
 
+import { RefLinkSection } from '@/components/button/reflink-section'
 import { CodeBlock } from '@/components/sanity/codeblock'
 import { HashScroll } from '@/components/sanity/hash-scroll'
 import { PortableImage } from '@/components/sanity/portable-image'
 import { Quiz } from '@/components/sanity/quiz'
-import { RefLinkSection } from '@/components/section/reflink-section'
 import { Card, CardContent } from '@/components/ui/card'
 import { QuizValueInterface, TableInterface } from '@/types'
 
