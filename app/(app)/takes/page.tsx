@@ -16,6 +16,8 @@ export const metadata: Metadata = {
 export default async function TakesPage() {
   const takes = await fetchTakes()
 
+  console.log(takes)
+
   return (
     <main className="z-10">
       <HeadingSection

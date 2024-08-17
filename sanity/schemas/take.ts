@@ -76,28 +76,6 @@ const take = defineType({
       type: 'string',
       description: 'The camera used to take the photo',
       validation: Rule => Rule.required()
-    }),
-    defineField({
-      name: 'settings',
-      title: 'Camera Settings',
-      type: 'object',
-      fields: [
-        { name: 'lensModel', type: 'string', title: 'Lens Model' },
-        { name: 'aperture', type: 'string', title: 'Aperture' },
-        { name: 'shutterSpeed', type: 'string', title: 'Shutter Speed' },
-        { name: 'iso', type: 'number', title: 'ISO' },
-        {
-          name: 'exposureCompensation',
-          type: 'string',
-          title: 'Exposure Compensation'
-        },
-        {
-          name: 'focalLength',
-          type: 'string',
-          title: 'Focal Length'
-        }
-      ],
-      description: 'Technical details of the photo'
     })
   ],
   orderings: [

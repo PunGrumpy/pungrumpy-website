@@ -1,12 +1,26 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Aperture, Atom, Camera, Focus, SunDim, Timer, Zap } from 'lucide-react'
+import {
+  Aperture,
+  Camera,
+  Focus,
+  SunDim,
+  Telescope,
+  Timer,
+  Zap
+} from 'lucide-react'
 import Image from 'next/image'
 import { PortableText } from 'next-sanity'
 import React, { useState } from 'react'
 
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
-import { convertExposureTime, formatDateString } from '@/lib/utils'
+import {
+  formatAperture,
+  formatExposureTime,
+  getExifValue,
+  NullableExif
+} from '@/lib/exif'
+import { formatDateString } from '@/lib/utils'
 import { TakeInterface } from '@/types'
 
 interface IconWithTextProps {
@@ -23,9 +37,8 @@ const IconWithText: React.FC<IconWithTextProps> = ({ icon: Icon, value }) => (
 
 export const GalleryCard: React.FC<{ take: TakeInterface }> = ({ take }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const { takeImage, settings, title, description, date, tags, camera } = take
-  const exif = takeImage.exif || {}
-  const lensModel = exif.LensModel || settings?.lensModel || 'N/A'
+  const { takeImage, title, description, date, tags, camera } = take
+  const exif: NullableExif = takeImage.exif
 
   return (
     <Card
@@ -61,28 +74,34 @@ export const GalleryCard: React.FC<{ take: TakeInterface }> = ({ take }) => {
                 </div>
                 <div className="grid-row-3 mb-2 grid gap-2">
                   <IconWithText icon={Camera} value={camera || 'N/A'} />
-                  <IconWithText icon={Atom} value={lensModel} />
+                  <IconWithText
+                    icon={Telescope}
+                    value={getExifValue(exif, 'LensModel', 'N/A') || 'N/A'}
+                  />
                   <IconWithText
                     icon={Aperture}
-                    value={`${exif.FNumber || settings?.aperture || 'N/A'} ƒ`}
+                    value={
+                      formatAperture(
+                        getExifValue(exif, 'FNumber', undefined)
+                      ) || 'N/A'
+                    }
                   />
                   <IconWithText
                     icon={SunDim}
-                    value={`${exif.ExposureBiasValue?.toFixed(2) || settings?.exposureCompensation || 0} eV`}
+                    value={`${getExifValue(exif, 'ExposureBiasValue', 0)?.toFixed(2) || 'N/A'} eV`}
                   />
                   <IconWithText
                     icon={Timer}
-                    value={`${convertExposureTime(exif.ExposureTime!) || settings?.shutterSpeed || 'N/A'} sec`}
+                    value={`${formatExposureTime(getExifValue(exif, 'ExposureTime', undefined)) || 'N/A'} sec`}
                   />
                   <IconWithText
                     icon={Zap}
-                    value={`ISO ${exif.ISO || settings?.iso || 'N/A'}`}
+                    value={`ISO ${getExifValue(exif, 'ISO', undefined) || 'N/A'}`}
                   />
                   <IconWithText
                     icon={Focus}
-                    value={`${exif.FocalLength || settings?.focalLength || 'N/A'} mm`}
+                    value={`${getExifValue(exif, 'FocalLength', undefined) || 'N/A'} mm`}
                   />
-                  <div className="flex items-center text-xs text-foreground/80 transition-colors hover:text-foreground"></div>
                 </div>
               </motion.div>
             )}
@@ -98,7 +117,7 @@ export const GalleryCard: React.FC<{ take: TakeInterface }> = ({ take }) => {
             </p>
           </div>
           <div className="mt-2 flex flex-wrap gap-1">
-            {tags.map((tag, index) => (
+            {tags.sort().map((tag, index) => (
               <Badge key={index} color="secondary" className="text-xs">
                 {tag}
               </Badge>

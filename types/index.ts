@@ -29,33 +29,12 @@ export type LensType =
 export type CameraType = 'dslr' | 'mirrorless' | 'film' | 'smartphone' | 'other'
 
 export interface ExifDataInterface {
-  DateTimeDigitized?: string
-  _type?: string
-  FocalPlaneXResolution?: number
-  LensSpecification?: number[]
   ISO?: number
   FocalLength?: number
-  MeteringMode?: string
-  SubSecTimeOriginal?: string
-  ColorSpace?: string
-  SceneCaptureType?: string
-  CustomRendered?: string
-  FocalPlaneYResolution?: number
-  ExposureProgram?: string
-  BodySerialNumber?: string
-  Flash?: string
   ExposureBiasValue?: number
-  WhiteBalance?: string
-  FocalPlaneResolutionUnit?: string
-  DateTimeOriginal?: string
   FNumber?: number
-  MaxApertureValue?: number
   LensModel?: string
-  ShutterSpeedValue?: number
-  ApertureValue?: number
   ExposureTime?: number
-  ExposureMode?: string
-  SubSecTimeDigitized?: string
 }
 
 export interface TakeInterface {
@@ -81,14 +60,6 @@ export interface TakeInterface {
   tags: string[]
   description: PortableTextBlock[]
   camera: string
-  settings?: {
-    lensModel?: string
-    aperture: string
-    shutterSpeed: string
-    iso: number
-    exposureCompensation: string
-    focalLength: string
-  }
 }
 
 export interface ProjectInterface {
