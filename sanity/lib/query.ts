@@ -1,5 +1,20 @@
 import { groq } from 'next-sanity'
 
+export const profileQuery = groq`*[_type == "profile"][0]{
+  _id,
+  name,
+  alias,
+  tagline,
+  bio,
+  avatar {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    "palette": asset->metadata.palette,
+    alt,
+  },
+  about,
+}`
+
 export const projectsQuery = groq`*[_type == "project"] | order(_createdAt desc){
   _id, 
   name,

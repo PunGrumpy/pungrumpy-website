@@ -83,42 +83,7 @@ const project = defineType({
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'Heading 2', value: 'h2' },
-            { title: 'Heading 3', value: 'h3' },
-            { title: 'Quote', value: 'blockquote' }
-          ],
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'External link',
-                fields: [
-                  {
-                    title: 'URL',
-                    name: 'href',
-                    type: 'url'
-                  }
-                ]
-              }
-            ],
-            decorators: [
-              { title: 'Strong', value: 'strong' },
-              { title: 'Emphasis', value: 'em' },
-              { title: 'Code', value: 'code' }
-            ]
-          }
-        },
-        {
-          type: 'image'
-        }
-      ],
+      type: 'blockContent',
       description: 'Write a full description about this project'
     })
   ],

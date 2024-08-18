@@ -1,5 +1,6 @@
 'use client'
 
+import { codeInput } from '@sanity/code-input'
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
@@ -18,6 +19,7 @@ export default defineConfig({
   dataset,
   schema,
   plugins: [
+    codeInput(),
     structureTool(),
     cloudinaryAssetSourcePlugin(),
     visionTool({ defaultApiVersion: apiVersion })

@@ -1,10 +1,17 @@
 import { sanityFetcher } from '@/sanity/lib/client'
 import {
+  profileQuery,
   projectBySlugQuery,
   projectsQuery,
   takeQuery
 } from '@/sanity/lib/query'
-import type { ProjectInterface, TakeInterface } from '@/types'
+import type { ProfileInterface, ProjectInterface, TakeInterface } from '@/types'
+
+export const fetchProfile = async (): Promise<ProfileInterface> =>
+  sanityFetcher({
+    query: profileQuery,
+    tags: ['profile']
+  })
 
 export const fetchProjects = async (): Promise<ProjectInterface[]> =>
   sanityFetcher({

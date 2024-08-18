@@ -6,27 +6,34 @@ export type Table = {
   title?: string
 }
 
-export interface TableInterface {
-  table?: Table
-  caption?: string
-}
-
 export interface QuizValueInterface {
   _key: string
   question: string
   answer: string
 }
 
-export type LensType =
-  | 'wideAngle'
-  | 'standard'
-  | 'telephoto'
-  | 'macro'
-  | 'prime'
-  | 'zoom'
-  | 'other'
-
-export type CameraType = 'dslr' | 'mirrorless' | 'film' | 'smartphone' | 'other'
+export interface ProfileInterface {
+  _id: string
+  name: string
+  alias: string
+  tagline: string
+  bio: string
+  avatar: {
+    image: string
+    alt: string
+    lqip?: string
+    palette?: {
+      darkMuted?: { background: string; foreground: string }
+      lightVibrant?: { background: string; foreground: string }
+      darkVibrant?: { background: string; foreground: string }
+      vibrant?: { background: string; foreground: string }
+      dominant?: { background: string; foreground: string }
+      lightMuted?: { background: string; foreground: string }
+      muted?: { background: string; foreground: string }
+    }
+  }
+  about: PortableTextBlock[]
+}
 
 export interface ExifDataInterface {
   ISO?: number

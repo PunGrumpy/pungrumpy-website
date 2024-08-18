@@ -48,8 +48,7 @@ const profile = defineType({
     defineField({
       name: 'about',
       title: 'About',
-      type: 'array',
-      of: [{ type: 'block' }],
+      type: 'blockContent',
       description: 'Tell us about yourself'
     })
   ]
