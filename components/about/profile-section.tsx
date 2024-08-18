@@ -60,7 +60,6 @@ export const ProfileSection: React.FC<{ profile: ProfileInterface }> = ({
           )
         )}
       </div>
-      {/* <div className="flex w-full max-w-xs flex-col space-y-3"> */}
       <div className="flex w-full max-w-xs flex-row space-x-4">
         <Button variant="default" className="group w-full" asChild>
           <Link href="mailto:">
