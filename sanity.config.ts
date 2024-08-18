@@ -1,8 +1,10 @@
 'use client'
 
+import { codeInput } from '@sanity/code-input'
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
+import { cloudinaryAssetSourcePlugin } from 'sanity-plugin-cloudinary'
 
 import { Icons } from '@/components/icons'
 import { apiVersion, dataset, projectId } from '@/sanity/env'
@@ -16,5 +18,10 @@ export default defineConfig({
   projectId,
   dataset,
   schema,
-  plugins: [structureTool(), visionTool({ defaultApiVersion: apiVersion })]
+  plugins: [
+    codeInput(),
+    structureTool(),
+    cloudinaryAssetSourcePlugin(),
+    visionTool({ defaultApiVersion: apiVersion })
+  ]
 })

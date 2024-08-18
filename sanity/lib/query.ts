@@ -1,32 +1,52 @@
 import { groq } from 'next-sanity'
 
+export const profileQuery = groq`*[_type == "profile"][0]{
+  _id,
+  name,
+  alias,
+  tagline,
+  bio,
+  avatar {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    "palette": asset->metadata.palette,
+    alt,
+  },
+  about,
+}`
+
 export const projectsQuery = groq`*[_type == "project"] | order(_createdAt desc){
   _id, 
   name,
   "slug": slug.current,
   tagline,
+  logo {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    alt,
+  },
   coverImage {
     "image": asset->url,
     "lqip": asset->metadata.lqip,
     alt,
   },
-  maintainStatus,
-  projectStage,
-  projectType,
+  tags,
 }`
 
 export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $slug][0]{
     _id,
     name,
     tagline,
-    startDate,
-    endDate,
-    maintainStatus,
-    projectStage,
-    contributors,
-    projectType,
+    "slug": slug.current,
+    tags,
     projectUrl,
     repository,
+    logo {
+      "image": asset->url,
+      "lqip": asset->metadata.lqip,
+      "palette": asset->metadata.palette,
+      alt,
+    },
     coverImage {
       "image": asset->url,
       "lqip": asset->metadata.lqip,
@@ -34,7 +54,6 @@ export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $
       alt,
     },
     description,
-    technologies,
 }`
 
 export const takeQuery = groq`*[_type == 'take'] | order(date desc) {
@@ -42,15 +61,14 @@ export const takeQuery = groq`*[_type == 'take'] | order(date desc) {
   _createdAt,
   _updatedAt,
   title,
-  slug,
+  "slug": slug.current,
   date,
   takeImage {
     "image": asset->url,
     "lqip": asset->metadata.lqip,
     "palette": asset->metadata.palette,
-    "dimensions": asset->metadata.dimensions,
+    "exif": asset->metadata.exif,
     alt,
-    caption
   },
   tags,
   description,

@@ -1,5 +1,5 @@
 import { Package } from 'lucide-react'
-import { defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 const project = defineType({
   name: 'project',
@@ -8,105 +8,61 @@ const project = defineType({
   type: 'document',
   icon: Package,
   fields: [
-    {
+    defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
-      description: 'Enter the name of the project'
-    },
-    {
+      description: 'Enter the name of the project',
+      validation: rule => rule.required()
+    }),
+    defineField({
       name: 'tagline',
       title: 'Tagline',
       type: 'string',
       validation: rule => rule.max(60).required()
-    },
-    {
-      name: 'startDate',
-      title: 'Start Date',
-      type: 'date',
-      description: 'When did you start working on this project?'
-    },
-    {
-      name: 'endDate',
-      title: 'End Date',
-      type: 'date',
-      description:
-        'When did you finish working on this project? Leave blank if ongoing.'
-    },
-    {
-      name: 'maintainStatus',
-      title: 'Maintain Status',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Actively Maintained', value: 'active' },
-          { title: 'Minimal Maintenance', value: 'minimal' },
-          { title: 'No Longer Maintained', value: 'inactive' }
-        ],
-        layout: 'radio'
-      },
-      description: 'Current maintenance status of the project'
-    },
-    {
-      name: 'projectStage',
-      title: 'Project Stage',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Concept', value: 'concept' },
-          { title: 'In Development', value: 'development' },
-          { title: 'Beta', value: 'beta' },
-          { title: 'Released', value: 'released' },
-          { title: 'Deprecated', value: 'deprecated' }
-        ]
-      },
-      description: 'Current stage of the project lifecycle'
-    },
-    {
-      name: 'contributors',
-      title: 'Contributors',
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
       type: 'array',
       of: [{ type: 'string' }],
-      description: 'List of contributors to the project'
-    },
-    {
-      name: 'projectType',
-      title: 'Project Type',
-      type: 'string',
+      description: 'Add tags that describe this project',
       options: {
-        list: [
-          { title: 'University Project', value: 'university' },
-          { title: 'Client Work', value: 'client' },
-          { title: 'Personal Project', value: 'personal' },
-          { title: 'Open Source', value: 'openSource' },
-          { title: 'Hackathon', value: 'hackathon' }
-        ],
-        layout: 'radio'
-      },
-      description: 'What type of project is this?'
-    },
-    {
+        layout: 'tags'
+      }
+    }),
+    defineField({
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      description: 'Upload a logo for this project',
+      options: {
+        hotspot: true,
+        metadata: ['lqip', 'palette']
+      }
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
       description:
         'Add a custom slug for the URL or generate one from the name',
-      options: { source: 'name' }
-    },
-    {
+      options: { source: 'name' },
+      validation: rule => rule.required()
+    }),
+    defineField({
       name: 'projectUrl',
       title: 'Project URL',
       type: 'url',
-      description: 'Leaving this URL blank will add a coming soon to the link.'
-    },
-    {
+      description: 'Enter the URL of the project'
+    }),
+    defineField({
       name: 'repository',
-      title: 'Repository URL',
+      title: 'Repository',
       type: 'url',
-      description:
-        'Leaving this URL blank will add a "No Repository" message to the link.'
-    },
-    {
+      description: 'Enter the URL of the repository'
+    }),
+    defineField({
       name: 'coverImage',
       title: 'Cover Image',
       type: 'image',
@@ -119,25 +75,25 @@ const project = defineType({
         {
           name: 'alt',
           type: 'string',
-          title: 'Alternative text'
+          title: 'Alternative text',
+          validation: rule => rule.required()
         }
       ]
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
-      type: 'array',
-      of: [{ type: 'block' }],
+      type: 'blockContent',
       description: 'Write a full description about this project'
-    },
-    {
-      name: 'technologies',
-      title: 'Technologies',
-      type: 'array',
-      of: [{ type: 'string' }],
-      description: 'List the technologies used in this project'
+    })
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      media: 'logo',
+      subtitle: 'tagline'
     }
-  ]
+  }
 })
 
 export default project

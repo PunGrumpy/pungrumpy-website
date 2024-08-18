@@ -2,8 +2,7 @@ import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { fetchProjectBySlug } from '@/app/(app)/actions'
-import { WorkContent } from '@/components/works/work-content'
-import { WorkHeader } from '@/components/works/work-header'
+import { ProjectComponent } from '@/components/projects/project-component'
 import { SITE_TITLE, SITE_URL } from '@/config/sitemap'
 
 interface WorkDetailPageProps {
@@ -26,7 +25,7 @@ export async function generateMetadata(
     openGraph: {
       title: project.name,
       description: project.tagline,
-      url: `${SITE_URL}/works/${slug}`,
+      url: `${SITE_URL}/projects/${slug}`,
       siteName: `${SITE_TITLE}`,
       images: [
         {
@@ -69,18 +68,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 
   return (
     <main className="z-10 flex max-w-6xl flex-col space-y-16">
-      <WorkHeader
-        work={{
-          ...project
-        }}
-      />
-      <div className="md:col-span-2">
-        <WorkContent
-          work={{
-            ...project
-          }}
-        />
-      </div>
+      <ProjectComponent project={project} />
     </main>
   )
 }

@@ -1,53 +1,47 @@
+import { TableRow } from '@sanity/table'
 import { PortableTextBlock } from 'next-sanity'
 
-export type ProjectType =
-  | 'university'
-  | 'client'
-  | 'personal'
-  | 'openSource'
-  | 'hackathon'
+export type Table = {
+  rows?: TableRow[]
+  title?: string
+}
 
-export type MaintainStatusType = 'active' | 'minimal' | 'inactive' | 'unknown'
+export interface QuizValueInterface {
+  _key: string
+  question: string
+  answer: string
+}
 
-export type ProjectStageType =
-  | 'concept'
-  | 'development'
-  | 'beta'
-  | 'released'
-  | 'deprecated'
-  | 'unknown'
-
-export type LensType =
-  | 'wideAngle'
-  | 'standard'
-  | 'telephoto'
-  | 'macro'
-  | 'prime'
-  | 'zoom'
-  | 'other'
-
-export type CameraType = 'dslr' | 'mirrorless' | 'film' | 'smartphone' | 'other'
-
-export interface ProjectInterface {
+export interface ProfileInterface {
   _id: string
   name: string
-  slug: string
+  alias: string
   tagline: string
-  startDate: string
-  endDate?: string
-  maintainStatus: MaintainStatusType
-  projectStage: ProjectStageType
-  contributors: string[]
-  projectType: ProjectType
-  projectUrl: string
-  repository: string
-  coverImage: {
+  bio: string
+  avatar: {
     image: string
     alt: string
-    lqip: string
+    lqip?: string
+    palette?: {
+      darkMuted?: { background: string; foreground: string }
+      lightVibrant?: { background: string; foreground: string }
+      darkVibrant?: { background: string; foreground: string }
+      vibrant?: { background: string; foreground: string }
+      dominant?: { background: string; foreground: string }
+      lightMuted?: { background: string; foreground: string }
+      muted?: { background: string; foreground: string }
+    }
   }
-  description: PortableTextBlock[]
-  technologies: string[]
+  about: PortableTextBlock[]
+}
+
+export interface ExifDataInterface {
+  ISO?: number
+  FocalLength?: number
+  ExposureBiasValue?: number
+  FNumber?: number
+  LensModel?: string
+  ExposureTime?: number
 }
 
 export interface TakeInterface {
@@ -58,8 +52,7 @@ export interface TakeInterface {
   takeImage: {
     image: string
     alt: string
-    lqip: string
-    caption?: string
+    lqip?: string
     palette?: {
       darkMuted?: { background: string; foreground: string }
       lightVibrant?: { background: string; foreground: string }
@@ -69,22 +62,48 @@ export interface TakeInterface {
       lightMuted?: { background: string; foreground: string }
       muted?: { background: string; foreground: string }
     }
-    dimensions?: {
-      width: number
-      height: number
-      aspectRatio: number
-    }
+    exif?: ExifDataInterface
   }
   tags: string[]
   description: PortableTextBlock[]
   camera: string
-  cameraType: CameraType
-  lensType: LensType
-  settings: {
-    aperture: string
-    shutterSpeed: string
-    iso: number
-    exposureCompensation: string
-    focalLength: string
+}
+
+export interface ProjectInterface {
+  _id: string
+  name: string
+  slug: string
+  tagline: string
+  tags: string[]
+  logo?: {
+    image: string
+    alt: string
+    lqip?: string
+    palette?: {
+      darkMuted?: { background: string; foreground: string }
+      lightVibrant?: { background: string; foreground: string }
+      darkVibrant?: { background: string; foreground: string }
+      vibrant?: { background: string; foreground: string }
+      dominant?: { background: string; foreground: string }
+      lightMuted?: { background: string; foreground: string }
+      muted?: { background: string; foreground: string }
+    }
   }
+  projectUrl?: string
+  repository?: string
+  coverImage: {
+    image: string
+    alt: string
+    lqip?: string
+    palette?: {
+      darkMuted?: { background: string; foreground: string }
+      lightVibrant?: { background: string; foreground: string }
+      darkVibrant?: { background: string; foreground: string }
+      vibrant?: { background: string; foreground: string }
+      dominant?: { background: string; foreground: string }
+      lightMuted?: { background: string; foreground: string }
+      muted?: { background: string; foreground: string }
+    }
+  }
+  description: PortableTextBlock[]
 }
