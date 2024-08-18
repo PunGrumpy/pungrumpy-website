@@ -4,6 +4,8 @@ export const profileQuery = groq`*[_type == "profile"][0]{
   _id,
   name,
   alias,
+  tags,
+  socials,
   tagline,
   bio,
   avatar {

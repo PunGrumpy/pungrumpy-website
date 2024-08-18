@@ -16,6 +16,8 @@ export interface ProfileInterface {
   _id: string
   name: string
   alias: string
+  tags: string[]
+  socials: { name: string; url: string }[]
   tagline: string
   bio: string
   avatar: {

@@ -22,6 +22,41 @@ const profile = defineType({
       description: 'Enter your alias (or the name you want to be known by)'
     }),
     defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Enter your tags',
+      options: {
+        layout: 'tags'
+      }
+    }),
+    defineField({
+      name: 'socials',
+      title: 'Socials',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+              description: 'Enter the name of the social media'
+            }),
+            defineField({
+              name: 'url',
+              title: 'URL',
+              type: 'url',
+              description: 'Enter the URL of the social media'
+            })
+          ]
+        }
+      ],
+      description: 'Enter your social media'
+    }),
+    defineField({
       name: 'tagline',
       title: 'Tagline',
       type: 'string',

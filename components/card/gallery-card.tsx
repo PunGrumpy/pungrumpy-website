@@ -21,7 +21,6 @@ import {
   formatFocalLength,
   formatISO,
   getExifValue,
-  getExposureInfo,
   getLensInfo,
   NullableExif
 } from '@/lib/exif'

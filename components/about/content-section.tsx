@@ -15,7 +15,7 @@ export const ContentSection: React.FC<{ profile: ProfileInterface }> = ({
       </span>
     </h1>
     <h2 className="mb-6 text-3xl font-semibold text-muted-foreground">
-      A college student and open-source contributor
+      {profile.tagline}
     </h2>
     <div className="mb-8 text-lg leading-relaxed text-muted-foreground">
       <PortableText value={profile.about} components={CustomPortableText} />
