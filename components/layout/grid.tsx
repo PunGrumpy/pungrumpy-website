@@ -12,11 +12,11 @@ export const Grid: React.FC<GridProps> = ({ className }) => {
         className
       )}
     >
-      <div className="w-px bg-transparent" />
-      <div className="w-px bg-primary/10" />
-      <div className="w-px bg-primary/10" />
-      <div className="w-px bg-primary/10" />
-      <div className="w-px bg-transparent" />
+      <div className="w-px bg-blend-saturation" />
+      <div className="w-px bg-border/50" />
+      <div className="w-px bg-border/50" />
+      <div className="w-px bg-border/50" />
+      <div className="w-px bg-blend-saturation" />
     </div>
   )
 }
