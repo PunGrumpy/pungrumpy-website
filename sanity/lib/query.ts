@@ -18,6 +18,23 @@ export const profileQuery = groq`*[_type == "profile"][0]{
   usage
 }`
 
+export const educationQuery = groq`*[_type == "education"] | order(startDate desc){
+  _id,
+  institutionName,
+  degree,
+  logo {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    alt,
+  },
+  url,
+  description,
+  startDate,
+  endDate,
+  major,
+  gpa,
+}`
+
 export const projectsQuery = groq`*[_type == "project"] | order(_createdAt desc){
   _id, 
   name,

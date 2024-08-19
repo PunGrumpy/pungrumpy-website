@@ -38,6 +38,22 @@ export interface ProfileInterface {
   usage: PortableTextBlock[]
 }
 
+export interface EducationInterface {
+  _id: string
+  institutionName: string
+  degree: string
+  logo: {
+    image: string
+    alt: string
+  }
+  url?: string
+  description: string
+  startDate: string
+  endDate: string
+  major: string
+  gpa?: number
+}
+
 export interface ExifDataInterface {
   ISO?: number
   FocalLength?: number
