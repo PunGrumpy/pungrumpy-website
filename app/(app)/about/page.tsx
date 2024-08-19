@@ -7,18 +7,21 @@ export default async function AboutPage() {
   const profile = await fetchProfile()
 
   return (
-    <main className="z-10 mx-auto max-w-6xl py-16">
+    <main className="z-10 mx-auto max-w-6xl px-4 py-8 sm:py-16">
       {profile && (
-        <div className="relative">
-          <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div className="flex flex-col gap-8 sm:flex-row sm:gap-12">
+          <SlideInView
+            delay={0.1}
+            className="order-2 w-full sm:order-1 sm:w-1/2"
+          >
             <ContentSection profile={profile} />
-            <SlideInView
-              delay={0.16}
-              className="flex flex-col items-center justify-start lg:items-start"
-            >
-              <ProfileSection profile={profile} />
-            </SlideInView>
-          </div>
+          </SlideInView>
+          <SlideInView
+            delay={0.16}
+            className="order-1 w-full sm:order-2 sm:w-1/2"
+          >
+            <ProfileSection profile={profile} />
+          </SlideInView>
         </div>
       )}
     </main>

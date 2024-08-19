@@ -19,8 +19,6 @@ export const ContentSection: React.FC<{ profile: ProfileInterface }> = ({
     </h2>
     <div className="mb-8 text-lg leading-relaxed text-muted-foreground">
       <PortableText value={profile.about} components={CustomPortableText} />
-    </div>
-    <div>
       <PortableText
         value={profile.usage}
         components={CustomPortableTextFavicon}
