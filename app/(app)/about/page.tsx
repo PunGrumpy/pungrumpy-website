@@ -7,7 +7,7 @@ export default async function AboutPage() {
   const profile = await fetchProfile()
 
   return (
-    <main className="z-10 mx-auto max-w-6xl px-4 py-8 sm:py-16">
+    <main className="z-10 mx-auto max-w-6xl p-4">
       {profile && (
         <div className="flex flex-col gap-8 sm:flex-row sm:gap-12">
           <SlideInView
