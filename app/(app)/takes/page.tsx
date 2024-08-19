@@ -17,12 +17,12 @@ export default async function TakesPage() {
   const takes = await fetchTakes()
 
   return (
-    <main className="z-10">
+    <main className="z-10 flex w-full max-w-6xl flex-col space-y-8">
       <HeadingSection
         title="Takes"
         description="A curated list of the photos I take on my journey. Check them out below!"
       />
-      <SlideInView delay={0.1} className="w-[1100px]">
+      <SlideInView delay={0.1} className="flex flex-col">
         <TakesGallery initialTakes={takes} />
       </SlideInView>
     </main>
