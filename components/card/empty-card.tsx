@@ -10,7 +10,7 @@ interface EmptyCardProps {
 
 export const EmptyCard: React.FC<EmptyCardProps> = ({
   value = '',
-  icon = <Icons.logo className="size-16" />,
+  icon = <Icons.LogoPunGrumpy className="size-16" />,
   title,
   message
 }) => {

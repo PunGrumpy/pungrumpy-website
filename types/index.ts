@@ -35,6 +35,7 @@ export interface ProfileInterface {
     }
   }
   about: PortableTextBlock[]
+  usage: PortableTextBlock[]
 }
 
 export interface ExifDataInterface {

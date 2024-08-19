@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
           className="flex flex-row items-center text-2xl font-bold leading-9 tracking-tighter no-underline transition-colors hover:text-muted-foreground"
         >
           <div className="flex items-center gap-2">
-            <Icons.logo className="size-8" />
+            <Icons.LogoPunGrumpy className="size-8" />
             <span className="hidden sm:block">Noppakorn Kaewsalabnil</span>
             <span className="block sm:hidden">PunGrumpy</span>
           </div>
@@ -126,7 +126,7 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="flex h-full flex-col overflow-y-auto p-6">
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center gap-2 text-2xl font-bold leading-9 tracking-tighter">
-                    <Icons.logo className="size-8" />
+                    <Icons.LogoPunGrumpy className="size-8" />
                     PunGrumpy
                   </div>
                   <Button

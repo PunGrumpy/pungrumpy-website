@@ -1,6 +1,8 @@
 import Link from 'next/link'
 
-import { Icons } from '@/components/icons'
+import { fetchProfile } from '@/app/(app)/actions'
+import { Icon, Icons } from '@/components/icons'
+import { getSocialIcon } from '@/lib/icons'
 import { cn } from '@/lib/utils'
 
 interface FooterProps {
@@ -12,7 +14,9 @@ interface FooterMenuProps {
   items: { label: string; href: string; isExternal?: boolean }[]
 }
 
-export const Footer: React.FC<FooterProps> = ({ className }) => {
+export const Footer: React.FC<FooterProps> = async ({ className }) => {
+  const profile = await fetchProfile()
+
   return (
     <footer
       className={cn(
@@ -20,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
         className
       )}
     >
-      <Icons.line className="w-full" />
+      <Icons.LineScale className="w-full" />
       <div className="flex flex-wrap gap-5">
         <div className="flex min-w-52 max-w-80 flex-col gap-5">
           <div className="flex items-center gap-1">
@@ -28,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
               href="/"
               className="flex size-12 items-center justify-center rounded-full border border-border transition-colors hover:bg-muted"
             >
-              <Icons.logo />
+              <Icons.LogoPunGrumpy />
             </Link>
             <span className="font-bold">Noppakorn Kaewsalabnil</span>
           </div>
@@ -37,18 +41,15 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
             Ladkrabang
           </p>
           <div className="flex gap-5">
-            <SocialButton
-              icon={<Icons.github className="size-6" />}
-              href="https://github.com/PunGrumpy"
-            />
-            <SocialButton
-              icon={<Icons.linkedin className="size-6" />}
-              href="https://www.linkedin.com/in/noppakorn-kaewsalabnil"
-            />
-            <SocialButton
-              icon={<Icons.instagram className="size-6" />}
-              href="https://www.instagram.com/pungrumpy_p/"
-            />
+            {profile.socials.map((social, index) => (
+              <SocialButton
+                key={index}
+                icon={
+                  <Icon name={getSocialIcon(social.name)} className="size-6" />
+                }
+                href={social.url}
+              />
+            ))}
           </div>
           <p className="text-xs text-muted-foreground">
             © 2024 Noppakorn Kaewsalabnil. All rights reserved.

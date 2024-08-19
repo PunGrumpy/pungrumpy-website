@@ -85,6 +85,12 @@ const profile = defineType({
       title: 'About',
       type: 'blockContent',
       description: 'Tell us about yourself'
+    }),
+    defineField({
+      name: 'usage',
+      title: 'Usage',
+      type: 'blockContent',
+      description: 'What technologies do you use?'
     })
   ]
 })

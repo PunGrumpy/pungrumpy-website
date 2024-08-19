@@ -14,7 +14,7 @@ export default defineConfig({
   name: 'PunGrumpy',
   title: 'PunGrumpy Studio',
   basePath: '/studio',
-  icon: Icons.logo,
+  icon: Icons.LogoPunGrumpy,
   projectId,
   dataset,
   schema,

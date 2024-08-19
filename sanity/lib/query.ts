@@ -15,6 +15,7 @@ export const profileQuery = groq`*[_type == "profile"][0]{
     alt,
   },
   about,
+  usage
 }`
 
 export const projectsQuery = groq`*[_type == "project"] | order(_createdAt desc){
