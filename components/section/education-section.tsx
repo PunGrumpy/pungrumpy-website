@@ -1,10 +1,9 @@
 import Image from 'next/image'
 
 import { SlideInView } from '@/components/animation/slide-in-view'
+import { RefLinkSection } from '@/components/button/reflink-section'
 import { formatDateString } from '@/lib/utils'
 import { EducationInterface } from '@/types'
-
-import { RefLinkSection } from '../button/reflink-section'
 
 export const EducationSection: React.FC<{
   education: EducationInterface[]

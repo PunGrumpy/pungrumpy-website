@@ -1,9 +1,8 @@
 import Image from 'next/image'
 
+import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { ProjectInterface } from '@/types'
-
-import { Badge } from '../ui/badge'
 
 interface ProjectCardProps {
   project: ProjectInterface
