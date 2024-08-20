@@ -24,7 +24,7 @@ export const EducationSection: React.FC<{
                 className="relative flex max-w-2xl items-start gap-x-6"
               >
                 <RefLinkSection
-                  href={edu.url || '#'}
+                  href={edu.url!}
                   className="relative grid min-h-20 min-w-20 place-items-center text-clip rounded-md border border-border bg-card p-2"
                 >
                   <Image
