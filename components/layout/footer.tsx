@@ -27,10 +27,10 @@ export const Footer: React.FC<FooterProps> = async ({ className }) => {
       <Icons.LineScale className="w-full" />
       <div className="flex flex-wrap gap-5">
         <div className="flex min-w-52 max-w-80 flex-col gap-5">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             <Link
               href="/"
-              className="flex size-12 items-center justify-center rounded-full border border-border transition-colors hover:bg-muted"
+              className="flex size-12 items-center justify-center rounded-full border border-border bg-card transition-colors hover:border-primary/20 hover:bg-muted"
             >
               <Icons.LogoPunGrumpy />
             </Link>
