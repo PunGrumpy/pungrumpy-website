@@ -5,7 +5,7 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { type ThemeProviderProps } from 'next-themes/dist/types'
 import * as React from 'react'
 
-import { Preloader } from './animation/preload'
+import Loading from '@/app/loading'
 
 export function Providers({ children }: ThemeProviderProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(true)
@@ -26,9 +26,7 @@ export function Providers({ children }: ThemeProviderProps) {
       disableTransitionOnChange
     >
       {children}
-      <AnimatePresence mode="wait">
-        {isLoading && <Preloader />}
-      </AnimatePresence>
+      <AnimatePresence mode="wait">{isLoading && <Loading />}</AnimatePresence>
     </NextThemesProvider>
   )
 }

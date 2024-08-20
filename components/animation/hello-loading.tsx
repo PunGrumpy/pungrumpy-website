@@ -28,7 +28,7 @@ const words = [
   'สวัสดี'
 ]
 
-export const Preloader: React.FC = () => {
+export const HelloLoading: React.FC = () => {
   const [index, setIndex] = useState(0)
   const [dimension, setDimension] = useState({ width: 0, height: 0 })
 
