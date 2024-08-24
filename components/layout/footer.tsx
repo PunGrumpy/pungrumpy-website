@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = async ({ className }) => {
       </div>
       <div className="flex flex-wrap gap-5">
         <FooterMenu
-          category="About"
+          category="Site map"
           items={[
             { label: 'About', href: '/about' },
             { label: 'Projects', href: '/projects' },
@@ -73,11 +73,6 @@ export const Footer: React.FC<FooterProps> = async ({ className }) => {
         <FooterMenu
           category="Tools we use"
           items={[
-            {
-              label: 'Figma',
-              href: 'https://www.figma.com/',
-              isExternal: true
-            },
             { label: 'Next.js', href: 'https://nextjs.org/', isExternal: true },
             {
               label: 'shadcn/ui',
@@ -87,6 +82,11 @@ export const Footer: React.FC<FooterProps> = async ({ className }) => {
             {
               label: 'Framer Motion',
               href: 'https://www.framer.com/motion/',
+              isExternal: true
+            },
+            {
+              label: 'Sanity.io',
+              href: 'https://www.sanity.io/',
               isExternal: true
             }
           ]}
@@ -107,9 +107,7 @@ const SocialButton = ({ icon, href }: { icon: any; href: string }) => (
 
 const FooterMenu = ({ category, items }: FooterMenuProps) => (
   <div className="flex min-w-52 max-w-80 flex-col gap-1">
-    <span className="text-xs uppercase text-muted-foreground md:hidden">
-      {category}
-    </span>
+    <span className="text-xs uppercase text-muted-foreground">{category}</span>
     {items.map(({ label, href, isExternal }, index) => (
       <Link
         key={label}
