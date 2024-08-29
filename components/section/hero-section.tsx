@@ -29,7 +29,7 @@ export const HeroSection: React.FC = () => {
               className="rounded-3xl p-6 hover:border-primary/25"
               asChild
             >
-              <Link href="/works">
+              <Link href="/projects">
                 Explore My Portfolio
                 <ChevronRight className="ml-2 size-5" />
               </Link>
