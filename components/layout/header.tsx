@@ -4,11 +4,12 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { ChevronLeft, Search } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import * as React from 'react'
 
+import { OverlayMenu } from '@/components/ui/overlay-menu'
+import { TimeDisplay } from '@/components/ui/time-display'
 import { cn } from '@/lib/utils'
-
-import { TimeDisplay } from './time-display'
 
 const headerVariants = cva('fixed left-0 top-0 z-40 w-full font-mono', {
   variants: {
@@ -55,49 +56,64 @@ export const Header = React.forwardRef<HTMLElement, HeaderProps>(
     ref
   ) => {
     const router = useRouter()
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const handleBack = () => {
       router.push('/')
     }
 
-    return (
-      <header
-        ref={ref}
-        className={cn(headerVariants({ variant, size, className }))}
-        {...props}
-      >
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="text-muted-foreground">LOCAL/</span>
-            <TimeDisplay />
-            {showBackButton && (
-              <button
-                onClick={handleBack}
-                className="ml-2 rounded-full bg-muted p-1 transition-colors hover:bg-muted/80"
-                aria-label="Go back to home page"
-              >
-                <ChevronLeft className="size-4" />
-              </button>
-            )}
-            {logo && (
-              <Image src="/favicon.ico" alt="favicon" width={32} height={32} />
-            )}
-          </div>
+    const handleMenuToggle = () => {
+      setIsMenuOpen(!isMenuOpen)
+    }
 
-          <div className="flex items-center space-x-4">
-            {children}
-            {showSearch && <Search className="size-4" />}
-            {showMenu && (
-              <button
-                className="rounded border border-border px-3 py-0.5 transition-colors hover:border-foreground/50"
-                aria-label="Toggle menu"
-              >
-                MENU
-              </button>
-            )}
+    return (
+      <>
+        <header
+          ref={ref}
+          className={cn(headerVariants({ variant, size, className }))}
+          {...props}
+        >
+          <div className="container mx-auto flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <span className="text-muted-foreground">LOCAL/</span>
+              <TimeDisplay />
+              {showBackButton && (
+                <button
+                  onClick={handleBack}
+                  className="ml-2 rounded-full bg-muted p-1 transition-colors hover:bg-muted/80"
+                  aria-label="Go back to home page"
+                >
+                  <ChevronLeft className="size-4" />
+                </button>
+              )}
+              {logo && (
+                <Image
+                  src="/favicon.ico"
+                  alt="favicon"
+                  width={32}
+                  height={32}
+                />
+              )}
+            </div>
+
+            <div className="flex items-center space-x-4">
+              {children}
+              {showSearch && <Search className="size-4" />}
+              {showMenu && (
+                <button
+                  onClick={handleMenuToggle}
+                  className="rounded border border-border px-3 py-0.5 transition-colors hover:border-foreground/50"
+                  aria-label="Toggle menu"
+                >
+                  MENU
+                </button>
+              )}
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+
+        <OverlayMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      </>
     )
   }
 )

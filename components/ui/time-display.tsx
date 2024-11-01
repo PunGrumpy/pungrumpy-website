@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
-const timeDisplayVariants = cva('font-mono', {
+export const timeDisplayVariants = cva('font-mono', {
   variants: {
     size: {
       default: 'text-base',

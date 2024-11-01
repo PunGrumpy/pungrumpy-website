@@ -16,9 +16,9 @@ const socialLinkVariants = cva(
         secondary: 'hover:text-secondary'
       },
       size: {
-        default: 'text-base gap-2',
-        sm: 'text-sm gap-1.5',
-        lg: 'text-lg gap-2.5'
+        default: 'text-base gap-0.5',
+        sm: 'text-sm',
+        lg: 'text-lg gap-1'
       }
     },
     defaultVariants: {
