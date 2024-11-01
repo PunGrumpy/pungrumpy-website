@@ -43,12 +43,12 @@ export default function Page() {
       {/* Header */}
       <header className="fixed left-0 top-0 z-40 w-full mix-blend-difference">
         <div className="flex items-center justify-between px-6 py-3">
-          <div className="flex items-center space-x-2 font-mono text-xs">
+          <div className="flex items-center space-x-2 font-mono">
             <span className="text-muted-foreground">LOCAL/</span>
             {currentTime}
             <Image src="/favicon.ico" alt="favicon" width={32} height={32} />
           </div>
-          <div className="space-x-6 font-mono text-xs">
+          <div className="space-x-6 font-mono">
             <span className="hidden md:inline">{'//DIGITAL WEB + DEVOPS'}</span>
             <span>BASED IN BKK, THAILAND</span>
           </div>
