@@ -2,6 +2,8 @@
 import { notFound } from 'next/navigation'
 
 import ProjectDetailsClient from '@/app/projects/[id]/project-details-client'
+import { Footer } from '@/components/layout/footer'
+import { Header } from '@/components/layout/header'
 
 const projects = [
   {
@@ -43,8 +45,19 @@ export default async function ProjectDetails({
   }
 
   return (
-    <div className="container mx-auto px-6 pt-24">
-      <ProjectDetailsClient project={project} />
+    <div className="min-h-screen bg-background font-mono text-foreground">
+      <Header
+        variant="default"
+        size="lg"
+        logo={false}
+        showBackButton
+        showSearch
+        showMenu
+      />
+      <div className="container mx-auto px-6 pb-24">
+        <ProjectDetailsClient project={project} />
+      </div>
+      <Footer variant="transparent" showScrollButton />
     </div>
   )
 }
