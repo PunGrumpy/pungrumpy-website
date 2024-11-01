@@ -4,9 +4,9 @@ export interface Work {
   type: string
   description: string
   image: string
-  fullDescription: string
   technologies: string[]
+  client: string
   year: number
-  role: string
+  category: string
   link?: string
 }

@@ -16,7 +16,6 @@ export const WorkContent = ({ work }: WorkContentProps) => {
         </h1>
         <p className="max-w-xl text-muted-foreground">{work.description}</p>
       </div>
-
       <div className="relative aspect-video w-full overflow-hidden">
         <div className="relative size-full">
           <Image
@@ -33,7 +32,7 @@ export const WorkContent = ({ work }: WorkContentProps) => {
 
       <div>
         <h2 className="mb-4 text-2xl font-bold">About the Project</h2>
-        <p className="text-muted-foreground">{work.fullDescription}</p>
+        <p className="text-muted-foreground">{work.description}</p>
       </div>
     </div>
   )
