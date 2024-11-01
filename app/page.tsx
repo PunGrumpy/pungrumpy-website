@@ -8,10 +8,9 @@ import { HeroSection } from '@/components/sections/hero-section'
 export default function Page() {
   return (
     <div className="min-h-screen bg-background font-mono text-foreground">
-      <Header variant="default" size="lg">
+      <Header variant="default" size="lg" showMenu>
         <div className="space-x-6 font-mono">
-          <span className="hidden md:inline">{'//DIGITAL WEB + DEVOPS'}</span>
-          <span>BASED IN BKK, THAILAND</span>
+          <span>{'//BASED IN BKK, THAILAND'}</span>
         </div>
       </Header>
 
