@@ -1,4 +1,3 @@
-// app/projects/[id]/page.tsx
 import { notFound } from 'next/navigation'
 
 import ProjectDetailsClient from '@/app/projects/[id]/project-details-client'
@@ -15,7 +14,7 @@ const projects = [
     fullDescription:
       'A comprehensive data processing system that leverages advanced algorithms to distill complex information streams into actionable insights.',
     technologies: ['React', 'TypeScript', 'Node.js', 'WebSocket'],
-    year: '2024',
+    year: 2024,
     role: 'Lead Developer'
   },
   {
@@ -27,16 +26,16 @@ const projects = [
     fullDescription:
       'A comprehensive testing system that leverages advanced algorithms to validate software and ensure its quality.',
     technologies: ['React', 'TypeScript', 'Node.js', 'WebSocket'],
-    year: '2024',
+    year: 2024,
     role: 'Lead Developer'
   }
 ]
 
-export default async function ProjectDetails({
-  params
-}: {
-  params: { id: string }
-}) {
+interface ProjectDetailsProps {
+  params: Promise<{ id: string }>
+}
+
+export default async function ProjectDetails({ params }: ProjectDetailsProps) {
   const { id } = await params
   const project = projects.find(project => project.id === id)
 

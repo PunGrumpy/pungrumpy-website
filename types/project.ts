@@ -6,7 +6,7 @@ export interface Project {
   image: string
   fullDescription: string
   technologies: string[]
-  year: string
+  year: number
   role: string
   link?: string
 }
