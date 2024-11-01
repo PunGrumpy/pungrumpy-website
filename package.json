@@ -16,6 +16,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.10",
+    "hugeicons-react": "^0.3.0",
     "lucide-react": "^0.454.0",
     "next": "15.0.1",
     "next-themes": "^0.3.0",
