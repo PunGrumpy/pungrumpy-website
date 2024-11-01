@@ -40,7 +40,7 @@ export const Footer = React.forwardRef<HTMLElement, FooterProps>(
         className={cn(footerVariants({ variant, className }))}
         {...props}
       >
-        <div className="container mx-auto flex items-center justify-between px-6">
+        <div className="container mx-auto flex items-center justify-between">
           <span className="text-muted-foreground">NOPPAKORN KAEWSALABNIL</span>
           {children}
           {showScrollButton && (

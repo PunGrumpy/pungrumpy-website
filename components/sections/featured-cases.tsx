@@ -69,9 +69,9 @@ export const FeaturedCases = () => {
   ]
 
   return (
-    <section className="bg-card px-6 py-24">
+    <section className="bg-card">
       <div className="mb-12">
-        <div className="text-4xl font-bold text-foreground transition-colors hover:text-primary">
+        <div className="text-4xl font-bold text-foreground transition-colors hover:text-primary md:text-5xl">
           FEATURED CASES
         </div>
         <div className="mt-2 text-xs text-muted-foreground">

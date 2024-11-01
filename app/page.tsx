@@ -1,6 +1,7 @@
 import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
 import { ContactSection } from '@/components/sections/contact-section'
+import { DescriptionSection } from '@/components/sections/description-section'
 import { FeaturedCases } from '@/components/sections/featured-cases'
 import { HeroSection } from '@/components/sections/hero-section'
 
@@ -14,9 +15,10 @@ export default function Page() {
         </div>
       </Header>
 
-      <main className="container mx-auto">
+      <main className="container mx-auto space-y-12 md:space-y-24">
         <HeroSection />
         <FeaturedCases />
+        <DescriptionSection />
         <ContactSection />
       </main>
 

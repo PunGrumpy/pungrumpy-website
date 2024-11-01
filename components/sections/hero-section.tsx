@@ -26,7 +26,7 @@ export function HeroSection() {
   const opacity = useTransform(scrollY, [0, 1000], [1, 0.8])
 
   return (
-    <section className="relative flex min-h-screen flex-col justify-center px-6 pt-32">
+    <section className="relative flex flex-col justify-center pt-32">
       <div className="relative z-10 mx-auto w-full">
         <div className="flex flex-col items-center">
           {/* Availability Status */}

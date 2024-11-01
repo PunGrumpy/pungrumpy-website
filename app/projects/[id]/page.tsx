@@ -54,7 +54,7 @@ export default async function ProjectDetails({
         showSearch
         showMenu
       />
-      <div className="container mx-auto px-6 pb-24">
+      <div className="container mx-auto pb-24">
         <ProjectDetailsClient project={project} />
       </div>
       <Footer variant="transparent" showScrollButton />
