@@ -49,7 +49,6 @@ export const OverlayMenu = React.forwardRef<HTMLDivElement, OverlayMenuProps>(
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -58,8 +57,6 @@ export const OverlayMenu = React.forwardRef<HTMLDivElement, OverlayMenuProps>(
               className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
               onClick={onClose}
             />
-
-            {/* Menu Panel */}
             <motion.div
               ref={ref}
               initial={{ x: '100%' }}
@@ -68,7 +65,6 @@ export const OverlayMenu = React.forwardRef<HTMLDivElement, OverlayMenuProps>(
               transition={{ type: 'spring', damping: 20, stiffness: 300 }}
               className="fixed right-0 top-0 z-50 flex size-full flex-col bg-background md:w-1/3"
             >
-              {/* Header */}
               <header className="flex items-center justify-between border-b border-border px-6 py-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <span>LOCAL/</span>
@@ -85,8 +81,6 @@ export const OverlayMenu = React.forwardRef<HTMLDivElement, OverlayMenuProps>(
                   CLOSE
                 </button>
               </header>
-
-              {/* Menu Items */}
               <nav className="flex flex-1 flex-col justify-center">
                 <ul className="space-y-2 px-6">
                   {menuItems.map(item => {
@@ -121,8 +115,6 @@ export const OverlayMenu = React.forwardRef<HTMLDivElement, OverlayMenuProps>(
                   })}
                 </ul>
               </nav>
-
-              {/* Footer */}
               <footer className="border-t border-border px-6 py-4">
                 <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                   <span className="text-sm text-muted-foreground">
