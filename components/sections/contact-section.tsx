@@ -1,26 +1,10 @@
 'use client'
 
-import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
 import { NoiseOverlay } from '@/components/ui/noise-overlay'
-
-const SocialLink = ({ href, label }: { href: string; label: string }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="group relative inline-flex items-center space-x-2 font-mono transition-colors hover:text-foreground"
-    aria-label={`Visit ${label}`}
-  >
-    <span className="relative">
-      {label}
-      <span className="absolute bottom-1/2 left-0 h-px w-0 bg-current transition-all group-hover:w-full" />
-    </span>
-    <ArrowUpRight className="size-4" />
-  </a>
-)
+import { SocialLink } from '@/components/ui/social-link'
 
 export const ContactSection = () => {
   const handleContact = () => {}
