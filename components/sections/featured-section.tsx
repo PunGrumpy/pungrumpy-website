@@ -1,11 +1,10 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import * as React from 'react'
 
 import { FeatureCard } from '@/components/ui/feature-card'
 
-const projects = [
+const works = [
   {
     id: 'distil-wizard',
     title: 'DISTIL WIZARD',
@@ -24,7 +23,7 @@ export const FeaturedSection = () => {
   const router = useRouter()
 
   const handleProjectClick = (id: string) => {
-    router.push(`/projects/${id}`)
+    router.push(`/works/${id}`)
   }
 
   return (
@@ -40,12 +39,12 @@ export const FeaturedSection = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {projects.map(project => (
+        {works.map(work => (
           <FeatureCard
-            key={project.id}
-            {...project}
-            onClick={() => handleProjectClick(project.id)}
-            onKeyDown={e => e.key === 'Enter' && handleProjectClick(project.id)}
+            key={work.id}
+            {...work}
+            onClick={() => handleProjectClick(work.id)}
+            onKeyDown={e => e.key === 'Enter' && handleProjectClick(work.id)}
           />
         ))}
       </div>

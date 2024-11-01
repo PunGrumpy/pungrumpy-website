@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation'
 
-import ProjectDetailsClient from '@/app/projects/[id]/project-details-client'
+import { WorkDetailsClient } from '@/app/works/[id]/work-details-client'
 import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
 
-const projects = [
+const works = [
   {
     id: 'distil-wizard',
     title: 'DISTIL WIZARD',
@@ -31,15 +31,15 @@ const projects = [
   }
 ]
 
-interface ProjectDetailsProps {
+interface WorkDetailsProps {
   params: Promise<{ id: string }>
 }
 
-export default async function ProjectDetails({ params }: ProjectDetailsProps) {
+export default async function WorkDetails({ params }: WorkDetailsProps) {
   const { id } = await params
-  const project = projects.find(project => project.id === id)
+  const work = works.find(work => work.id === id)
 
-  if (!project) {
+  if (!work) {
     notFound()
   }
 
@@ -54,7 +54,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
         showMenu
       />
       <div className="container mx-auto pb-24">
-        <ProjectDetailsClient project={project} />
+        <WorkDetailsClient work={work} />
       </div>
       <Footer variant="transparent" showScrollButton />
     </div>

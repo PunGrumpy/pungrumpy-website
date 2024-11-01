@@ -1,27 +1,27 @@
 import Image from 'next/image'
 
 import { NoiseOverlay } from '@/components/ui/noise-overlay'
-import { type Project } from '@/types/project'
+import { type Work } from '@/types/work'
 
-interface ProjectContentProps {
-  project: Project
+interface WorkContentProps {
+  work: Work
 }
 
-export const ProjectContent = ({ project }: ProjectContentProps) => {
+export const WorkContent = ({ work }: WorkContentProps) => {
   return (
     <div className="space-y-12">
       <div>
         <h1 className="mb-6 text-6xl font-bold uppercase tracking-tight">
-          {project.title}
+          {work.title}
         </h1>
-        <p className="max-w-xl text-muted-foreground">{project.description}</p>
+        <p className="max-w-xl text-muted-foreground">{work.description}</p>
       </div>
 
       <div className="relative aspect-video w-full overflow-hidden">
         <div className="relative size-full">
           <Image
-            src={project.image}
-            alt={project.title}
+            src={work.image}
+            alt={work.title}
             fill
             className="object-cover"
             priority
@@ -33,7 +33,7 @@ export const ProjectContent = ({ project }: ProjectContentProps) => {
 
       <div>
         <h2 className="mb-4 text-2xl font-bold">About the Project</h2>
-        <p className="text-muted-foreground">{project.fullDescription}</p>
+        <p className="text-muted-foreground">{work.fullDescription}</p>
       </div>
     </div>
   )

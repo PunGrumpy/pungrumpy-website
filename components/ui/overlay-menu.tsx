@@ -21,7 +21,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   { id: '1', label: 'HOME', path: '/', number: '01' },
   { id: '2', label: 'ABOUT PUN', path: '/about', number: '02' },
-  { id: '3', label: 'WORKS', path: '/projects', number: '03' },
+  { id: '3', label: 'WORKS', path: '/works', number: '03' },
   { id: '4', label: 'MY TREK', path: '/trek', number: '04' },
   { id: '5', label: 'CONTACT', path: '/contact', number: '05' }
 ] as const
