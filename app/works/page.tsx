@@ -71,7 +71,9 @@ export default function WorksPage() {
           className="mb-16 space-y-4"
         >
           <div className="flex justify-end">
-            <span className="text-sm text-muted-foreground">(2021 - 2024)</span>
+            <span className="text-base text-muted-foreground">
+              (2021 - 2024)
+            </span>
           </div>
           <h1 className="text-6xl font-bold md:text-8xl">
             <span className="block transition-colors hover:text-primary">
