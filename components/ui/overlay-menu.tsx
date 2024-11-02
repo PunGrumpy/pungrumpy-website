@@ -31,6 +31,7 @@ interface OverlayMenuProps {
   onClose: () => void
 }
 
+// FIXME: Add more custom of menu items and add more smoothly animation for the overlay menu
 export const OverlayMenu = React.forwardRef<HTMLDivElement, OverlayMenuProps>(
   ({ isOpen, onClose }, ref) => {
     const pathname = usePathname()
