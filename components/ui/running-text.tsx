@@ -11,10 +11,11 @@ interface RunningTextProps {
   speed?: number
 }
 
+// FIXME: infinite loop and make custom text and symbol between text
 const RunningText = ({ text, className, speed = 20 }: RunningTextProps) => {
   const controls = useAnimationControls()
-  const baseText = 'NOPPAKORN KAEWSALABNIL + COMPUTER SCIENCE'
-  const repeatedText = `${baseText}    ${baseText}    `
+  const baseText = 'NOPPAKORN KAEWSALABNIL + COMPUTER SCIENCE +'
+  const repeatedText = `${baseText} ${baseText}    `
 
   useEffect(() => {
     controls.start({
