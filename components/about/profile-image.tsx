@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import * as React from 'react'
 
+import { AnimatedImage } from '@/components/ui/animated-image'
 import { NoiseOverlay } from '@/components/ui/noise-overlay'
 
 export const ProfileImage: React.FC = () => (
@@ -14,10 +14,9 @@ export const ProfileImage: React.FC = () => (
     className="relative mx-auto aspect-video w-full max-w-5xl overflow-hidden"
   >
     <div className="relative size-full">
-      <Image
+      <AnimatedImage
         src="https://placehold.co/1200x800/png"
         alt="Profile showcase"
-        fill
         className="object-cover opacity-70 transition-opacity hover:opacity-100"
         priority
       />
