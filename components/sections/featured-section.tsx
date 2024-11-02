@@ -3,21 +3,7 @@
 import { useRouter } from 'next/navigation'
 
 import { FeatureCard } from '@/components/ui/feature-card'
-
-const works = [
-  {
-    id: 'distil-wizard',
-    title: 'DISTIL WIZARD',
-    type: 'SYSTEM',
-    image: 'https://placehold.co/800x600/png'
-  },
-  {
-    id: 'qa-tester',
-    title: 'QA TESTER',
-    type: 'DEVOPS',
-    image: 'https://placehold.co/800x600/png'
-  }
-]
+import { WORKS_DATA } from '@/contrants/works'
 
 export const FeaturedSection = () => {
   const router = useRouter()
@@ -39,7 +25,7 @@ export const FeaturedSection = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {works.map(work => (
+        {WORKS_DATA.slice(0, 4).map(work => (
           <FeatureCard
             key={work.id}
             {...work}
